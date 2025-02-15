@@ -8,6 +8,11 @@
       ../../shared/modules/style.nix 
     ];
 
+  boot.initrd.availableKernelModules = [
+    "thinkpad_acpi"
+  ];
+  services.upower.enable = true;
+
   networking.hostName = "nichtsos-thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
