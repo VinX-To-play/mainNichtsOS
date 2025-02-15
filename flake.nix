@@ -5,6 +5,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stylix.url = "github:danth/stylix";
+    nixvim = {
+    	url = "github:nix-community/nixvim";
+	    inputs.nixpkgs.follows = "nixpkgs";
+	  };
     # home-manager, used for managing user configuration
      home-manager = {
       url = "github:nix-community/home-manager/";
@@ -24,6 +29,7 @@
         specialArgs = {inherit inputs; };
         modules = [
           ./hosts/main_desktop/configuration.nix
+          inputs.stylix.nixosModules.stylix
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager {
@@ -31,7 +37,33 @@
              home-manager.useUserPackages = true;
 
              home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
+	           home-manager.sharedModules = [
+	              inputs.nixvim.homeManagerModules.nixvim
+	            ];
+             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+          }
+        ];
+      };
 
+      ThinkPad = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/ThinkPad/configuration.nix
+          inputs.stylix.nixosModules.stylix
+          #make anyrun avaylebil for all users
+          #{environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+          # make home-manager as a module of nixos
+          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          home-manager.nixosModules.home-manager {
+             home-manager.useGlobalPkgs = true;
+             home-manager.useUserPackages = true;
+
+             # TODO replace ryan with your own username
+             home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
+	           home-manager.sharedModules = [
+	           	inputs.nixvim.homeManagerModules.nixvim
+	          ];
              # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
         ];
