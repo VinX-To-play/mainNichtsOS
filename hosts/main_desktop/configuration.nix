@@ -10,6 +10,10 @@
       ./hardware-configuration.nix
       ../../shared/base.nix
       ../../shared/modules/obs.nix
+      ../../shared/modules/style.nix
+      ../../shared/modules/art.nix
+      ../../shared/modules/sunshine.nix
+      ../../shared/modules/vr.nix
     ];
   
 
