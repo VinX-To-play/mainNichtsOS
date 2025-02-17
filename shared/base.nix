@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, lib, ... }:
 
 {
 ########################################################
@@ -20,7 +20,7 @@ security.polkit.enable = true;
   #Enable wayland & autologin
   services.displayManager = { 
     sddm.enable = true;
-    sddm.wayland.enable = true;
+    sddm.wayland.enable = false;
   };
   #enable plasma 6
   services.xserver.desktopManager.plasma5.enable = true;
@@ -70,12 +70,12 @@ security.polkit.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
-    xkb.layout = "de";
+    xkb.layout = "us";
     xkb.variant = "";
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "us";
 
 ########################################################
 #              Nix & Nixpkg Settings                   #
@@ -149,7 +149,7 @@ environment.systemPackages = with pkgs; [
     # Gaming
     heroic
 
-    # Wayland:
+    # Wayland & Display:
     wlroots_0_17
     xwaylandvideobridge
     egl-wayland

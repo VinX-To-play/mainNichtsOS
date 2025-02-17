@@ -13,6 +13,7 @@
   ];
   services.upower.enable = true;
 
+
   networking.hostName = "nichtsos-thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -34,15 +35,14 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup2";
+  home-manager.backupFileExtension = "backup6";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vincentl = {
     #isNormalUser = true;
     description = "Vincent Lundborg";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [ ];
   };
 
   environment.systemPackages = with pkgs; [
