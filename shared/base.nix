@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, lib, ... }:
 
 {
 ########################################################
@@ -20,13 +20,22 @@ security.polkit.enable = true;
   #Enable wayland & autologin
   services.displayManager = { 
     sddm.enable = true;
-    sddm.wayland.enable = true;
+    sddm.wayland.enable = false;
   };
   #enable plasma 6
   services.desktopManager.plasma6.enable = true;
+  qt = {
+    enable = true;
+    platformTheme = lib.mkDefault "kde"; # "gnome", "gtk2", "kde", "lxqt", "qt5ct"
+    # opton kvantum,  
+    style = lib.mkDefault "kvantum";
+  };
+  
 
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  #force kvantum on qt
+  environment.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
 
 ########################################################
 #                   Audio setings                      #
@@ -148,10 +157,11 @@ environment.systemPackages = with pkgs; [
     # Gaming
     heroic
 
-    # Wayland:
+    # Wayland & Display:
     wlroots_0_17
     xwaylandvideobridge
     egl-wayland
+    kdePackages.qtstyleplugin-kvantum
 
     ];
 
