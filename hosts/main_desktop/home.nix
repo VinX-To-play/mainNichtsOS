@@ -20,6 +20,10 @@
   #     xxx
   # '';
 
+  imports = [
+    ../../shared/modules/kickstart.nixvim/nixvim.nix
+  ];
+
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -28,7 +32,7 @@
 
     # it provides the command `nom` works just like `nix`
     # with more details log output
-    ../../shared/modules/kickstart.nixvim/nixvim.nix
+    
   ];
 
   programs.git = {

@@ -38,9 +38,6 @@
     autoLogin.user = "vincentl";
   };
 
-
-
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -66,7 +63,8 @@
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
 
-
+  # set .config backup extansion for home manager
+  home-manager.backupFileExtension = "backup4";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

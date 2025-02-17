@@ -1,7 +1,7 @@
 { config, inputs, pkgs, ... }:
 
 {
-  environment.systemPackages = pkgs.sunshine;
+  environment.systemPackages = [pkgs.sunshine];
 
   #sunshine settings (remote Desktop)
   services.sunshine = {
