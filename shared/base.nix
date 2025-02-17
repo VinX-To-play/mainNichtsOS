@@ -23,8 +23,7 @@ security.polkit.enable = true;
     sddm.wayland.enable = false;
   };
   #enable plasma 6
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.desktopManager.plasma6.enable = false;
+  services.desktopManager.plasma6.enable = true;
 
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

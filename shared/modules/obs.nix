@@ -16,7 +16,7 @@ boot.extraModulePackages = with config.boot.kernelPackages; [
       wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
-      droidcam-obs
+      #droidcam-obs
       waveform
     ];
   };
