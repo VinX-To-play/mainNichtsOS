@@ -24,18 +24,9 @@ security.polkit.enable = true;
   };
   #enable plasma 6
   services.desktopManager.plasma6.enable = true;
-  qt = {
-    enable = true;
-    platformTheme = lib.mkDefault "kde"; # "gnome", "gtk2", "kde", "lxqt", "qt5ct"
-    # opton kvantum,  
-    style = lib.mkDefault "kvantum";
-  };
-  
 
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  #force kvantum on qt
-  environment.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
 
 ########################################################
 #                   Audio setings                      #
@@ -78,12 +69,12 @@ security.polkit.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
-    xkb.layout = "de";
+    xkb.layout = "us";
     xkb.variant = "";
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "us";
 
 ########################################################
 #              Nix & Nixpkg Settings                   #
@@ -161,7 +152,6 @@ environment.systemPackages = with pkgs; [
     wlroots_0_17
     xwaylandvideobridge
     egl-wayland
-    kdePackages.qtstyleplugin-kvantum
 
     ];
 
