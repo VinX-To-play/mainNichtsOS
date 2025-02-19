@@ -106,6 +106,7 @@
 	      # Optionally, you may need to select the appropriate driver version for your specific GPU.
 	      package = config.boot.kernelPackages.nvidiaPackages.beta;
 	    };
+  boot.initrd.kernelModules = [ "nvidia" "i915" "nvidia_modeset" "nvidia_drm" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
