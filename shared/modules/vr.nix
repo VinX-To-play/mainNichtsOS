@@ -1,13 +1,13 @@
-{ config, inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    alvr
-    #wivrn
-    #monado
-    monado-vulkan-layers
-    #wlx-overlay-s
-  ];
+      #wivrn
+      stable.alvr
+      #monado
+      monado-vulkan-layers
+      #wlx-overlay-s
+    ];
 
   #ALVR for VR gaming
   programs.alvr = {
