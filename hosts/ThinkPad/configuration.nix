@@ -35,7 +35,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup6";
+  home-manager.backupFileExtension = "backup7";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vincentl = {

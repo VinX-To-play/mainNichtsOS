@@ -55,7 +55,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # pkgs.stable overlay
-            { pkgs.overlays = [ stableOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {

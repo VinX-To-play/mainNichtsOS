@@ -120,6 +120,8 @@ environment.systemPackages = with pkgs; [
     powertop
     wgnord
     fastfetch
+    btop
+    tree
 
     #Media
     jellyfin-ffmpeg
@@ -131,6 +133,9 @@ environment.systemPackages = with pkgs; [
     thunderbird
     whatsapp-for-linux
     webcord-vencord
+
+    #Office
+    libreoffice-qt6-unwrapped
  
     # Programing
     kitty
