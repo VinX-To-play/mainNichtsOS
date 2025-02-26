@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix 
+      ../../shared/modules/hyprland/hyprland.nix
     ];
 
   boot.initrd.availableKernelModules = [
