@@ -6,8 +6,12 @@
     portalPackage = null;
     
     systemd.variables = ["--all"];
-    
     settings = {
+      general = {
+        gaps_in = 0;
+        gaps_out = 0;
+      };
+
       "$mod" = "SUPER";
       bind = 
       [
