@@ -1,15 +1,22 @@
 {
+  imports = [
+    ./waybar.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
     package = null;
     portalPackage = null;
-    
     systemd.variables = ["--all"];
     settings = {
       general = {
         gaps_in = 0;
         gaps_out = 0;
+      };
+
+      input = {
+	natural_scroll = true;
       };
 
       "$mod" = "SUPER";
@@ -80,7 +87,9 @@
       monitor = [
         ",highres,auto,1"
       ];
-
     };
+      extraConfig = ''
+	exec-once = waybar
+	'';
   };
 }

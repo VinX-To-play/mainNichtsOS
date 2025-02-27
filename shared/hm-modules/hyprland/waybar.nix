@@ -15,7 +15,7 @@ with lib;
     settings = [
       {
         layer = "top";
-        position = "bottom";
+        position = "top";
         modules-left = [
 	  "hyprland/workspaces" 
 	];
@@ -24,10 +24,13 @@ with lib;
 	];
         modules-right = [
 	  "network"
+          "tray"
 	  "pulseaudio"
 	  "tray"
 	  "clock"
 	];
+      
+    
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -39,7 +42,28 @@ with lib;
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
-        
+
+        "pulseaudio" = {
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [
+              ""
+              ""
+              ""
+            ];
+ 
+        };
 	"hyprland/window" = {
           max-length = 22;
           separate-outputs = false;
@@ -71,14 +95,16 @@ with lib;
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
+          on-click = "nmtui";
         };
+      };
+    }
 
 
-      }
+      
     ];
     style = concatStrings [
      ''
-
 @define-color bg-color rgb(68, 71, 90);               /* #3C413C */
 @define-color bg-color-tray rgb (40, 42, 54);         /* #3C4144 */
 @define-color bg-color-ws rgb (40, 42, 54);         /* #3C4144 */
@@ -126,96 +152,6 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.4;
-}
-
-
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: @fg-color;
-    border-bottom: 3px solid transparent;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inherit;
-    border-bottom: 3px solid @fg-color;
-}
-
-#workspaces button.focused {
-    background-color: @bg-color;
-    border-bottom: 3px solid @fg-color;
-}
-
-#workspaces button.urgent {
-    background-color: @alert-bg-color;
-}
-
-#mode {
-    padding: 0 10px;
-    margin: 0 4px;
-    background-color: @bg-color;
-    border-bottom: 3px solid @fg-color;
-}
-
-#clock {
-    padding: 0 10px;
-    margin: 0 0px;
-    background-color: rgba(0,0,0,0);
-    color: @fg-color;
-}
-
-@keyframes blink {
-    to {
-        background-color: @fg-color;
-        color: @bg-color;
-    }
-}
-
-label:focus {
-    background-color: @bg-color;
-}
-
-#network.disconnected {
-    background-color: @alert-bg-color;
-}
-
-#custom-vpn.disconnected {
-    background-color: @alert-bg-color;
-}
-
-#pulseaudio.muted {
-    background-color: @inactive-bg-color;
-    color: @inactive-fg-color;
-}
-
-#custom-media.custom-vlc {
-    background-color: @bg-color;
-}
-
-#temperature.critical {
-    background-color: @alert-bg-color;
-}
-
-#idle_inhibitor.activated {
-    background-color: @fg-color;
-    color: @bg-color;
-}
-
-#mpd.disconnected {
-    background-color: transparent;
-    color: transparent;
-}
-
-#mpd.stopped {
-    background-color: transparent;
-    color: transparent;
-}
-
-#mpd.paused {
-    background-color: @inactive-bg-color;
-    color: @inactive-fg-color;
 }
 
      ''

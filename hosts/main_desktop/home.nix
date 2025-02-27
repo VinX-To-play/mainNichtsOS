@@ -21,7 +21,7 @@
   # '';
 
   imports = [
-    ../../shared/modules/kickstart.nixvim/nixvim.nix
+    ../../shared/hm-base.nix
   ];
 
 

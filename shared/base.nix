@@ -162,4 +162,12 @@ environment.systemPackages = with pkgs; [
 
     #install Steam
     programs.steam.enable = true;
+
+###################################################
+#		      Secrets			  #
+###################################################
+programs.gnupg.agent = {
+  enable = true;
+  enableSSHSupport = true;
+  };
 }
