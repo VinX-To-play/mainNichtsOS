@@ -90,6 +90,7 @@
     };
       extraConfig = ''
 	exec-once = waybar
+	exec-once = gnome-keyring-daemon --start --components=secrets
 	'';
   };
 }

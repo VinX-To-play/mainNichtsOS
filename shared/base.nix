@@ -170,4 +170,5 @@ programs.gnupg.agent = {
   enable = true;
   enableSSHSupport = true;
   };
+programs.gnome3.gnome-keyring.enable = true;
 }
