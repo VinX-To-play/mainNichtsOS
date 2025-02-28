@@ -108,6 +108,9 @@
 	    };
   boot.initrd.kernelModules = [ "nvidia" "i915" "nvidia_modeset" "nvidia_drm" ];
 
+  #fix for explicit sync problems on webkit2gtk
+  environment.variables = { WEBKIT_DISABLE_DMABUF_RENDERER = "1"; };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

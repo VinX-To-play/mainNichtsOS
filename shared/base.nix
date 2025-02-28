@@ -120,6 +120,8 @@ environment.systemPackages = with pkgs; [
     powertop
     wgnord
     fastfetch
+    tree
+    btop
 
     #Media
     jellyfin-ffmpeg

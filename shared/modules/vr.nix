@@ -2,9 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-      #wivrn
+      wivrn
       stable.alvr
-      #monado
+      monado
       monado-vulkan-layers
       #wlx-overlay-s
     ];
@@ -15,13 +15,6 @@
       openFirewall = true;
   };
   
-  /*
-  # Envision
-  programs.envision = {
-    enable = true;
-    openFirewall = true; # This is set true by default
-  };
-
   # VR streaming alternetive for ALVR
   services.wivrn = {
     enable = true;
@@ -33,7 +26,14 @@
     enable = true;
     defaultRuntime = true; # Register as default OpenXR runtime
   };
-*/
-  hardware.graphics.extraPackages = with pkgs; [monado-vulkan-layers];
 
+    systemd.user.services.monado.environment = {
+	STEAMVR_LH_ENABLE = "1";
+	XRT_COMPOSITOR_COMPUTE = "1";
+	WMR_HANDTRACKING = "0";
+    };
+  hardware.graphics.extraPackages = with pkgs; [monado-vulkan-layers];
+  
+  # boot.kernelPatches = [pkgs.kernelPatches.cap_sys_nice_begone];
+    
 }
