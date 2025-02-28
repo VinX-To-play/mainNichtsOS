@@ -7,6 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
+    hyprland.url = "github:hyprwm/Hyprland";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +56,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # pkgs.stable overlay
-            { pkgs.overlays = [ stableOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {

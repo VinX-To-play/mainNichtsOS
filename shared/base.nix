@@ -120,8 +120,8 @@ environment.systemPackages = with pkgs; [
     powertop
     wgnord
     fastfetch
-    tree
     btop
+    tree
 
     #Media
     jellyfin-ffmpeg
@@ -133,6 +133,9 @@ environment.systemPackages = with pkgs; [
     thunderbird
     whatsapp-for-linux
     webcord-vencord
+
+    #Office
+    libreoffice-qt6-unwrapped
  
     # Programing
     kitty
@@ -159,4 +162,12 @@ environment.systemPackages = with pkgs; [
 
     #install Steam
     programs.steam.enable = true;
+
+###################################################
+#		      Secrets			  #
+###################################################
+programs.gnupg.agent = {
+  enable = true;
+  enableSSHSupport = true;
+  };
 }

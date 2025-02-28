@@ -11,7 +11,8 @@
 
   # Import Program Configuration
   imports = [
-    ../../shared/modules/kickstart.nixvim/nixvim.nix
+    ../../shared/hm-modules/hyprland/hyprland.nix
+    ../../shared/hm-base.nix
     ];
 
   # link the configuration file in current directory to the specified location in home directory

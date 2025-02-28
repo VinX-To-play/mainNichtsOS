@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix 
+      ../../shared/modules/hyprland/hyprland.nix
     ];
 
   boot.initrd.availableKernelModules = [
@@ -35,7 +36,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup6";
+  home-manager.backupFileExtension = "backup7";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vincentl = {
