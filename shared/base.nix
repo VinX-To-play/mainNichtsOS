@@ -109,6 +109,7 @@ security.polkit.enable = true;
   #enable Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
+   services.blueman.enable = true;
 
 ########################################################
 #                       Packages                       #
@@ -129,6 +130,7 @@ environment.systemPackages = with pkgs; [
 
     #Web
     firefox
+
     spotify
     thunderbird
     whatsapp-for-linux
