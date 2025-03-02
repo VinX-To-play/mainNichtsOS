@@ -62,6 +62,7 @@
 	"$modSHIFT,9,movetoworkspacesilent,9"
 
         # applications
+	"$mod, S, exec, rofi -show drun"
         "$mod, B, exec, firefox"
         "$mod, O, exec, obsidian"
         "$mod, T, exec, kitty"
@@ -90,7 +91,7 @@
     };
       extraConfig = ''
 	exec-once = waybar
-	exec-once = gnome-keyring-daemon --start --components=secrets
+	exec-once = systemctl --user start hyprpolkitagent
 	'';
   };
 }

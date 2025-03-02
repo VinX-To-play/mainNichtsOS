@@ -9,7 +9,6 @@ boot.loader = {
     efi.canTouchEfiVariables = true;
     grub.configurationLimit=10;
 };
-security.polkit.enable = true;
 
 ########################################################
 #                  Display setings                     #
@@ -170,5 +169,5 @@ programs.gnupg.agent = {
   enable = true;
   enableSSHSupport = true;
   };
-programs.gnome3.gnome-keyring.enable = true;
+security.polkit.enable = true;
 }

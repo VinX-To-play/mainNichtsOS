@@ -5,6 +5,9 @@
     brightnessctl
     waybar
     gnome-calendar
+    hyprpolkitagent
+    networkmanagerapplet
+    rofi-wayland
     ];
 
   programs.hyprland = {
