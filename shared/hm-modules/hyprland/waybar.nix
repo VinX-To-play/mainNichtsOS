@@ -24,7 +24,6 @@ with lib;
 	];
         modules-right = [
 	  "network"
-          "tray"
 	  "pulseaudio"
 	  "tray"
 	  "clock"
@@ -95,7 +94,7 @@ with lib;
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
-          on-click = "nmtui";
+          on-click = "nm-connection-editor";
         };
       };
     }
