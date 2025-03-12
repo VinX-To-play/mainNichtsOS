@@ -135,7 +135,7 @@ environment.systemPackages = with pkgs; [
 
     #Web
     firefox
-    thunderbird
+    psst
     whatsapp-for-linux
     webcord-vencord
 
@@ -154,7 +154,6 @@ environment.systemPackages = with pkgs; [
     # Programing lange
     rustc
     python3
-    
 
     # Gaming
     heroic
