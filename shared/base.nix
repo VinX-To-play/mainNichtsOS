@@ -131,10 +131,10 @@ environment.systemPackages = with pkgs; [
     #Media
     jellyfin-ffmpeg
     vlc
+    psst
 
     #Web
     firefox
-    stable.spotify
     thunderbird
     whatsapp-for-linux
     webcord-vencord
