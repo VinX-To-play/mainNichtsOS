@@ -18,8 +18,9 @@ boot.loader = {
 
   #Enable wayland & autologin
   services.displayManager = { 
-    sddm.enable = true;
+    sddm.enable = false;
     sddm.wayland.enable = false;
+    ly.enable = true;
   };
   #enable plasma 6
   services.desktopManager.plasma6.enable = true;
@@ -105,16 +106,21 @@ boot.loader = {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  #Power Saving by auto cpu frecuency
+  services.auto-cpufreq.enable = true;
+  services.power-profiles-daemon.enable = false;
+
   #enable Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
 ########################################################
 #                       Packages                       #
 ######################################################## 
 environment.systemPackages = with pkgs; [
     # Tools
-    obsidian
+    auto-cpufreq
     ethtool
     powertop
     wgnord
@@ -128,13 +134,14 @@ environment.systemPackages = with pkgs; [
 
     #Web
     firefox
-    spotify
+    stable.spotify
     thunderbird
     whatsapp-for-linux
     webcord-vencord
 
     #Office
     libreoffice-qt6-unwrapped
+    obsidian
  
     # Programing
     kitty

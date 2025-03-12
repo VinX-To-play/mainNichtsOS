@@ -8,6 +8,9 @@
     hyprpolkitagent
     networkmanagerapplet
     rofi-wayland
+    mako
+    hyprlock
+
     ];
 
   programs.hyprland = {

@@ -12,6 +12,7 @@
   # Import Program Configuration
   imports = [
     ../../shared/hm-modules/hyprland/hyprland.nix
+    ../../shared/hm-modules/hyprland/hyprlock.nix
     ../../shared/hm-base.nix
     ];
 
