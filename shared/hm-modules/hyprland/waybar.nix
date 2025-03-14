@@ -23,13 +23,11 @@ with lib;
 	  "hyprland/window"
 	];
         modules-right = [
-	  "network"
 	  "pulseaudio"
 	  "tray"
+          "battery"
 	  "clock"
 	];
-      
-    
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -45,14 +43,14 @@ with lib;
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
+          format-bluetooth-muted = "🔇 {icon} {format_source}";
+          format-muted = "🔇 {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
           format-icons = {
             headphone = "";
-            hands-free = "";
-            headset = "";
+            hands-free = "";
+            headset = "";
             phone = "";
             portable = "";
             car = "";
@@ -95,6 +93,17 @@ with lib;
           format-disconnected = "󰤮";
           tooltip = false;
           on-click = "nm-connection-editor";
+        };
+
+        "battery" = {
+	  interval = 60;
+	  states = {
+	    warning = 30;
+	    critical = 15;
+	    };
+	  format = "{capacity}% {icon}";
+	  format-icons = ["" "" "" "" ""];
+	  max-length = 25;
         };
       };
     }

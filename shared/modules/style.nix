@@ -22,7 +22,7 @@ stylix = {
      base0F = "56526e";
    };
   polarity = "dark";
-  opacity.terminal = 0.8;
+  opacity.terminal = 1.0;
   cursor.package = pkgs.bibata-cursors;
   cursor.name = "Bibata-Modern-Ice";
   cursor.size = 24;

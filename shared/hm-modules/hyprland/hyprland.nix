@@ -16,7 +16,7 @@
       };
 
       input = {
-	natural_scroll = true;
+	natural_scroll = false;
       };
 
       "$mod" = "SUPER";
@@ -28,6 +28,13 @@
         "$mod, q, killactive"
         "$mod, F, fullscreen"
         "$mod shift, F, togglefloating"
+	
+	# Utils
+	  # Screenshot
+	  "$mod SHIFT, S, exec,  hyprshot -m region --clipbord-only"
+	  "$mod, PRINT, exec, hyprshot -m window"
+	  ", PRINT, exec, hyprshot -m output"
+	  "$mod SHIFT, PRINT, exec, hyprshot -m region"
 
         
         # moving 
@@ -62,8 +69,9 @@
 	"$modSHIFT,9,movetoworkspacesilent,9"
 
         # applications
-	"$mod, S, exec, rofi -show drun"
-        "$mod, B, exec, firefox"
+	"$mod, S, exec, rofi -show drun run window"
+	"$mod SHIFT, l, exec, hyprlock"
+        "$mod, B, exec, zen"
         "$mod, O, exec, obsidian"
         "$mod, T, exec, kitty"
         "$mod,E,exec, dolphin"
@@ -73,8 +81,8 @@
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl set '5%+'"
-        ", XF86MonBrightnessDown, exec, brightnessctl set '5%-'"
+        ", XF86MonBrightnessUp, exec, brightnessctl set '1%+'"
+        ", XF86MonBrightnessDown, exec, brightnessctl set '1%-'"
       ];
 
       
@@ -92,6 +100,9 @@
       extraConfig = ''
 	exec-once = waybar
 	exec-once = systemctl --user start hyprpolkitagent
+	exec-once = mako 
+	exec-once = nm-applet
+	exec-once = blueman-applet
 	'';
   };
 }
