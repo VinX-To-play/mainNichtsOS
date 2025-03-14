@@ -341,6 +341,9 @@
         enable = true;
       };
 
+      # Markdown prviewing
+      markdown-preview.enable = true;
+
       # Highlight todo, notes, etc in comments
       # https://nix-community.github.io/nixvim/plugins/todo-comments/index.html
       todo-comments = {
