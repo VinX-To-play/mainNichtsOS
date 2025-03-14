@@ -134,17 +134,18 @@ environment.systemPackages = with pkgs; [
     psst
 
     #Web
+    inputs.zen-browser.packages."${system}".specific
     firefox
     psst
     whatsapp-for-linux
     webcord-vencord
 
     #Office
-    libreoffice-qt6-unwrapped
+    libreoffice-qt
     obsidian
  
     # Programing
-    kitty
+    #kitty
     wget
     git
     tmux
@@ -160,8 +161,8 @@ environment.systemPackages = with pkgs; [
 
     # Wayland & Display:
     wlroots_0_17
-    xwaylandvideobridge
     egl-wayland
+    xwayland
 
     ];
 

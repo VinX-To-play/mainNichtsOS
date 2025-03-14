@@ -10,7 +10,7 @@
     rofi-wayland
     mako
     hyprlock
-
+    hyprshot
     ];
 
   programs.hyprland = {
