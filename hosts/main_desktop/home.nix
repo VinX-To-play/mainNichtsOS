@@ -22,6 +22,7 @@
 
   imports = [
     ../../shared/hm-base.nix
+    ../../shared/hm-modules/hyprland/hyprland.nix
   ];
 
 

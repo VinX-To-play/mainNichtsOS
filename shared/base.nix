@@ -140,14 +140,14 @@ environment.systemPackages = with pkgs; [
 
     #Web
     inputs.zen-browser.packages."${system}".specific
-    firefox
     psst
     whatsapp-for-linux
-    webcord-vencord
+    vesktop
 
     #Office
     libreoffice-qt
     obsidian
+    thunderbird
  
     # Programing
     #kitty

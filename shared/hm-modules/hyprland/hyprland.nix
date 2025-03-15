@@ -81,6 +81,9 @@
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+	", XF86AudioNext, exec, playerctl next"
+	", XF86AudioPrev, exec, playerctl previous"
+	", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86MonBrightnessUp, exec, brightnessctl set '1%+'"
         ", XF86MonBrightnessDown, exec, brightnessctl set '1%-'"
       ];

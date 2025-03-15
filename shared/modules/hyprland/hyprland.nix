@@ -11,6 +11,7 @@
     mako
     hyprlock
     hyprshot
+    playerctl
     ];
 
   programs.hyprland = {

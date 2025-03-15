@@ -14,6 +14,8 @@
       ../../shared/modules/art.nix
       ../../shared/modules/sunshine.nix
       ../../shared/modules/vr.nix
+      ../../shared/modules/hyprland/hyprland.nix
+      
     ];
   
 
@@ -32,12 +34,6 @@
 
 
   
-  #Enable autologin
-  services.displayManager = { 
-    autoLogin.enable = true;
-    autoLogin.user = "vincentl";
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
