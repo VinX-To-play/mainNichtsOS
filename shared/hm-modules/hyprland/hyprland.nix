@@ -1,6 +1,7 @@
 {
   imports = [
     ./waybar.nix
+    ./mako.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -14,6 +15,11 @@
         gaps_in = 0;
         gaps_out = 0;
       };
+
+      source = [
+	"/home/vincentl/.config/hypr/monitors.conf"
+	"/home/vincentl/.config/hypr/workspaces.conf"
+      ];
 
       input = {
 	natural_scroll = false;
@@ -96,9 +102,6 @@
 	"$mod ALT, mouse:272, resizewindow"
       ];
       
-      monitor = [
-        ",highres,auto,1"
-      ];
     };
       extraConfig = ''
 	exec-once = waybar

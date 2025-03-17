@@ -8,10 +8,10 @@
     hyprpolkitagent
     networkmanagerapplet
     rofi-wayland
-    mako
     hyprlock
     hyprshot
     playerctl
+    nwg-displays
     ];
 
   programs.hyprland = {
