@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.mako = {
+  services.mako = {
     enable = true;
     package = pkgs.mako;
     defaultTimeout = 5000;

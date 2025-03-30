@@ -25,7 +25,7 @@
     #  Here are some example plugins that I've included in the Kickstart repository.
     #  Uncomment any of the lines below to enable them (you will need to restart nvim).
     #
-    # ./plugins/kickstart/plugins/debug.nix
+    ./plugins/kickstart/plugins/debug.nix
     # ./plugins/kickstart/plugins/indent-blankline.nix
     # ./plugins/kickstart/plugins/lint.nix
     # ./plugins/kickstart/plugins/autopairs.nix
@@ -156,7 +156,7 @@
       number = true;
       # You can also add relative line numbers, to help with jumping.
       #  Experiment for yourself to see if you like it!
-      #relativenumber = true
+      relativenumber = true;
 
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";

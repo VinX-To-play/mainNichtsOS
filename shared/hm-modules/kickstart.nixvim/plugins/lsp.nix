@@ -73,7 +73,7 @@
 
     plugins.nvim-jdtls = {
       enable = true;
-      data = "/home/vincentl/.cache/jdtls/workspace/";
+      data = "/home/vincentl/.cache/jdtls/workspace/data/";
     };
     
     plugins.lsp = {

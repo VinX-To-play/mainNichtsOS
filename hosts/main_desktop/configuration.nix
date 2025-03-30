@@ -18,6 +18,10 @@
       
     ];
   
+  ##########################################
+  #            Boot                        #
+  ##########################################
+  #boot.loader.grub.devices =  ["dev/nvme0n1p1"];
 
 
   networking.hostName = "nichtsos"; # Define your hostname.
@@ -102,7 +106,7 @@
 	      # Optionally, you may need to select the appropriate driver version for your specific GPU.
 	      package = config.boot.kernelPackages.nvidiaPackages.beta;
 	    };
-  boot.initrd.kernelModules = [ "nvidia" "i915" "nvidia_modeset" "nvidia_drm" ];
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
 
   #fix for explicit sync problems on webkit2gtk
   environment.variables = { WEBKIT_DISABLE_DMABUF_RENDERER = "1"; };

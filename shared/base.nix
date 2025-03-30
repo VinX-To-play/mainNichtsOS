@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib , ... }:
 
 {
 ########################################################
@@ -132,6 +132,7 @@ environment.systemPackages = with pkgs; [
     fastfetch
     btop
     tree
+    figlet
 
     #Media
     jellyfin-ffmpeg
@@ -140,6 +141,7 @@ environment.systemPackages = with pkgs; [
 
     #Web
     inputs.zen-browser.packages."${system}".specific
+    firefoxpwa
     psst
     whatsapp-for-linux
     vesktop
@@ -156,6 +158,8 @@ environment.systemPackages = with pkgs; [
     tmux
     vscode-fhs
     gradle
+    dia
+    zulu21
 
     # Programing lange
     rustc
