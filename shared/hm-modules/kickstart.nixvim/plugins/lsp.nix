@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
 
   programs.nixvim = {
     plugins.none-ls = {
@@ -71,9 +71,16 @@
     #
     # https://nix-community.github.io/nixvim/plugins/lsp/index.html
 
-    plugins.nvim-jdtls = {
+    plugins.jdtls = {
       enable = true;
+      jdtLanguageServerPackage = pkgs.jdt-language-server;
       # data = "/home/vincentl/.cache/jdtls/workspace/data/";
+      settings = {
+        cmd = [
+        (lib.getExe pkgs.jdt-language-server)
+          "-data" "/home/vincentl/.cache/jdtls/workspace/data"
+          ];
+        };
     };
     
     plugins.lsp = {
