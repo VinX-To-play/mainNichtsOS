@@ -138,6 +138,7 @@ environment.systemPackages = with pkgs; [
     jellyfin-ffmpeg
     vlc
     psst
+    spotify-player
 
     #Web
     inputs.zen-browser.packages."${system}".specific
