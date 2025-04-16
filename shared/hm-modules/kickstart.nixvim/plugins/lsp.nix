@@ -73,14 +73,13 @@
 
     plugins.jdtls = {
       enable = true;
-      jdtLanguageServerPackage = pkgs.jdt-language-server;
-      # data = "/home/vincentl/.cache/jdtls/workspace/data/";
       settings = {
         cmd = [
         (lib.getExe pkgs.jdt-language-server)
           "-data" "/home/vincentl/.cache/jdtls/workspace/data"
           ];
         };
+
     };
     
     plugins.lsp = {

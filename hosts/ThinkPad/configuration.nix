@@ -7,6 +7,7 @@
       ../../shared/base.nix
       ../../shared/modules/style.nix 
       ../../shared/modules/hyprland/hyprland.nix
+      ../../shared/modules/obs.nix
     ];
 
   boot.initrd.availableKernelModules = [
@@ -49,6 +50,9 @@
   environment.systemPackages = with pkgs; [
     maliit-keyboard
     maliit-framework
+    jellyfin
+    jellyfin-ffmpeg
+
   ];
 
     # INTEL DRIVERS

@@ -51,6 +51,10 @@ boot.loader = {
 #		Networking			       #
 ########################################################
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+  networking.firewall.allowedTCPPorts = [ 8010 7236 7250 ];  # for VLC Chromecast
+    networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
+
+  networking.firewall.allowedUDPPorts = [ 7236 5353 ];
 
 ########################################################
 #                  localiszation                       #
@@ -136,6 +140,7 @@ environment.systemPackages = with pkgs; [
 
     #Media
     jellyfin-ffmpeg
+    deluge
     vlc
     psst
     spotify-player

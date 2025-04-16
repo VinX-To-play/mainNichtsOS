@@ -46,7 +46,6 @@
       enable = true;
     };
 
-
     plugins.dap = {
       enable = true;
 
