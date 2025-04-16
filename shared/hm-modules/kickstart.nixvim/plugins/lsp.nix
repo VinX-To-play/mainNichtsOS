@@ -75,11 +75,6 @@
       enable = true;
       data = "/home/vincentl/.cache/jdtls/workspace/data/";
       settings =  {
-        init_options = [''
-          bundles = {
-            vim.fn.glob({pkgs.java-debug}/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1);
-            };
-            ''];
       };
     };
     
