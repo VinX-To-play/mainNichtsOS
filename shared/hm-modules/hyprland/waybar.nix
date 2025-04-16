@@ -23,10 +23,10 @@ with lib;
 	  "hyprland/window"
 	];
         modules-right = [
+	  "clock"
 	  "pulseaudio"
 	  "tray"
           "battery"
-	  "clock"
 	];
 
         "hyprland/workspaces" = {
@@ -70,9 +70,9 @@ with lib;
 	};
 
 	"clock" = {
-	  format = "{:%H:%M %A%e %b}";
-	  tooltip-format = "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>";
-	  today-format = "<b>{}</b>";
+	  format = "{:%H:%M | %A%e %b}";
+          tooltip = true;  
+          tooltip-format = "<big>{:%A, %d.}</big>\n<tt><big>{calendar}</big></tt>";
 	  on-click = "gnome-calendar";
 	};
 
@@ -160,6 +160,13 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.4;
+}
+
+#clock {
+    padding: 0 10px;
+    margin: 0 0px;
+    background-color: rgba(0,0,0,0);
+    color: @fg-color;
 }
 
      ''
