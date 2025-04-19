@@ -22,7 +22,6 @@
   #            Boot                        #
   ##########################################
   #boot.loader.grub.devices =  ["dev/nvme0n1p1"];
-  boot.kernelPackages = pkgs.linuxPackages_latest; 
 
   networking.hostName = "nichtsos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -59,10 +58,6 @@
    ];
   };
  
-  # for huion 13
-  hardware.opentabletdriver.enable = true;
-  hardware.opentabletdriver.daemon.enable = true;
-
   # set .config backup extansion for home manager
   home-manager.backupFileExtension = "backup4";
 

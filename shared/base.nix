@@ -10,6 +10,8 @@ boot.loader = {
     grub.configurationLimit=10;
 };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest; 
+
 ########################################################
 #                  Display setings                     #
 ########################################################
@@ -124,6 +126,10 @@ boot.loader = {
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  # Pen inputs
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
+
 ########################################################
 #                       Packages                       #
 ######################################################## 
@@ -158,7 +164,7 @@ environment.systemPackages = with pkgs; [
     thunderbird
  
     # Programing
-    #kitty
+    jetbrains.idea-ultimate
     wget
     git
     tmux
