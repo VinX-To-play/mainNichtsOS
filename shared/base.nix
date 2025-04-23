@@ -147,7 +147,6 @@ environment.systemPackages = with pkgs; [
 
     #Web
     inputs.zen-browser.packages."${system}".specific
-    firefoxpwa
     psst
     whatsapp-for-linux
     vesktop
@@ -158,7 +157,6 @@ environment.systemPackages = with pkgs; [
     thunderbird
  
     # Programing
-    #kitty
     wget
     git
     tmux
