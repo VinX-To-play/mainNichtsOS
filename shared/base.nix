@@ -24,8 +24,6 @@ boot.loader = {
     sddm.wayland.enable = false;
     ly.enable = true;
   };
-  #enable plasma 6
-  services.desktopManager.plasma6.enable = true;
 
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

@@ -76,15 +76,17 @@
 
         # applications
 	"$mod, S, exec, rofi -show drun run window"
+	"$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 	"$mod SHIFT, l, exec, hyprlock"
         "$mod, B, exec, zen"
         "$mod, O, exec, obsidian"
         "$mod, T, exec, kitty"
-        "$mod,E,exec, dolphin"
+        "$mod,E,exec, nemo"
       ];
       bindl = [
         #Audio & monitor
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 	", XF86AudioNext, exec, playerctl next"
@@ -109,6 +111,7 @@
 	exec-once = mako 
 	exec-once = nm-applet
 	exec-once = blueman-applet
+	exec-once = wl-paste --watch cliphist store
 	'';
   };
 }
