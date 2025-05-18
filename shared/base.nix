@@ -163,7 +163,6 @@ environment.systemPackages = with pkgs; [
     vscode-fhs
     gradle
     dia
-    zulu21
 
     # Programing lange
     rustc

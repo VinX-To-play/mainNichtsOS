@@ -78,8 +78,12 @@
         (lib.getExe pkgs.jdt-language-server)
           "-data" "/home/vincentl/.cache/jdtls/workspace/data"
           ];
+        java = {
+          compile = {
+            compilerArgs = ["-Xlint:all" "-Werror"];
+          };
         };
-
+      };
     };
     
     plugins.lsp = {

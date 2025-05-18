@@ -1,5 +1,5 @@
 {
   programs.nixvim = {
-    plugins.lsp_lines.enable = true;
+    plugins.lsp_lines.enable = false;
   };
 }
