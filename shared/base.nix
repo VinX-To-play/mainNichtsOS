@@ -10,6 +10,8 @@ boot.loader = {
     grub.configurationLimit=10;
 };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest; 
+
 ########################################################
 #                  Display setings                     #
 ########################################################
@@ -22,8 +24,6 @@ boot.loader = {
     sddm.wayland.enable = false;
     ly.enable = true;
   };
-  #enable plasma 6
-  services.desktopManager.plasma6.enable = true;
 
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -124,6 +124,10 @@ boot.loader = {
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  # Pen inputs
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
+
 ########################################################
 #                       Packages                       #
 ######################################################## 
@@ -157,6 +161,7 @@ environment.systemPackages = with pkgs; [
     thunderbird
  
     # Programing
+    jetbrains.idea-ultimate
     wget
     git
     tmux

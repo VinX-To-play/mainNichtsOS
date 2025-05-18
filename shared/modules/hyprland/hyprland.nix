@@ -12,6 +12,8 @@
     hyprshot
     playerctl
     nwg-displays
+    cliphist
+    wl-clipboard
     ];
 
   programs.hyprland = {
