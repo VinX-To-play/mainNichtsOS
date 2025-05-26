@@ -9,4 +9,9 @@
   home.packages = with pkgs; [
     nemo
   ];
+
+  # to auto activate nix develup
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
 }

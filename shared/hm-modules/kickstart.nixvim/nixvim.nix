@@ -25,7 +25,7 @@
     #  Here are some example plugins that I've included in the Kickstart repository.
     #  Uncomment any of the lines below to enable them (you will need to restart nvim).
     #
-    ./plugins/kickstart/plugins/debug.nix
+    # ./plugins/kickstart/plugins/debug.nix
     # ./plugins/kickstart/plugins/indent-blankline.nix
     # ./plugins/kickstart/plugins/lint.nix
     # ./plugins/kickstart/plugins/autopairs.nix
@@ -133,6 +133,22 @@
           style = "night";
         };
       };
+    };
+
+    # Configure diagnostics display
+    diagnostics = {
+      virtual_text = true; # Enable virtual text at the end of the line
+      # Or for more customization:
+      # virtualText = {
+      #   spacing = 4;
+      #   prefix = "●"; # Or "▎", "->", etc.
+      #   source = "if_many"; # Show source only if there are multiple
+      #   severity = { min = "Warning"; }; # Only show Warning and Error
+      # };
+
+      signs.enable = true;    # Show icons in the sign column
+      underline.enable = true; # Underline the problematic code
+      update_in_insert = true; # Set to true if you want updates while typing in insert mode
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals

@@ -10,7 +10,7 @@ boot.loader = {
     grub.configurationLimit=10;
 };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest; 
+  boot.kernelPackages = pkgs.linuxPackages_zen; 
 
 ########################################################
 #                  Display setings                     #
@@ -51,10 +51,9 @@ boot.loader = {
 #		Networking			       #
 ########################################################
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-  networking.firewall.allowedTCPPorts = [ 8010 7236 7250 ];  # for VLC Chromecast
     networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
 
-  networking.firewall.allowedUDPPorts = [ 7236 5353 ];
+  services.tailscale.enable = true;
 
 ########################################################
 #                  localiszation                       #

@@ -1,17 +1,10 @@
-{pkgs, ...}:{ 
+{pkgs, lib, ...}:{ 
   gtk = {
     enable = true;
     iconTheme = {
-      package = pkgs.sweet;
-      name = "Sweet";
+      package = pkgs.adwaita-icon-theme;
+      name = "adwaita-icon-theme";
     };
   };
 
-  home.packages = with pkgs; [
-    sweet-folders
-  ];
-
-  qt = {
-    enable = true;
-  };
 }

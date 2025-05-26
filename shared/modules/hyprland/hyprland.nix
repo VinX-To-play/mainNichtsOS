@@ -14,6 +14,8 @@
     nwg-displays
     cliphist
     wl-clipboard
+    adwaita-qt
+    adwaita-qt6
     ];
 
   programs.hyprland = {
@@ -23,6 +25,8 @@
     # make sure to also set the portal package, so that they are in sync
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
+  
+  xdg.icons.enable = true;
 
   security.pam.services.hyprland.enableGnomeKeyring = true;
 

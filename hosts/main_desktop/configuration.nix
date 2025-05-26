@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, lib, ... }:
 
 {
   imports =
@@ -13,9 +13,8 @@
       ../../shared/modules/style.nix
       ../../shared/modules/art.nix
       ../../shared/modules/sunshine.nix
-      ../../shared/modules/vr.nix
+      # ../../shared/modules/vr.nix
       ../../shared/modules/hyprland/hyprland.nix
-      
     ];
   
   ##########################################
@@ -32,6 +31,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      22
+      # 80
+    ];
+  };
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
   networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
 
@@ -55,6 +61,7 @@
     description = "Vincent Lundborg";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      stable.torzu
    ];
   };
  
@@ -69,14 +76,43 @@
     ldmtool
   ];
 
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      UseDns = true;
+      PasswordAuthentication = false;
+      X11Forwarding = false;
+      PermitRootLogin = "no";
+
+    }
+    ;
+
+    };
+
   #mouse configeration
   services.ratbagd = {
       enable = true;
   };
   
+  nix.settings = {
+    substituters = [
+      "https://cuda-maintainers.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    ];
+  };
+
  hardware.graphics = {
 	    enable = true;
 	    enable32Bit = true;
+	  extraPackages = with pkgs; [
+	    cudaPackages.cudatoolkit
+	    nvidia-vaapi-driver
+	    vaapiVdpau
+	    libvdpau-va-gl
+	  ];
 	  };
 	 services.xserver.videoDrivers = [ "nvidia" ];
 	 hardware.nvidia = {
@@ -94,17 +130,33 @@
 	      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
 	      # Only available from driver 515.43.04+
 	      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-	      open = false;
+	      open = true;
 	      # Enable the Nvidia settings menu,
 	      # accessible via `nvidia-settings`.
 	      nvidiaSettings = true;
 	      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-	      package = config.boot.kernelPackages.nvidiaPackages.beta;
+	      package = config.boot.kernelPackages.nvidiaPackages.stable;
 	    };
+  nixpkgs.config.nvidia.acceptLicense = true;
+  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
 
-  #fix for explicit sync problems on webkit2gtk
-  environment.variables = { WEBKIT_DISABLE_DMABUF_RENDERER = "1"; };
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+    host = "[::]";
+    environmentVariables = {
+      OLLAMA_MAX_CTX_SIZE = "18192";
+      CUDA_VISIBLE_DEVICES = "0";
+      CUDA_HOME = "${pkgs.cudaPackages.cuda_cudart}";
+      CUDA_PATH = "${pkgs.cudaPackages.cuda_cudart}";
+
+    # Library paths with specific NVIDIA driver
+    LD_LIBRARY_PATH= "${pkgs.linuxPackages.nvidia_x11}/lib";
+
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -14,7 +14,7 @@ boot.extraModulePackages = with config.boot.kernelPackages; [
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
-      obs-backgroundremoval
+      # obs-backgroundremoval
       obs-pipewire-audio-capture
       #droidcam-obs
       waveform
