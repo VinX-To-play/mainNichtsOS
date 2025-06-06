@@ -25,6 +25,14 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      11434
+      # 22
+      # 80
+    ];
+  };
 
     users.users.vincentl.isNormalUser = true;
   home-manager.users.vincentl = { pkgs, ... }: {

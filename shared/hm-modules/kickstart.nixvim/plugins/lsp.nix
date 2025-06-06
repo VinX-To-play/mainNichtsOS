@@ -120,9 +120,11 @@
         jdtls = {
             enable = false;
         };
-        # rust_analyzer = {
-        #  enable = true;
-        #}
+        
+        # rust compiler
+        rust_analyzer = {
+          enable = true;
+        };
         # ...etc. See `https://nix-community.github.io/nixvim/plugins/lsp` for a list of pre-configured LSPs
         #
         # Some languages (like typscript) have entire language plugins that can be useful:

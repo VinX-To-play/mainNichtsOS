@@ -167,10 +167,13 @@ environment.systemPackages = with pkgs; [
     vscode-fhs
     gradle
     dia
+    simulide_1_2_0
 
     # Programing lange
     rustc
+    cargo
     python3
+    gcc
 
     # Gaming
     heroic
