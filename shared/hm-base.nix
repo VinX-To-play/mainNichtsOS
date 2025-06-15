@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     nemo-with-extensions
     unzip
-    p7zip-rar
   ];
 
   # to auto activate nix develup

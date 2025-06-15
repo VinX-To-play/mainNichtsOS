@@ -16,6 +16,8 @@ with lib;
       {
         layer = "top";
         position = "top";
+        spacing = 5;
+
         modules-left = [
 	  "hyprland/workspaces" 
 	];
@@ -23,10 +25,13 @@ with lib;
 	  "hyprland/window"
 	];
         modules-right = [
-	  "clock"
+          "cpu"
+          "network"
 	  "pulseaudio"
-	  "tray"
+          "backlight"
           "battery"
+	  "tray"
+          "clock"
 	];
 
         "hyprland/workspaces" = {
@@ -41,7 +46,7 @@ with lib;
         };
 
         "pulseaudio" = {
-          format = "{icon} {volume}% {format_source}";
+          format = "{icon}   {volume}% {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
           format-bluetooth-muted = "🔇 {icon} {format_source}";
           format-muted = "🔇 {format_source}";
@@ -59,8 +64,10 @@ with lib;
               ""
               ""
             ];
- 
+          };
+          on-click = "pavucontrol";
         };
+
 	"hyprland/window" = {
           max-length = 22;
           separate-outputs = false;
@@ -70,14 +77,14 @@ with lib;
 	};
 
 	"clock" = {
-	  format = "{:%H:%M | %A%e %b}";
+	  format = "{:%H:%M | %A %e %b}";
           tooltip = true;  
           tooltip-format = "<big>{:%A, %d.}</big>\n<tt><big>{calendar}</big></tt>";
 	  on-click = "gnome-calendar";
 	};
 
 	"tray" = {
-	  spacing = 12;
+	  spacing = 3;
 	};
 
 	"network" = {
@@ -105,11 +112,19 @@ with lib;
 	  format-icons = ["" "" "" "" ""];
 	  max-length = 25;
         };
-      };
+
+        "cpu" = {
+          format = "{usage}% ";
+          tooltip = false;
+          on-click = "kitty btop";
+        };
+
+        "backlight" = {
+          format = "{percent}% {icon}";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
+          tooltip = false;
+        };
     }
-
-
-      
     ];
     style = concatStrings [
      ''

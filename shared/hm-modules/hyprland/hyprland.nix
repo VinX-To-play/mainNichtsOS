@@ -63,6 +63,7 @@
 	"$mod,7,workspace,7"
 	"$mod,8,workspace,8"
 	"$mod,9,workspace,9"
+	"$mod,0,workspace,10"
 
 	"$modSHIFT,1,movetoworkspacesilent,1"
 	"$modSHIFT,2,movetoworkspacesilent,2"
@@ -73,6 +74,7 @@
 	"$modSHIFT,7,movetoworkspacesilent,7"
 	"$modSHIFT,8,movetoworkspacesilent,8"
 	"$modSHIFT,9,movetoworkspacesilent,9"
+	"$modSHIFT,0,movetoworkspacesilent,10"
 
         # applications
 	"$mod, S, exec, rofi -show drun run window"
@@ -109,9 +111,9 @@
 	exec-once = waybar
 	exec-once = systemctl --user start hyprpolkitagent
 	exec-once = mako 
-	exec-once = nm-applet
 	exec-once = blueman-applet
 	exec-once = wl-paste --watch cliphist store
+	exec-once = ../../scripts/check-battery.sh
 	'';
   };
 }

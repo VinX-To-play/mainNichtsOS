@@ -136,7 +136,7 @@
     };
 
     # Configure diagnostics display
-    diagnostics = {
+    diagnostics.settings = {
       virtual_text = true; # Enable virtual text at the end of the line
       # Or for more customization:
       # virtualText = {

@@ -3,7 +3,13 @@
   services.mako = {
     enable = true;
     package = pkgs.mako;
-    defaultTimeout = 5000;
-    borderRadius = 30;
+    settings = {
+      actions = true;
+      icons = true;
+      markup = true;
+      layer = "top";
+      default-timeout = 5000;
+      border-radius = 30;
+    };
   };
 }

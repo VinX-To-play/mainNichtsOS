@@ -16,6 +16,8 @@
     wl-clipboard
     adwaita-qt
     adwaita-qt6
+    pavucontrol
+    libnotify
     ];
 
   programs.hyprland = {

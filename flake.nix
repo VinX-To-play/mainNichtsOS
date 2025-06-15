@@ -61,7 +61,7 @@
             ./hosts/ThinkPad/configuration.nix
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
               home-manager.sharedModules = [

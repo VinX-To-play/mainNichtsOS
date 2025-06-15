@@ -140,6 +140,7 @@ environment.systemPackages = with pkgs; [
     btop
     tree
     figlet
+    p7zip-rar
 
     #Media
     jellyfin-ffmpeg
@@ -170,8 +171,7 @@ environment.systemPackages = with pkgs; [
     simulide_1_2_0
 
     # Programing lange
-    rustc
-    cargo
+    # rust dependency installd throu nixvim
     python3
     gcc
 
