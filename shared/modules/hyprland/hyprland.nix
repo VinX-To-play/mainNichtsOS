@@ -18,6 +18,7 @@
     adwaita-qt6
     pavucontrol
     libnotify
+    eww
     ];
 
   programs.hyprland = {

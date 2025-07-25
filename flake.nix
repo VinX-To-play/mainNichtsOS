@@ -19,7 +19,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager,... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, ... }:
     let
       system = "x86_64-linux";
 

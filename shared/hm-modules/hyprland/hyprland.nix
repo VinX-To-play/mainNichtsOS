@@ -114,6 +114,9 @@
 	exec-once = blueman-applet
 	exec-once = wl-paste --watch cliphist store
 	exec-once = ../../scripts/check-battery.sh
+	exec-once = eww daemon
+
+	layerrule = blur, namespace:blur
 	'';
   };
 }

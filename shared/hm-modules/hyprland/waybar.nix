@@ -32,6 +32,7 @@ with lib;
           "battery"
 	  "tray"
           "clock"
+          "custom/powerwidgit"
 	];
 
         "hyprland/workspaces" = {
@@ -86,6 +87,11 @@ with lib;
 	"tray" = {
 	  spacing = 3;
 	};
+
+        "custom/powerwidgit" = {
+          format = "⏻  ";
+          on-click = "/home/vincentl/.config/eww/powerwidgit.sh";
+        };
 
 	"network" = {
           format-icons = [
