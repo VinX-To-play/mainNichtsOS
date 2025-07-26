@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 notify_levels=(3 5 10 15)
 BAT=$(ls /sys/class/power_supply | grep BAT | head -n 1)

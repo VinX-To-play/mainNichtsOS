@@ -60,7 +60,9 @@
 
     # Configure diagnostics display
     diagnostics.settings = {
-      virtual_text = true; # Enable virtual text at the end of the line
+      virtual_text = {
+        enable = true; # Enable virtual text at the end of the line
+      };
       # Or for more customization:
       # virtualText = {
       #   spacing = 4;
@@ -71,7 +73,7 @@
 
       signs.enable = true;    # Show icons in the sign column
       underline.enable = true; # Underline the problematic code
-      update_in_insert = true; # Set to true if you want updates while typing in insert mode
+      update_in_insert = false; # Set to true if you want updates while typing in insert mode
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
@@ -82,7 +84,7 @@
       maplocalleader = " ";
 
       # Set to true if you have a Nerd Font installed and selected in the terminal
-      have_nerd_font = false;
+      have_nerd_font = true;
     };
 
     # [[ Setting options ]]

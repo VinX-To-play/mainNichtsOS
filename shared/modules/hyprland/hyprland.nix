@@ -19,6 +19,7 @@
     pavucontrol
     libnotify
     eww
+    qimgv
     ];
 
   programs.hyprland = {

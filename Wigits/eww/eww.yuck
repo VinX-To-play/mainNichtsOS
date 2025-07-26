@@ -21,22 +21,27 @@
 	     :space-evenly true
 		(iconButten :onclick "shutdown now" 
 			    :imagepath "/home/vincentl/.config/eww/images/poweroff.svg"
-			    :imagewidth "128")
+			    :imagewidth "128"
+			    :fill-svg "#eb6f92" )
 		(iconButten :onclick "shutdown now -r" 
 			    :imagepath "/home/vincentl/.config/eww/images/restart.svg"
-			    :imagewidth "128")
+			    :imagewidth "128"
+			    :fill-svg "#f6c177")
 		(iconButten :onclick "./powerwidgit.sh true & hyprlock" 
 			    :imagepath "/home/vincentl/.config/eww/images/logout.svg"
-			    :imagewidth "128")
+			    :imagewidth "128"
+			    :fill-svg "#9cc28d")
 	))
 
-(defwidget iconButten [onclick imagepath imagewidth]
+(defwidget iconButten [onclick imagepath imagewidth ?style ?fill-svg]
 	(box :orientation "h"
 	     :class "main-container"
 	     :halign "center"
 	     :valign "center"
 	     :expand false
 		(button :onclick onclick
+			:style style
 			(image :path imagepath
-			      :image-width imagewidth
+			       :image-width imagewidth
+			       :fill-svg fill-svg
 			))))
