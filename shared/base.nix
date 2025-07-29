@@ -161,7 +161,7 @@ environment.systemPackages = with pkgs; [
     thunderbird
  
     # Programing
-    jetbrains.idea-ultimate
+    stable.jetbrains.idea-ultimate
     wget
     git
     tmux

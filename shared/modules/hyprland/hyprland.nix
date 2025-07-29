@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     brightnessctl
-    waybar
     gnome-calendar
     hyprpolkitagent
     networkmanagerapplet
