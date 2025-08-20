@@ -41,6 +41,7 @@
 	  "$mod, PRINT, exec, hyprshot -m window"
 	  ", PRINT, exec, hyprshot -m output"
 	  "$mod SHIFT, PRINT, exec, hyprshot -m region"
+	  "$mod SHIFT, T, exec, hyprshot -m region --raw | tesseract - - | wl-copy"
 
         
         # moving 

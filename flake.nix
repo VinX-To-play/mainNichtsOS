@@ -22,6 +22,10 @@
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, ... }:
     let
       system = "x86_64-linux";
+      
+      sheardOverlay = [
+            (import ./Overlays/spotify-player-auth-fix.nix)
+          ];
 
       # Ovalay helperfunction for pkgs.stable
       stableOverlay = final: prev: {
@@ -38,7 +42,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # add stable Ovalay 
-            { nixpkgs.overlays = [ stableOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
             ./hosts/main_desktop/configuration.nix
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {

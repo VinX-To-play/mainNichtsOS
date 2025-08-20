@@ -19,6 +19,7 @@
     libnotify
     eww
     qimgv
+    tesseract
     ];
 
   programs.hyprland = {

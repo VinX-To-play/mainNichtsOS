@@ -141,6 +141,7 @@ environment.systemPackages = with pkgs; [
     tree
     figlet
     p7zip-rar
+    usbutils
 
     #Media
     jellyfin-ffmpeg
