@@ -59,7 +59,7 @@
     };
 
     # Configure diagnostics display
-    diagnostics.settings = {
+    diagnostic.settings = {
       virtual_text = true; # Enable virtual text at the end of the line
 
       # Or for more customization:
@@ -71,7 +71,7 @@
       # };
 
       signs.enable = true;    # Show icons in the sign column
-      underline.enable = false; # Underline the problematic code
+      underline.enable = true; # Underline the problematic code
       update_in_insert = true; # Set to true if you want updates while typing in insert mode
     };
 
