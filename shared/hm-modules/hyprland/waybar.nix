@@ -173,7 +173,6 @@ with lib;
 }
 
 window#waybar {
-    background-color: rgba(40, 42, 54, 0);
     border-bottom: none;
     color: @fg-color;
     transition-property: background-color;

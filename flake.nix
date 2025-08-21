@@ -50,7 +50,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
               home-manager.sharedModules = [
-                inputs.nixvim.homeManagerModules.nixvim
+                inputs.nixvim.homeModules.nixvim
               ];
             }
           ];
@@ -69,7 +69,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
               home-manager.sharedModules = [
-                inputs.nixvim.homeManagerModules.nixvim
+                inputs.nixvim.homeModules.nixvim
               ];
             }
           ];
