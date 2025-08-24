@@ -99,6 +99,7 @@ boot.loader = {
   nixpkgs = {
     config = {
       permittedInsecurePackages = [
+	"libxml2-2.13.8"
       ];
       allowUnfree = true;
     };

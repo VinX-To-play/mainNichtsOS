@@ -138,7 +138,7 @@
 	      package = config.boot.kernelPackages.nvidiaPackages.stable;
 	    };
   nixpkgs.config.nvidia.acceptLicense = true;
-  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.cudaSupport = false;
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
 
