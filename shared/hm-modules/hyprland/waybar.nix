@@ -47,10 +47,10 @@ with lib;
         };
 
         "pulseaudio" = {
-          format = "{icon}{volume}% {format_source}";
+          format = "{icon} {volume}% {format_source}";
           format-bluetooth = "{icon} {volume}% {format_source}";
-          format-bluetooth-muted = "{icon} 🔇 {format_source}";
-          format-muted = "🔇 {format_source}";
+          format-bluetooth-muted = "{icon} 󰝟 {format_source}";
+          format-muted = " 󰝟 {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
           format-icons = {
@@ -105,7 +105,7 @@ with lib;
           format-wifi = "{icon} {signalStrength}%";
           format-disconnected = "󰤮";
           tooltip = false;
-          on-click = "nm-connection-editor";
+          on-click = "kitty nmtui";
         };
 
         "battery" = {

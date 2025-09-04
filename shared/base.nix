@@ -142,6 +142,7 @@ environment.systemPackages = with pkgs; [
     figlet
     p7zip-rar
     usbutils
+    bitwarden-desktop
 
     #Media
     jellyfin-ffmpeg
