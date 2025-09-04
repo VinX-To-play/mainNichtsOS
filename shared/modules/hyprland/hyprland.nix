@@ -10,7 +10,7 @@
     hyprlock
     hyprshot
     playerctl
-    nwg-displays
+    stable.nwg-displays
     cliphist
     wl-clipboard
     adwaita-qt

@@ -40,7 +40,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # add stable Ovalay 
-            { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay  ]; }
             ./hosts/main_desktop/configuration.nix
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {

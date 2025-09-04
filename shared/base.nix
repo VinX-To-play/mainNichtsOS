@@ -50,9 +50,9 @@ boot.loader = {
 ########################################################
 #		Networking			       #
 ########################################################
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-    networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
-
+  networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "default";
+  networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
   services.tailscale.enable = true;
 
 ########################################################
@@ -141,7 +141,7 @@ environment.systemPackages = with pkgs; [
     btop
     tree
     figlet
-    p7zip-rar
+    stable.p7zip-rar
     usbutils
 
     #Media
