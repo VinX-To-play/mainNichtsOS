@@ -8,7 +8,7 @@
 	(button :onclick "./powerwidgit.sh true"
 		:class "clickcatch"))
 
-(defwindow powerwindow
+(defwindow powerwindow 
 	:monitor 0
 	:geometry (geometry :width "40%"
 			    :height "20%"

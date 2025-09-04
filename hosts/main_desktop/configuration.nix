@@ -138,25 +138,9 @@
 	      package = config.boot.kernelPackages.nvidiaPackages.stable;
 	    };
   nixpkgs.config.nvidia.acceptLicense = true;
-  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.cudaSupport = false;
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
-
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-    host = "[::]";
-    environmentVariables = {
-      OLLAMA_MAX_CTX_SIZE = "18192";
-      CUDA_VISIBLE_DEVICES = "0";
-      CUDA_HOME = "${pkgs.cudaPackages.cuda_cudart}";
-      CUDA_PATH = "${pkgs.cudaPackages.cuda_cudart}";
-
-    # Library paths with specific NVIDIA driver
-    LD_LIBRARY_PATH= "${pkgs.linuxPackages.nvidia_x11}/lib";
-
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
