@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+kitty echo "hello"&
+
 notify_levels=(3 5 10 15)
 BAT=$(ls /sys/class/power_supply | grep BAT | head -n 1)
 declare -A notified
