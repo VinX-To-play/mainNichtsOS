@@ -190,9 +190,7 @@ environment.systemPackages = with pkgs; [
     xwayland
 
     # Own aplications
-    (callPackages 
-      ./../Packages/Helium/package.nix {}
-    )
+    (callPackage ./../Packages/Helium/package.nix {} )
 
     ];
 

@@ -18,7 +18,7 @@ pango
  }:
 
 stdenv.mkDerivation rec {
-    pname = "Helium";
+    name = "Helium";
     version = "0.4.7.1";
 
     src = fetchurl {
@@ -57,18 +57,19 @@ stdenv.mkDerivation rec {
         runHook preInstall
         mkdir -p $out/bin
         mv * $out/bin/
+        mv $out/bin/chrome $out/bin/${name}
         mkdir -p $out/share/applications
         
-        cat <<INI> $out/share/applications/${pname}.desktop
-        [Desktop Entry]
-        Name=${pname}
-        GenericName=Web Browser
-        Terminal=false
-        Icon=$out/bin/product_logo_256.png
-        Exec=$out/bin/chrome
-        Typ=Application
-        Categories=Network;WebBrowser;
-        INI
+        cat <<INI> $out/share/applications/${name}.desktop
+[Desktop Entry]
+Name=${name}
+GenericName=Web Browser
+Terminal=false
+Icon=$out/bin/product_logo_256.png
+Exec=$out/bin/${name}
+Type=Application
+Categories=Network;WebBrowser;
+INI
         '';
 
 
