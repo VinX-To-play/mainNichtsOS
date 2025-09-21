@@ -51,9 +51,12 @@ boot.loader = {
 #		Networking			       #
 ########################################################
   networking.networkmanager.enable = true;
-  networking.networkmanager.dns = "default";
+  networking.networkmanager.dns = "none";
   networking.firewall.trustedInterfaces = [ "p2p-wl+" ];
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
 
 ########################################################
 #                  localiszation                       #
@@ -185,6 +188,11 @@ environment.systemPackages = with pkgs; [
     wlroots_0_17
     egl-wayland
     xwayland
+
+    # Own aplications
+    (callPackages 
+      ./../Packages/Helium/package.nix {}
+    )
 
     ];
 
