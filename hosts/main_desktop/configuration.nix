@@ -31,6 +31,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = [
+    "192.168.1.201"
+    "1.1.1.1"
+  ];
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
@@ -38,8 +42,11 @@
       # 80
     ];
   };
-  networking.interfaces.enp3s0.wakeOnLan.enable = true;
-  networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
+  networking.interfaces.enp3s0.wakeOnLan = {
+    enable = true;
+    policy = [ "magic" ];
+  };
+  # networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
 
 
   
