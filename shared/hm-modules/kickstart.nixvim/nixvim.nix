@@ -63,6 +63,9 @@
           };
       };
     };
+    extraConfigLua = ''
+      vim.cmd([[colorscheme catppuccin]])
+      '';
 
     # Configure diagnostics display
     diagnostic.settings = {
