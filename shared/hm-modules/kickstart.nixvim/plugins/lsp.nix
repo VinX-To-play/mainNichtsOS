@@ -120,6 +120,14 @@
         jdtls = {
             enable = false;
         };
+
+        #cmake = {
+        #  enble = true;
+        #};
+
+        #cspell_ls = {
+        #  enable = true;
+        #};
         
         # rust compiler
         rust_analyzer = {
