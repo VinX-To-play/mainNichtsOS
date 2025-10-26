@@ -3,7 +3,7 @@
     # NOTE: The first thing you will want to do is uncommented on of the three imports below
     # depending on which module you chose to use to install Nixvim.
     #
-    # Uncomment if you are using the home-manager module
+    # Uncoment if you are using the home-manager module
     #inputs.nixvim.homeManagerModules.nixvim
     # Uncomment if you are using the nixos module
     #inputs.nixvim.nixosModules.nixvim

@@ -89,11 +89,10 @@
     plugins.efmls-configs = {
       enable = true;
       setup = {
-        misc.linter = "cspell";
+        misc.linter = "languagetool";
       };
     };
     extraPackages = with pkgs; [
-      nodePackages.cspell
     ];
     
     plugins.lsp = {
