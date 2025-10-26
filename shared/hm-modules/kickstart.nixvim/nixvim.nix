@@ -63,7 +63,6 @@
           };
       };
     };
-    colorscheme = "catppuccin-macchiato";
 
     # Configure diagnostics display
     diagnostic.settings = {
@@ -103,6 +102,7 @@
       number = true;
       # You can also add relative line numbers, to help with jumping.
       #  Experiment for yourself to see if you like it!
+      colorscheme = "catppuccin-macchiato";
 
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";
