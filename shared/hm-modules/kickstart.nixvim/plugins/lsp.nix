@@ -121,13 +121,13 @@
             enable = false;
         };
 
-        #cmake = {
-        #  enble = true;
-        #};
+        cmake = {
+          enable = true;
+        };
 
-        #cspell_ls = {
-        #  enable = true;
-        #};
+        # cspell_ls = {
+        #   enable = true;
+        # };
         
         # rust compiler
         rust_analyzer = {
