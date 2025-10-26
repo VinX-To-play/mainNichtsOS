@@ -47,6 +47,9 @@ stylix = {
       popups = 12;
     };
   };
+  targets = {
+      nixvim.enable = false;
+    };
 };
 
 
