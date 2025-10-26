@@ -13,7 +13,7 @@
 
     rebuild_with_commit() {
       echo "⚙️ Rebuilding your NixOS configuration..."
-      if sudo nixos-rebuild switch --flake .# --show-trace; then
+      if sudo nixos-rebuild switch --flake .# ; then
         echo "✅ Rebuild succeeded."
 
         # Prompt for commit

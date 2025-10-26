@@ -46,6 +46,7 @@
     # Don't forget to disable the colorschemes you arent using
     #
     # If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    colorscheme = "catppuccin-macchiato";
     colorschemes = {
       # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
       tokyonight = {
@@ -102,7 +103,6 @@
       number = true;
       # You can also add relative line numbers, to help with jumping.
       #  Experiment for yourself to see if you like it!
-      colorscheme = "catppuccin-macchiato";
 
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";
