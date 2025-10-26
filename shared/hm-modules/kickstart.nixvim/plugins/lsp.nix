@@ -92,6 +92,9 @@
         misc.linter = "cspell";
       };
     };
+    extraPackages = with pkgs; [
+      nodePackages.cspell
+    ];
     
     plugins.lsp = {
       enable = true;
