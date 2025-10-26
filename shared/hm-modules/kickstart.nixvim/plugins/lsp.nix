@@ -125,10 +125,6 @@
           enable = true;
         };
 
-        # cspell_ls = {
-        #   enable = true;
-        # };
-        
         # rust compiler
         rust_analyzer = {
           enable = true;

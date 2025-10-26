@@ -63,6 +63,7 @@
           };
       };
     };
+    colorscheme = "catppuccin-macchiato";
 
     # Configure diagnostics display
     diagnostic.settings = {
