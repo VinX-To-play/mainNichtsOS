@@ -85,6 +85,13 @@
         };
       };
     };
+
+    plugins.efmls-configs = {
+      enable = true;
+      setup = {
+        misc.linter = "cspell";
+      };
+    };
     
     plugins.lsp = {
       enable = true;
