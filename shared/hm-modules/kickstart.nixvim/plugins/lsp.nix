@@ -92,8 +92,6 @@
         misc.linter = "languagetool";
       };
     };
-    extraPackages = with pkgs; [
-    ];
     
     plugins.lsp = {
       enable = true;

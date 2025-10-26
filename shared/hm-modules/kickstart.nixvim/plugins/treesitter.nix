@@ -1,7 +1,11 @@
+{pkgs, ...}:
 {
   programs.nixvim = {
     # Highlight, edit, and navigate code
     # https://nix-community.github.io/nixvim/plugins/treesitter/index.html
+    extraPackages = with pkgs; [
+      repgrep
+    ];
     plugins.treesitter = {
       enable = true;
 
