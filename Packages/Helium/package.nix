@@ -11,9 +11,13 @@ libudev-zero,
 libxkbcommon,
 nspr,
 nss,
-libsForQt5,
 libcupsfilters,
 qt6,
+qt5,
+alsa-lib,
+atk,
+at-spi2-core,
+at-spi2-atk,
 pango
  }:
 
@@ -47,10 +51,21 @@ stdenv.mkDerivation rec {
         libxkbcommon
         nspr
         nss
-        libsForQt5.qtbase
-        qt6.full
+        alsa-lib
+        atk
+        at-spi2-core
+        at-spi2-atk
+        qt5.qtbase
+        qt5.qttools
+        qt5.qtx11extras
         libcupsfilters
-        qt6.wrapQtAppsHook
+        qt5.wrapQtAppsHook
+    ];
+
+    autoPatchelfIgnoreMissingDeps = [
+        "libQt6Core.so.6"
+        "libQt6Gui.so.6"
+        "libQt6Widgets.so.6"
     ];
 
     installPhase = ''
