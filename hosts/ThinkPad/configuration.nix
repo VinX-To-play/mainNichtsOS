@@ -15,6 +15,10 @@
   ];
   services.upower.enable = true;
 
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel enable_msi=1
+    '';
+
 
   networking.hostName = "nichtsos-thinkpad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -79,6 +83,8 @@
     nixpkgs.config.packageOverrides = pkgs: {
         vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
     };
+
+  hardware.enableAllFirmware = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

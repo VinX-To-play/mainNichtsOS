@@ -19,11 +19,11 @@ pango
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.4.7.1";
+    version = "0.5.8.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256:1a475cacdfdc900dbaa905a476f5ae82e9d62a30af735b92c456dbc3171b44b2";
+        sha256 = "sha256-sORkRGYA6/Qu6v6MA+UWro+zd/bXiD3AoW4PgDUPWSM=";
     };
 
     nativeBuildInputs = [ 

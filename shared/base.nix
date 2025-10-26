@@ -147,13 +147,14 @@ environment.systemPackages = with pkgs; [
     stable.p7zip-rar
     usbutils
     bitwarden-desktop
+    koodo-reader
 
     #Media
     jellyfin-ffmpeg
     deluge
     vlc
     psst
-    spotify-player
+    # spotify-player
 
     #Web
     inputs.zen-browser.packages."${system}".specific

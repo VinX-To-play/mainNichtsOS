@@ -6,7 +6,6 @@
     gnome-calendar
     hyprpolkitagent
     networkmanagerapplet
-    rofi-wayland
     hyprlock
     hyprshot
     playerctl
@@ -17,6 +16,7 @@
     adwaita-qt6
     pavucontrol
     libnotify
+    rofi
     eww
     qimgv
     imagemagick
