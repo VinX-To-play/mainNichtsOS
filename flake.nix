@@ -54,7 +54,7 @@
           ];
         };
 
-        ThinkPad = nixpkgs.lib.nixosSystem {
+        nichtsos-thinkpad = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [

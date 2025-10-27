@@ -82,7 +82,7 @@
 	"$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 	"$mod SHIFT, l, exec, hyprlock"
         "$mod, B, exec, zen"
-	"$mod, H, exec, Helium"
+	"$modSHIFT, B, exec, Helium"
         "$mod, O, exec, obsidian"
         "$mod, T, exec, kitty"
         "$mod,E,exec, nemo"
