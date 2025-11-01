@@ -72,6 +72,24 @@
             }
           ];
         };
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            # pkgs.stable overlay
+            { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
+            ./hosts/server/configuration.nix
+            inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = false;
+              home-manager.useUserPackages = true;
+              home-manager.users.vincentl = import ./hosts/server/home.nix;
+              home-manager.sharedModules = [
+                inputs.nixvim.homeModules.nixvim
+              ];
+            }
+          ];
+        };
       };
     };
 }
