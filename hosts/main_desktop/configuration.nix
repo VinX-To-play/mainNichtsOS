@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../shared/base.nix
+      ../../shared/clients-base.nix
       ../../shared/modules/obs.nix
       ../../shared/modules/style.nix
       ../../shared/modules/art.nix
@@ -39,7 +40,7 @@
     enable = true;
     allowedTCPPorts = [
       22
-      80
+      8000
     ];
   };
   networking.interfaces.enp3s0.wakeOnLan = {

@@ -5,6 +5,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../shared/base.nix
+      ../../shared/clients-base.nix
       ../../shared/modules/style.nix 
       ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/obs.nix
