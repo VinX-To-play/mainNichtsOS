@@ -39,7 +39,7 @@
     enable = true;
     allowedTCPPorts = [
       22
-      # 80
+      80
     ];
   };
   networking.interfaces.enp3s0.wakeOnLan = {
