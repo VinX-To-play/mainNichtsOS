@@ -78,7 +78,7 @@
             }
           ];
         };
-        nixos = nixpkgs.lib.nixosSystem {
+        nix-server = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
