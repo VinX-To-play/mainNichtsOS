@@ -24,7 +24,7 @@
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nameservers = ["1.1.1.1" "1.0.0.1"];
     interfaces = { 
-      enp0s18.ipv4.addresses = [{
+      ens18.ipv4.addresses = [{
 	address = "192.168.1.205";
 	prefixLength = 24;
       }];
