@@ -34,6 +34,7 @@
       enable = true;
       allowedTCPPorts = [
 	22
+	8222
       ];
     };
  };
