@@ -15,3 +15,8 @@ creation_rules:
       - age:
         - *desktop_key
 
+  - path_regex: secrets/nginx/nginx-selfsigned.key$
+    key_groups:
+      - age:
+        - *desktop_key
+

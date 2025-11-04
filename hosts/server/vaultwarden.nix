@@ -27,11 +27,13 @@ services.vaultwarden = {
     group = "vaultwarden";
   };
 
-  #services.nginx.virtualHosts."vaultwarden.slave.int" = {
-  #  enableACME = false;
-  #  forceSSL = true;
-  #  locations."/" = {
-  #      proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-  #  };
-  #};
+  services.nginx.virtualHosts."vaultwarden.slave.int" = {
+    enableACME = false;
+    forceSSL = true;
+    sslCertificate = ../../secrets/nginx/nginx-selfsigned.crt;
+    sslCertificateKey = "/run/secrets/nginx-selfsigned.key";
+    locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+    };
+  };
 }
