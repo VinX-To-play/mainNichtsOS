@@ -4,8 +4,8 @@ services.vaultwarden = {
   backupDir = "/var/backup/vaultwarden";
   environmentFile = "/run/secrets/services/vaultwarden/envFile";
   config = {
-    DOMAIN = "https://bitwarden.slave.int";
-    SIGNUPS_ALLOWED = false;
+    DOMAIN = "https://vaultwarden.slave.int";
+    SIGNUPS_ALLOWED = true;
 
     ROCKET_ADDRESS = "127.0.0.1";
     ROCKET_PORT = 8222;

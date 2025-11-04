@@ -16,4 +16,12 @@
     home = "/var/lib/nginx";
     group = "nginx";
   };
+  
+  services.nginx.virtualHosts."_" = {
+    default = true;
+    forceSSL = false;
+    locations."/" = {
+      return = "403"; # 444 = drop connection (no response)
+  };
+};
 }
