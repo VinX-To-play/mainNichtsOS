@@ -1,7 +1,8 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
 services.vaultwarden = {
   enable = true;  
   backupDir = "/var/backup/vaultwarden";
+  environmentFile = "/run/secrets/services/vaultwarden/env-file.env";
   config = {
     DOMAIN = "https://bitwarden.slave.int";
     SIGNUPS_ALLOWED = false;
@@ -11,6 +12,21 @@ services.vaultwarden = {
 
     ROCKET_LOG = "critical";
     };
+  };
+
+  users.users.vautwardenservice = {
+    isSystemUser = true;
+    description = "Vautwarden service user";
+    createHome = false;
+    home = "/var/lib/vaultwarden";
+    shell = pkgs.runCommandNoCC "nologin" {} "";
+    group = "vaultwardenservice";
+  };
+  
+  sops.secrets."services/vaultwarden/env-file" = {
+    format = "dotenv";
+    owner = "vaultwardenservice";
+    group = "vaultwardenservice";
   };
 
   services.nginx.virtualHosts."vaultwarden.slave.int" = {
