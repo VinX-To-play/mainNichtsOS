@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nginx.nix
+      ./vaultwarden.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];

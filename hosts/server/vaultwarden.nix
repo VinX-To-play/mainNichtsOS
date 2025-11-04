@@ -2,7 +2,7 @@
 services.vaultwarden = {
   enable = true;  
   backupDir = "/var/backup/vaultwarden";
-  environmentFile = "/run/secrets/services/vaultwarden/env-file";
+  environmentFile = "/run/secrets/services/vaultwarden/";
   config = {
     DOMAIN = "https://bitwarden.slave.int";
     SIGNUPS_ALLOWED = false;
@@ -14,26 +14,24 @@ services.vaultwarden = {
     };
   };
 
-  users.users.vautwardenservice = {
+  users.users.vautwarden = {
     isSystemUser = true;
     description = "Vautwarden service user";
     createHome = false;
     home = "/var/lib/vaultwarden";
-    shell = pkgs.runCommandNoCC "nologin" {} "";
-    group = "vaultwardenservice";
+    group = "vaultwarden";
   };
   
-  sops.secrets."services/vaultwarden/env-file" = {
-    format = "dotenv";
-    owner = "vaultwardenservice";
-    group = "vaultwardenservice";
+  sops.secrets."services/vaultwarden/envFile" = {
+    owner = "vaultwarden";
+    group = "vaultwarden";
   };
 
-  services.nginx.virtualHosts."vaultwarden.slave.int" = {
-    enableACME = false;
-    forceSSL = true;
-    locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-    };
-  };
+  #services.nginx.virtualHosts."vaultwarden.slave.int" = {
+  #  enableACME = false;
+  #  forceSSL = true;
+  #  locations."/" = {
+  #      proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+  #  };
+  #};
 }
