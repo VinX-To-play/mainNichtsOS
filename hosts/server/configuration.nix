@@ -24,7 +24,7 @@
     hostName = "nix-server";
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     defaultGateway = "192.168.1.1";
-    nameservers = ["1.1.1.1" "1.0.0.1"];
+    nameservers = ["192.168.1.201"];
     interfaces = { 
       ens18.ipv4.addresses = [{
 	address = "192.168.1.205";
