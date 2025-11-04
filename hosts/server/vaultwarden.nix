@@ -2,7 +2,7 @@
 services.vaultwarden = {
   enable = true;  
   backupDir = "/var/backup/vaultwarden";
-  environmentFile = "/run/secrets/services/vaultwarden/env-file.env";
+  environmentFile = "/run/secrets/services/vaultwarden/env-file";
   config = {
     DOMAIN = "https://bitwarden.slave.int";
     SIGNUPS_ALLOWED = false;
