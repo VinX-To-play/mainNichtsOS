@@ -13,6 +13,8 @@
       ../../shared/modules/style.nix
     ];
 
+  sops.secrets."services/vaultwarden/env-file" = {};
+
   # Use the GRUB 2 boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub.enable = lib.mkForce true;
