@@ -6,4 +6,6 @@
     port = 8443;
     intermediatePasswordFile = "/var/lib/secrets/step-ca/intermediate_password";
   };
+  
+  networking.firewall.allowedTCPPorts = [ 8443 ];
 }
