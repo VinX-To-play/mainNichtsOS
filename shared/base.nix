@@ -104,8 +104,10 @@ boot.loader = {
     };
   security.polkit.enable = true;
 
-  # add server cert to all systems
-  security.pki.certificates = [(builtins.readFile ../secrets/nginx/nginx-selfsigned.crt)];
+
+  security.pki.certificates = [
+    (builtins.readFile ../secrets/ca/root_ca.crt)
+  ];
 
   # add sops globaly
   system.extraDependencies = [pkgs.sops pkgs.age];
