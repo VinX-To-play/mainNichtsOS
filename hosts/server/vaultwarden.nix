@@ -28,10 +28,8 @@ services.vaultwarden = {
   };
 
   services.nginx.virtualHosts."vaultwarden.slave.int" = {
-    enableACME = false;
+    enableACME = true;
     forceSSL = true;
-    sslCertificate = ../../secrets/nginx/nginx-selfsigned.crt;
-    sslCertificateKey = "/run/secrets/nginx-selfsigned.key";
 
     locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";

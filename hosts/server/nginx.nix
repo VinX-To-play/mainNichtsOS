@@ -2,13 +2,20 @@
   services.nginx = {
     enable = true;
   };
-  
-  sops.secrets."nginx-selfsigned.key" = {
-    sopsFile = ./../../secrets/nginx/nginx-selfsigned.key;
-    format = "binary";
-    owner = "nginx";
-    group = "nginx";
+
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "v@lundborgs.de";
+      server = "https://ca.slave.int/acme/acme/directory";
     };
+    certs = {
+      "slave.int" = {
+        webroot = "/var/lib/acme/.well-known";
+        postRun = "systemctl reload nginx";
+      };
+    };
+  };
 
   users.users.nginx = {
     isSystemUser = true;
