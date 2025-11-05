@@ -17,18 +17,4 @@
     group = "nginx";
   };
   
-  services.nginx.virtualHosts."_" = {
-    default = true;
-    forceSSL = false;
-    listen = [
-     {
-       addr = "0.0.0.0";
-       port = 80;
-     }
-    ];
-
-    locations."/" = {
-      return = "403"; # 444 = drop connection (no response)
-    };
-  };
 }

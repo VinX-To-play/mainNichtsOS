@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./nginx.nix
       ./vaultwarden.nix
+      ./step-ca.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
