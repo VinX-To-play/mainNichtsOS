@@ -7,13 +7,7 @@
     acceptTerms = true;
     defaults = {
       email = "v@lundborgs.de";
-      server = "https://ca.slave.int/acme/acme/directory";
-    };
-    certs = {
-      "slave.int" = {
-        webroot = "/var/lib/acme/.well-known";
-        postRun = "systemctl reload nginx";
-      };
+      server = "https://ca.slave.int:8443/acme/acme/directory";
     };
   };
 

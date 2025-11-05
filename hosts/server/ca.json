@@ -19,6 +19,10 @@
 	"authority": {
 		"provisioners": [
 			{
+				"type": "ACME",
+				"name": "acme"
+			},
+			{
 				"type": "JWK",
 				"name": "vincentl",
 				"key": {
