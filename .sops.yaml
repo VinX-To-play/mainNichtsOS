@@ -1,0 +1,22 @@
+# my-nixos-config/.sops.yaml
+# Defines who can decrypt which files
+
+keys:
+  - &desktop_key age1z2a8lzz33apczwm2rpn5md8kpmcp7m2lwcjhxyvd828famguwvyq63vg7h
+
+creation_rules:
+  # This rule applies to your main secrets file.
+  # It allows decryption by your personal key AND the Age key of ANY of your servers.
+  # This means any of your servers can decrypt the secrets relevant to them,
+  # and you can decrypt and edit the file from your admin machine
+
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+        - *desktop_key
+
+  - path_regex: secrets/nginx/nginx-selfsigned.key$
+    key_groups:
+      - age:
+        - *desktop_key
+

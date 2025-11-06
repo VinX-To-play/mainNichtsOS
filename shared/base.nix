@@ -98,9 +98,22 @@ boot.loader = {
 ###################################################
 #		      Secrets			  #
 ###################################################
-programs.gnupg.agent = {
-  enable = true;
-  enableSSHSupport = true;
-  };
-security.polkit.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    };
+  security.polkit.enable = true;
+
+
+  security.pki.certificates = [
+    (builtins.readFile ../secrets/ca/root_ca.crt)
+  ];
+
+  # add sops globaly
+  system.extraDependencies = [pkgs.sops pkgs.age];
+  imports = [ inputs.sops-nix.nixosModules.sops ];
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/vincentl/.config/sops/age/keys.txt";
+
 }

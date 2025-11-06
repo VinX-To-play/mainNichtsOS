@@ -9,6 +9,10 @@
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +23,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }:
     let
       system = "x86_64-linux";
       
@@ -43,6 +47,7 @@
             { nixpkgs.overlays = [ stableOverlay  ]; }
             ./hosts/main_desktop/configuration.nix
             inputs.stylix.nixosModules.stylix
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
@@ -61,6 +66,7 @@
             # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
+            sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = false;
@@ -72,13 +78,14 @@
             }
           ];
         };
-        nixos = nixpkgs.lib.nixosSystem {
+        nix-server = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
             ./hosts/server/configuration.nix
+            sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = false;
