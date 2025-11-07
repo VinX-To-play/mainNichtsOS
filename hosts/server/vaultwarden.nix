@@ -2,7 +2,7 @@
 services.vaultwarden = {
   enable = true;  
   backupDir = "/var/backup/vaultwarden";
-  environmentFile = "/run/secrets/services/vaultwarden/envFile";
+  environmentFile = config.sops.templates."vaultwarden.env".path;
   config = {
     DOMAIN = "https://vaultwarden.slave.int";
     SIGNUPS_ALLOWED = false;
@@ -31,10 +31,18 @@ services.vaultwarden = {
     group = "vaultwarden";
   };
 
-  
-  sops.secrets."services/vaultwarden/envFile" = {
+  sops.templates."vaultwarden.env" = {
+    content = ''
+    ADMIN_TOKEN=${config.sops.placeholder."services/vaultwarden/envFile/adminToken"}
+    SMTP_PASSWORD=${config.sops.placeholder."services/vaultwarden/envFile/smtpPassword"}
+    '';
     owner = "vaultwarden";
-    group = "vaultwarden";
+  };
+  
+  sops.secrets."services/vaultwarden/envFile/adminToken" = {
+  };
+  
+  sops.secrets."services/vaultwarden/envFile/smtpPassword" = {
   };
 
   services.nginx.virtualHosts."vaultwarden.slave.int" = {
