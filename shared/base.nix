@@ -13,6 +13,7 @@ environment.systemPackages = with pkgs; [
     btop
     tree
     stable.p7zip-rar
+    sops
 
     # Programing
     wget
