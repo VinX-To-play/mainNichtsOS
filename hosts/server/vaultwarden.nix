@@ -18,7 +18,7 @@ services.vaultwarden = {
     SMTP_FROM = "ichdincool@gmail.com";
     SMTP_USERNAME = "ichdincool@gmail.com";
 
-    HELO_NAME = "NixOS Server";
+      # HELO_NAME = "NixOS Server";
 
     };
   };
