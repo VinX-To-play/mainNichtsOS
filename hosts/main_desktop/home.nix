@@ -36,14 +36,6 @@
     
   ];
 
-  programs.git = {
-     enable=true;
-     extraConfig= {
-       pull.rebase = false;
-     };
-     userEmail="v@lundborgs.de";
-     userName="VinX-To-play";
-  };
 
 
 

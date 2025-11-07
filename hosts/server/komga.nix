@@ -1,8 +1,7 @@
 { config, ... }: {
   services.komga = {
     enable = true;
-    settings.port = 512;
-
+    settings.server.port = 512;
   };
   
   services.nginx.virtualHosts."komga.slave.int" = {
@@ -10,7 +9,7 @@
     forceSSL = true;
 
     locations."/" = {
-        proxyPass = "http://127.0.0.1:8080";
+        proxyPass = "http://127.0.0.1:${toString config.services.komga.settings.server.port}";
     };
   };
 }

@@ -40,15 +40,6 @@
     # with more details log output
   ];
 
-  programs.git = {
-     enable=true;
-     extraConfig= {
-       pull.rebase = false;
-     };
-     userEmail="v@lundborgs.de";
-     userName="VinX-To-play";
-  };
-
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards

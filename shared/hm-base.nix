@@ -15,6 +15,16 @@
   # to auto activate nix develup
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  
+  programs.git = {
+    enable=true;
+    settings = {
+      user = {
+        email = "v@lundborgs.de";
+        name = "VinX-To-play";
+      };
+    };
+  };
 
   home.file."${config.xdg.configHome}" = {
     source = ../Wigits;
