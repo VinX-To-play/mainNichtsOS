@@ -11,6 +11,7 @@
       ./nginx.nix
       ./vaultwarden.nix
       ./step-ca.nix
+      ./komga.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
