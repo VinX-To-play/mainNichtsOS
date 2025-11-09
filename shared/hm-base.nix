@@ -15,9 +15,9 @@
   xdg.mimeApps = {
     enable = true;
       defaultApplications = {
-    "x-scheme-handler/http" = [ "helium.desktop" ];
-    "x-scheme-handler/https" = [ "helium.desktop" ];
-    "text/html" = [ "helium.desktop" ];
+    "x-scheme-handler/http" = [ "Helium.desktop" ];
+    "x-scheme-handler/https" = [ "Helium.desktop" ];
+    "text/html" = [ "Helium.desktop" ];
     };
   };
 
