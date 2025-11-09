@@ -2,10 +2,10 @@
   
   services.komga = {
     enable = true;
-    port = 512;
+    port = 9000;
     settings = {
       server = {
-        port = 512;
+        port = 9000;
       };
     };
   };
@@ -15,7 +15,7 @@
     forceSSL = true;
 
     locations."/" = {
-        proxyPass = "http://127.0.0.1:512";
+        proxyPass = "http://127.0.0.1:9000";
     };
   };
 }
