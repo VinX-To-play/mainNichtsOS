@@ -12,6 +12,7 @@
       ./vaultwarden.nix
       ./step-ca.nix
       ./komga.nix
+      ./samba.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
