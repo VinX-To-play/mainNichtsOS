@@ -8,7 +8,7 @@
 	browseable = true;
 	"read only" = false;
 	"guest ok" = false;
-	"valid users" = [ "smbuser" ];
+	"valid users" = [ "smbUser" ];
 	"create mask" = "0664";
       	"directory mask" = "0775";
       	"force user" = "smbuser";
