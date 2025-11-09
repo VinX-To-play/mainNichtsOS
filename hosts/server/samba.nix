@@ -6,8 +6,8 @@
 	path = "/srv/shared/libary";
 	comment = "Network folder for ebooks";
 	browseable = true;
-	"read only" = "no";
-	"guest ok" = "no";
+	"read only" = false;
+	"guest ok" = false;
 	"valid users" = [ "smbuser" ];
 	"create mask" = "0664";
       	"directory mask" = "0775";
