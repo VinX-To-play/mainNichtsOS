@@ -95,6 +95,24 @@ boot.loader = {
   services.auto-cpufreq.enable = true;
   services.power-profiles-daemon.enable = false;
 
+#######################################################
+#		    Networking			      #
+#######################################################
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures =  lib.mkDefault "client";
+  };
+
+  networking.hosts = {
+    "10.42.0.89" = [
+      "gitea.yggdrasil.com"
+      "qdrant.yggdrasil.com"
+      "firefly.yggdrasil.com"
+      "importer.yggdrasil.com"
+      "actual.yggdrasil.com"
+      "nextcloud.yggdrasil.com"
+    ];
+  };
 
 ###################################################
 #		      Secrets			  #

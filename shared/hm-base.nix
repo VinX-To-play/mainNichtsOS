@@ -12,6 +12,15 @@
     unzip
   ];
 
+  xdg.mimeApps = {
+    enable = true;
+      defaultApplications = {
+    "x-scheme-handler/http" = [ "helium.desktop" ];
+    "x-scheme-handler/https" = [ "helium.desktop" ];
+    "text/html" = [ "helium.desktop" ];
+    };
+  };
+
   # to auto activate nix develup
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
