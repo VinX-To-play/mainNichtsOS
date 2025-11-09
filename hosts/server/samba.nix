@@ -11,7 +11,7 @@
 	"valid users" = [ "smbUser" ];
 	"create mask" = "0664";
       	"directory mask" = "0775";
-      	"force user" = "smbuser";
+      	"force user" = "smbUser";
       };
     };
   };
