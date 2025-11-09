@@ -1,7 +1,7 @@
 { config, ... }: {
   services.komga = {
     enable = true;
-    settings.server.port = 512;
+    settings.server.port = 8080;
   };
   
   services.nginx.virtualHosts."komga.slave.int" = {
