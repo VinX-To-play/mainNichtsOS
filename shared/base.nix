@@ -114,6 +114,9 @@ boot.loader = {
     ];
     "192.168.1.205" = [
       "komga.slave.int"
+      "vaultwarden.slave.int"
+      "slave.int"
+      "ca.slave.int"
     ];
   };
 
