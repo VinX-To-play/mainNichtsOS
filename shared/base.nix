@@ -112,6 +112,9 @@ boot.loader = {
       "actual.yggdrasil.com"
       "nextcloud.yggdrasil.com"
     ];
+    "192.168.1.205" = [
+      "komga.slave.int"
+    ];
   };
 
 ###################################################
