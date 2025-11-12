@@ -13,7 +13,7 @@ environment.systemPackages = with pkgs; [
     deluge
     vlc
     psst
-    # spotify-player
+    spotify-player
 
     #Web
     inputs.zen-browser.packages."${system}".specific

@@ -27,8 +27,6 @@
     let
       system = "x86_64-linux";
       
-      sheardOverlay = (import ./Overlays/spotify-player-auth-fix.nix);
-
       # Ovalay helperfunction for pkgs.stable
       stableOverlay = final: prev: {
         stable = import nixpkgs-stable {
@@ -64,7 +62,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # pkgs.stable overlay
-            { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
@@ -83,7 +81,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # pkgs.stable overlay
-            { nixpkgs.overlays = [ stableOverlay sheardOverlay ]; }
+            { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/server/configuration.nix
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
