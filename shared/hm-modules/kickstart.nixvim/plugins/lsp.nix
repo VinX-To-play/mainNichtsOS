@@ -14,34 +14,6 @@
 	];
       };
       luaConfig.post = ''
-      
-      '';
-    };
-    # Dependencies
-    # { 'Bilal2453/luvit-meta', lazy = true },
-    #
-    #
-    # Allows extra capabilities providied by nvim-cmp
-    # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
-    plugins.cmp-nvim-lsp = {
-      enable = true;
-    };
-
-    # Useful status updates for LSP.
-    # https://nix-community.github.io/nixvim/plugins/fidget/index.html
-    plugins.fidget = {
-      enable = true;
-    };
-
-    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugi#extraplugins
-    extraPlugins = with pkgs.vimPlugins; [
-      # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
-      #
-      # TODO: Add luvit-meta when Nixos package is added
-      cspell-nvim
-    ];
-
-    extraConfigLuaPre = ''
       -- Fail if none-ls (the none-ls wrapper / null-ls helper) is not available.
       local none_ls = assert(
         (function()
@@ -100,6 +72,34 @@
       if not ok_merge then
         error("Failed to integrate cspell with none-ls/null-ls")
       end
+      
+      '';
+    };
+    # Dependencies
+    # { 'Bilal2453/luvit-meta', lazy = true },
+    #
+    #
+    # Allows extra capabilities providied by nvim-cmp
+    # https://nix-community.github.io/nixvim/plugins/cmp-nvim-lsp.html
+    plugins.cmp-nvim-lsp = {
+      enable = true;
+    };
+
+    # Useful status updates for LSP.
+    # https://nix-community.github.io/nixvim/plugins/fidget/index.html
+    plugins.fidget = {
+      enable = true;
+    };
+
+    # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugi#extraplugins
+    extraPlugins = with pkgs.vimPlugins; [
+      # NOTE: This is where you would add a vim plugin that is not implemented in Nixvim, also see extraConfigLuaPre below
+      #
+      # TODO: Add luvit-meta when Nixos package is added
+      cspell-nvim
+    ];
+
+    extraConfigLuaPost = ''
       '';
     
     extraPackages = with pkgs; [
