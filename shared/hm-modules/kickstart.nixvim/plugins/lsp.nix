@@ -41,15 +41,15 @@
       cspell-nvim
     ];
 
-    extraConfigLua = ''
-      require("cspell-nvim").setup({
+    extraConfigLua = "
+      require('cspell-nvim').setup({
         -- your other plugins...
         {
-          "nvimtools/none-ls.nvim",
-          event = "VeryLazy",
-          dependencies = { "davidmh/cspell.nvim" },
+          'nvimtools/none-ls.nvim',
+          event = 'VeryLazy',
+          dependencies = { 'davidmh/cspell.nvim' },
           opts = function(_, opts)
-            local cspell = require("cspell")
+            local cspell = require('cspell')
             opts.sources = opts.sources or {}
             table.insert(
               opts.sources,
@@ -63,7 +63,7 @@
           end,
         },
       })
-    '';
+    ";
     
     extraPackages = with pkgs; [
       cspell
