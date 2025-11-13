@@ -42,7 +42,7 @@
     ];
 
     extraConfigLuaPre = ''
-      require("cspell.nvim").setup({
+      require("cspell").setup({
         {
           "nvimtools/none-ls.nvim",
           event = "VeryLazy",
