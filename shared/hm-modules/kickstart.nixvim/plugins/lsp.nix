@@ -37,103 +37,37 @@
       # TODO: Add luvit-meta when Nixos package is added
       cspell-nvim
     ];
+
+    extraConfigLuaPre = ''
+      require("lazy").setup({
+        -- your other plugins...
+        {
+          "nvimtools/none-ls.nvim",
+          event = "VeryLazy",
+          dependencies = { "davidmh/cspell.nvim" },
+          opts = function(_, opts)
+            local cspell = require("cspell")
+            opts.sources = opts.sources or {}
+            table.insert(
+              opts.sources,
+              cspell.diagnostics.with({
+                diagnostics_postprocess = function(diagnostic)
+                  diagnostic.severity = vim.diagnostic.severity.HINT
+                end,
+              })
+            )
+            table.insert(opts.sources, cspell.code_actions)
+          end,
+        },
+      })
+    '';
     
     extraPackages = with pkgs; [
       cspell
     ];
 
-    extraConfigLuaPost = ''
-      pcall(function()
-        -- small helper: safely require a module
-        local function safe_require(name)
-          local ok, mod = pcall(require, name)
-          if ok then return mod end
-          return nil
-        end
-    
-        local cspell = safe_require("cspell")
-        if not cspell then
-          -- plugin not available on runtimepath yet; try again after 100ms
-          vim.defer_fn(function()
-            local cspell2 = safe_require("cspell")
-            if not cspell2 then return end
-            -- continue below with cspell2
-            local cs = cspell2
-            local none_ls = safe_require("none-ls")
-            local null_ls = safe_require("null-ls")
-    
-            if none_ls and type(none_ls.setup) == "function" then
-              -- try to merge with existing sources if any:
-              local ok, existing = pcall(none_ls.get_sources)
-              local sources = {}
-              if ok and type(existing) == "table" then
-                for _, s in ipairs(existing) do table.insert(sources, s) end
-              end
-              table.insert(sources, cs.diagnostics)
-              table.insert(sources, cs.code_actions)
-              none_ls.setup({ sources = sources })
-              return
-            elseif null_ls and type(null_ls.setup) == "function" then
-              local ok, existing = pcall(null_ls.get_sources)
-              local sources = {}
-              if ok and type(existing) == "table" then
-                for _, s in ipairs(existing) do table.insert(sources, s) end
-              end
-              table.insert(sources, cs.diagnostics)
-              table.insert(sources, cs.code_actions)
-              null_ls.setup({ sources = sources })
-              return
-            else
-              -- Last resort: try to append to global opts if present (some configs keep opts)
-              if _G and _G.none_ls_opts then
-                _G.none_ls_opts = _G.none_ls_opts or {}
-                _G.none_ls_opts.sources = _G.none_ls_opts.sources or {}
-                table.insert(_G.none_ls_opts.sources, cs.diagnostics)
-                table.insert(_G.none_ls_opts.sources, cs.code_actions)
-              end
-            end
-          end, 100)
-          return
-        end
-    
-        -- If cspell already present, run the same logic synchronously
-        local cs = cspell
-        local none_ls = safe_require("none-ls")
-        local null_ls = safe_require("null-ls")
-    
-        if none_ls and type(none_ls.setup) == "function" then
-          local ok, existing = pcall(none_ls.get_sources)
-          local sources = {}
-          if ok and type(existing) == "table" then
-            for _, s in ipairs(existing) do table.insert(sources, s) end
-          end
-          table.insert(sources, cs.diagnostics)
-          table.insert(sources, cs.code_actions)
-          none_ls.setup({ sources = sources })
-          return
-        end
-    
-        if null_ls and type(null_ls.setup) == "function" then
-          local ok, existing = pcall(null_ls.get_sources)
-          local sources = {}
-          if ok and type(existing) == "table" then
-            for _, s in ipairs(existing) do table.insert(sources, s) end
-          end
-          table.insert(sources, cs.diagnostics)
-          table.insert(sources, cs.code_actions)
-          null_ls.setup({ sources = sources })
-          return
-        end
-    
-        if _G and _G.none_ls_opts then
-          _G.none_ls_opts = _G.none_ls_opts or {}
-          _G.none_ls_opts.sources = _G.none_ls_opts.sources or {}
-          table.insert(_G.none_ls_opts.sources, cs.diagnostics)
-          table.insert(_G.none_ls_opts.sources, cs.code_actions)
-        end
-      end)
-'';
-        # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
+
+    # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
     autoGroups = {
       "kickstart-lsp-attach" = {
         clear = true;
