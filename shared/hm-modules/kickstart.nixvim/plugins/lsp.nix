@@ -38,7 +38,7 @@
       cspell-nvim
     ];
 
-    extraConfigLuaPre = ''
+    extraConfigLuaPost = ''
       require("lazy").setup({
         -- your other plugins...
         {
