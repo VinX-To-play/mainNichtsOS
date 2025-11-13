@@ -13,6 +13,9 @@
 	  "/google_checks.xml"
 	];
       };
+      luaConfig.post = ''
+      
+      '';
     };
     # Dependencies
     # { 'Bilal2453/luvit-meta', lazy = true },
@@ -38,8 +41,8 @@
       cspell-nvim
     ];
 
-    extraConfigLuaPost = ''
-      require("none-ls").setup({
+    extraConfigLua = ''
+      require("cspell-nvim").setup({
         -- your other plugins...
         {
           "nvimtools/none-ls.nvim",
