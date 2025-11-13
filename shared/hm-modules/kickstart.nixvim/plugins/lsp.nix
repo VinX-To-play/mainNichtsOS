@@ -42,27 +42,65 @@
     ];
 
     extraConfigLuaPre = ''
-      require("cspell").setup({
-        {
-          "nvimtools/none-ls.nvim",
-          event = "VeryLazy",
-          dependencies = { "davidmh/cspell.nvim" },
-          opts = function(_, opts)
-            local cspell = require("cspell")
-            opts.sources = opts.sources or {}
-            table.insert(
-              opts.sources,
-              cspell.diagnostics.with({
-                diagnostics_postprocess = function(diagnostic)
-                  diagnostic.severity = vim.diagnostic.severity.HINT
-                end,
-              })
-            )
-            table.insert(opts.sources, cspell.code_actions)
+      -- Fail if none-ls (the none-ls wrapper / null-ls helper) is not available.
+      local none_ls = assert(
+        (function()
+          local ok, m = pcall(require, "none-ls")
+          if not ok then error("none-ls is required but not found; aborting init") end
+          return m
+        end)()
+      )
+      
+      -- Try to load cspell but don't hard-fail if absent; we want a clear warning.
+      local cspell_ok, cspell = pcall(require, "cspell")
+      if not cspell_ok then
+        vim.notify("cspell.nvim not found; cspell integration skipped", vim.log.levels.WARN)
+        return
+      end
+      
+      -- Compose sources to add
+      local to_add = {}
+      
+      if type(cspell.diagnostics) == "table" and
+         type(cspell.diagnostics.with) == "function" then
+        table.insert(to_add, cspell.diagnostics.with({
+          diagnostics_postprocess = function(diagnostic)
+            diagnostic.severity = vim.diagnostic.severity.HINT
           end,
-        },
-      })
-    '';
+        }))
+      elseif type(cspell.diagnostics) == "function" then
+        table.insert(to_add, cspell.diagnostics)
+      end
+      
+      if cspell.code_actions then table.insert(to_add, cspell.code_actions) end
+      
+      -- Merge with existing none-ls options if available, otherwise call setup
+      -- This will not silently continue if none-ls absent because of the assert above.
+      local ok_merge, _ = pcall(function()
+        -- many none-ls wrappers expose an `opts` table you can modify; attempt to use it:
+        if type(none_ls.opts) == "table" then
+          none_ls.opts.sources = none_ls.opts.sources or {}
+          for _, s in ipairs(to_add) do table.insert(none_ls.opts.sources, s) end
+        else
+          -- Fallback: require null-ls directly and append/initialize sources.
+          local null_ok, null_ls = pcall(require, "null-ls")
+          if not null_ok then
+            -- If none-ls exists but null-ls doesn't, that's a misconfiguration; error.
+            error("none-ls present but null-ls is not available; cannot register sources")
+          end
+          -- Try to append to internal list if present, else call setup safely.
+          if type(null_ls._internal) == "table" and type(null_ls._internal.sources) == "table" then
+            for _, s in ipairs(to_add) do table.insert(null_ls._internal.sources, s) end
+          else
+            null_ls.setup({ sources = to_add })
+          end
+        end
+      end)
+      
+      if not ok_merge then
+        error("Failed to integrate cspell with none-ls/null-ls")
+      end
+      '';
     
     extraPackages = with pkgs; [
       cspell
