@@ -39,7 +39,7 @@
     ];
 
     extraConfigLuaPost = ''
-      require("lazy").setup({
+      require("none-ls").setup({
         -- your other plugins...
         {
           "nvimtools/none-ls.nvim",
