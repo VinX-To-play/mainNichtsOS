@@ -26,12 +26,19 @@ with lib;
 	];
         modules-right = [
           "cpu"
+          "custom/div"
           "network"
+          "custom/div"
 	  "pulseaudio"
+          "custom/div"
           "backlight"
+          "custom/div"
           "battery"
+          "custom/div"
 	  "tray"
+          "custom/div"
           "clock"
+          "custom/div"
           "custom/powerwidgit"
 	];
 
@@ -91,6 +98,12 @@ with lib;
         "custom/powerwidgit" = {
           format = "⏻  ";
           on-click = "/home/vincentl/.config/eww/powerwidgit.sh";
+          tooltip = false;
+        };
+
+        "custom/div" = {
+          format = " | ";
+          tooltip = false;
         };
 
 	"network" = {
