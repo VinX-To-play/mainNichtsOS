@@ -30,9 +30,7 @@ with lib;
           "network"
           "custom/div"
 	  "pulseaudio"
-          "custom/div"
           "backlight"
-          "custom/div"
           "battery"
           "custom/div"
 	  "tray"
@@ -127,7 +125,7 @@ with lib;
 	    warning = 30;
 	    critical = 15;
 	    };
-	  format = "{capacity}% {icon}";
+	  format = "| {capacity}% {icon}";
 	  format-icons = ["" "" "" "" ""];
 	  max-length = 25;
         };
@@ -139,7 +137,7 @@ with lib;
         };
 
         "backlight" = {
-          format = "{percent}% {icon}";
+          format = "| {percent}% {icon}";
           format-icons = ["" "" "" "" "" "" "" "" ""];
           tooltip = false;
           on-click = ./../../scripts/click-brightnis.sh;
