@@ -12,7 +12,7 @@
 	"create mask" = "0664";
       	"directory mask" = "0775";
       	"force user" = "smbUser";
-	"force group" = "smbUsert";
+	"force group" = "smbUser";
       };
     };
   };
