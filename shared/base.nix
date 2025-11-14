@@ -101,10 +101,8 @@ boot.loader = {
   services.tailscale = {
     enable = true;
     extraSetFlags = [ "--accept-dns=false" ];
-    #extraDaemonFlags = [ "--login-server=https://headscale.swahnlabs.com/" ];
     extraUpFlags = [ "--login-server=https://headscale.swahnlabs.com/" ];
     authKeyFile = config.sops.secrets."services/tailscale/autkey".path;
-    #authKeyParameters.baseURL = "https://headscale.swahnlabs.com/";
     useRoutingFeatures =  lib.mkDefault "client";
   };
   
