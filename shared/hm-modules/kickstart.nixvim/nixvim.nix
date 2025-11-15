@@ -19,6 +19,7 @@
     ./plugins/nvim-cmp.nix
     ./plugins/mini.nix
     ./plugins/treesitter.nix
+    ./plugins/custom/plugins/typst.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
