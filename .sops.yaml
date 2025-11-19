@@ -3,6 +3,7 @@
 
 keys:
   - &desktop_key age1z2a8lzz33apczwm2rpn5md8kpmcp7m2lwcjhxyvd828famguwvyq63vg7h
+  - &Thinkpad_key age10n5fefpwhh3luj6vuf32rxtzcnw6slmkhl6lmtl05fmsmjyyvgksn7jsjf
 
 creation_rules:
   # This rule applies to your main secrets file.
@@ -14,9 +15,11 @@ creation_rules:
     key_groups:
       - age:
         - *desktop_key
+        - *Thinkpad_key
 
   - path_regex: secrets/nginx/nginx-selfsigned.key$
     key_groups:
       - age:
         - *desktop_key
+        - *Thinkpad_key
 

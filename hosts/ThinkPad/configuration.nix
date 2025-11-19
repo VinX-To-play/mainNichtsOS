@@ -40,7 +40,6 @@
     ];
   };
 
-    users.users.vincentl.isNormalUser = true;
   home-manager.users.vincentl = { pkgs, ... }: {
     home.packages = [ pkgs.atool pkgs.httpie ];
     programs.bash.enable = true;
@@ -55,9 +54,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vincentl = {
-    #isNormalUser = true;
+    isNormalUser = true;
     description = "Vincent Lundborg";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     packages = with pkgs; [ ];
   };
 
