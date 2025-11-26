@@ -117,7 +117,7 @@ boot.loader = {
       "actual.yggdrasil.com"
       "nextcloud.yggdrasil.com"
     ];
-    "192.168.1.205" = [
+    "100.64.0.11" = [
       "komga.slave.int"
       "vaultwarden.slave.int"
       "slave.int"
