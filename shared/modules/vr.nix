@@ -19,7 +19,7 @@
 
     systemd.user.services.monado.environment = {
 	XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT= "1";
-	STEAMVR_LH_ENABLE = "1";
+	STEAMVR_LH_ENABLE = "0";
 	XRT_COMPOSITOR_COMPUTE = "1";
 	WMR_HANDTRACKING = "0";
     };
