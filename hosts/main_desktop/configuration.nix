@@ -14,7 +14,7 @@
       ../../shared/modules/style.nix
       ../../shared/modules/art.nix
       ../../shared/modules/sunshine.nix
-      # ../../shared/modules/vr.nix
+      ../../shared/modules/vr.nix
       ../../shared/modules/hyprland/hyprland.nix
     ];
   

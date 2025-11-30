@@ -2,25 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-      wivrn
-      stable.alvr
+    # wivrn
+    #  stable.alvr
       monado
       monado-vulkan-layers
-      #wlx-overlay-s
+      wlx-overlay-s
     ];
 
-  #ALVR for VR gaming
-  programs.alvr = {
-      enable = true;
-      openFirewall = true;
-  };
-  
-  # VR streaming alternetive for ALVR
-  services.wivrn = {
-    enable = true;
-    openFirewall = true;
-    autoStart = true;
-  };
 
   services.monado = {
     enable = true;
@@ -34,6 +22,4 @@
     };
   hardware.graphics.extraPackages = with pkgs; [monado-vulkan-layers];
   
-  # boot.kernelPatches = [pkgs.kernelPatches.cap_sys_nice_begone];
-    
 }
