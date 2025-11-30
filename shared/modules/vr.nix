@@ -14,10 +14,10 @@
     enable = true;
     defaultRuntime = true; # Register as default OpenXR runtime
     forceDefaultRuntime = true;
+    highPriority = true;
   };
 
     systemd.user.services.monado.environment = {
-	XRT_COMPOSITOR_FORCE_NVIDIA_DISPLAY= "NVIDIA";
 	XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT= "1";
 	STEAMVR_LH_ENABLE = "1";
 	XRT_COMPOSITOR_COMPUTE = "1";
