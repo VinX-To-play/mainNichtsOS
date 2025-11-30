@@ -67,7 +67,13 @@
   users.users.vincentl = {
     isNormalUser = true;
     description = "Vincent Lundborg";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ 
+      "networkmanager"
+      "wheel"
+      "dialout"
+      "video" # for vr
+      "render" # for vr
+    ];
     packages = with pkgs; [
       stable.torzu
    ];
