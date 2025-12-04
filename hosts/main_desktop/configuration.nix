@@ -144,7 +144,7 @@
 	      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
 	      # Only available from driver 515.43.04+
 	      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-	      open = false;
+	      open = true;
 	      # Enable the Nvidia settings menu,
 	      # accessible via `nvidia-settings`.
 	      nvidiaSettings = true;
@@ -152,29 +152,11 @@
 	      package = config.boot.kernelPackages.nvidiaPackages.stable;
 	    };
   nixpkgs.config.nvidia.acceptLicense = true;
-  nixpkgs.config.cudaSupport = false;
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
+ #nixpkgs.config.cudaSupport = false;
+ #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
+ #boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  # This value determines the NixOS release from which the default
+   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
