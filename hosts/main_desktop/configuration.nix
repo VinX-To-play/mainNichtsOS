@@ -80,7 +80,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup4";
+  home-manager.backupFileExtension = "backup5";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
