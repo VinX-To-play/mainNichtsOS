@@ -49,7 +49,7 @@
   };
   # networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
 
-
+  services.desktopManager.plasma6.enable = true;
   
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
