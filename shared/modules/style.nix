@@ -2,7 +2,7 @@
   
 {
 stylix = {
-  enable = false;
+  enable = true;
   image = ../recorces/miryoku.png;
    base16Scheme = {
      base00 = "232136";
