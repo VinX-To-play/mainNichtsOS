@@ -97,9 +97,7 @@
       PasswordAuthentication = false;
       X11Forwarding = false;
       PermitRootLogin = "no";
-
-    }
-    ;
+    };
 
     };
 
@@ -150,10 +148,11 @@
 	      # Optionally, you may need to select the appropriate driver version for your specific GPU.
 	      package = config.boot.kernelPackages.nvidiaPackages.stable;
 	    };
+  boot.kernelParams = [ "nvidia-modeset.conceal_vrr_caps=1" ];
   nixpkgs.config.nvidia.acceptLicense = true;
+  
  #nixpkgs.config.cudaSupport = false;
  #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
- #boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
 
    # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
