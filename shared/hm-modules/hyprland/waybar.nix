@@ -20,9 +20,11 @@ with lib;
 
         modules-left = [
 	  "hyprland/workspaces" 
+	  "sway/workspaces" 
 	];
         modules-center = [ 
 	  "hyprland/window"
+          "sway/window"
 	];
         modules-right = [
           "cpu"
@@ -51,6 +53,17 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
 
+        "sway/workspaces" = {
+          format = "{index}";
+          format-icons = {
+            default = " ";
+            active = " ";
+            urgent = " ";
+          };
+            on-scroll-up = "swaymsg workspace next";
+            on-scroll-down = "swaymsg workspace prev";
+        };
+
         "pulseaudio" = {
           format = "{icon} {volume}% {format_source}";
           format-bluetooth = "{icon} {volume}% {format_source}";
@@ -76,6 +89,16 @@ with lib;
 
 	"hyprland/window" = {
           max-length = 22;
+          separate-outputs = false;
+          rewrite = {
+            "" = " No Window? ";
+          };
+	};
+	
+        "sway/window" = {
+          format = "{title}";
+          max-length = 10;
+          "all-outputs" = true;
           separate-outputs = false;
           rewrite = {
             "" = " No Window? ";

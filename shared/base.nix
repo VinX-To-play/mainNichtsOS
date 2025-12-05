@@ -109,7 +109,7 @@ boot.loader = {
   sops.secrets."services/tailscale/autkey" = {};
 
   networking.hosts = {
-    "10.42.0.89" = [
+    "100.64.0.17" = [
       "gitea.yggdrasil.com"
       "qdrant.yggdrasil.com"
       "firefly.yggdrasil.com"

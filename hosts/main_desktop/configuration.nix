@@ -16,6 +16,7 @@
       ../../shared/modules/sunshine.nix
       ../../shared/modules/vr.nix
       ../../shared/modules/hyprland/hyprland.nix
+      ../../shared/modules/sway/sway.nix
     ];
   
   ##########################################
@@ -49,11 +50,6 @@
   };
   # networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-  
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
