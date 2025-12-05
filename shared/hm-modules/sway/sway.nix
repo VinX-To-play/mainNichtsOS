@@ -27,16 +27,17 @@ in {
           })
 
         {
-          "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
-          "${mod}+space" = "exec --no-startup-id wofi --show drun,run";
+          
+          "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
+          "${mod}+s" = "exec --no-startup-id wofi --show drun,run";
 
-          "${mod}+x" = "kill";
+          "${mod}+q" = "kill";
 
           "${mod}+a" = "focus parent";
           "${mod}+e" = "layout toggle split";
           "${mod}+f" = "fullscreen toggle";
           "${mod}+g" = "split h";
-          "${mod}+s" = "layout stacking";
+          "${mod}+Shift+s" = "layout stacking";
           "${mod}+v" = "split v";
           "${mod}+w" = "layout tabbed";
 
@@ -46,11 +47,18 @@ in {
           "${mod}+Ctrl+q" = "exit";
         }
       ];
-      focus.followMouse = false;
+      focus.followMouse = true;
       startup = [
-        {command = "firefox";}
+        {command = "zen";}
+        {command = "waybar";}
+        {command = "mako";}
+        {command = "blueman-applet";}
+        {command = "wl-paste --watch cliphist store";}
+        {command = "eww daemon";}
+
       ];
       workspaceAutoBackAndForth = true;
+      
     };
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
