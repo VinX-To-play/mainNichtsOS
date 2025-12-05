@@ -8,6 +8,11 @@ in {
     checkConfig = false;
     extraConfig = ''
     for_window [all] titlebar hide
+
+    layer_effects [all] {
+      corner_radius 20;
+      }
+
     '';
     config = {
       modifier = mod;
