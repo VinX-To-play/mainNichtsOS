@@ -1,20 +1,22 @@
 {pkgs, ... }:
 let
-    swaySession = pkgs.stdenv.mkDerivation {
+    swaySession = pkgs.stdenv.mkDerivation rec {
       pname = "sway-session";
       version = "1.0";
-      nativeBuildInputs = [ pkgs.coreutils ];
+
+      dontUnpack = true;
+
       installPhase = ''
         mkdir -p $out/share/wayland-sessions
-        install -m755 ${pkgs.swayfx}/bin/sway $out/bin/sway
-        cat > $out/share/wayland-sessions/my-wayland-session.desktop <<EOF
+        cat > $out/share/wayland-sessions/sway-nvidia.desktop <<'EOF'
         [Desktop Entry]
-        Name=My Sway Session
-        Exec=$out/bin/sway --unsupported-gpu
+        Name=Sway (NVIDIA)
+        Exec=${pkgs.sway}/bin/sway --unsupported-gpu
         Type=Application
         X-GDM-Session-Type=Wayland
         EOF
       '';
+      passthru.providedSessions = [ "sway-nvidia" ];
     };
 in 
 {
@@ -32,5 +34,5 @@ in
   };
   
 
-  services.displayManager.sessionPackages = [ pkgs.swayfx ];
+  services.displayManager.sessionPackages = [ swaySession ];
 }
