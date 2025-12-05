@@ -13,12 +13,12 @@ in {
           ws = toString num;
         in {
           "${mod}+${ws}" = "workspace ${ws}";
-          "${mod}+Ctrl+${ws}" = "move container to workspace ${ws}";
-        }) [1 2 3 4 5 6 7 8 9 0]))
+          "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
+        }) [1 2 3 4 5 6 7 8 9]))
 
         (lib.attrsets.concatMapAttrs (key: direction: {
             "${mod}+${key}" = "focus ${direction}";
-            "${mod}+Ctrl+${key}" = "move ${direction}";
+            "${mod}+Shift+${key}" = "move ${direction}";
           }) {
             h = "left";
             j = "down";
@@ -31,6 +31,10 @@ in {
           })
 
         {
+          # Workspace 10
+          "${mod}+0" = "workspace 10";
+          "${mod}+Shift+0" = "move container to workspace 10";
+
           # Applications
           "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
           "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
@@ -40,18 +44,23 @@ in {
 
           # Window managment
           "${mod}+q" = "kill";
-
-          
-          # "${mod}+a" = "focus parent";
-          # "${mod}+e" = "layout toggle split";
-          # "${mod}+f" = "fullscreen toggle";
-          # "${mod}+g" = "split h";
-          # "${mod}+shift+s" = "layout stacking";
-          # "${mod}+v" = "split v";
-          # "${mod}+w" = "layout tabbed";
+          "${mod}+Shift+a" = "focus parent";
+          "${mod}+Shift+e" = "layout toggle split";
+          "${mod}+Shift+f" = "fullscreen toggle";
+          "${mod}+Shift+g" = "split h";
+          # "${mod}+Shift+s" = "layout stacking";
+          "${mod}+Shift+v" = "split v";
+          "${mod}+Shift+w" = "layout tabbed";
 
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
+
+          #Screenshot
+          "${mod}+Shift+s" = "exec --no-startup-id hyprshot -m region --clipbord-only";
+          "${mod}+Print" = "exec --no-startup-id hyprshot -m window";
+          "Print" = "exec --no-startup-id hyprshot -m output";
+          "${mod}+Shift+Print" = "exec --no-startup-id hyprshot -m region";
+          "${mod}+Shift+t" = "exec --no-startup-id sh -c 'hyprshot -m region --raw | tesseract - - | wl-copy'";
 
           # Audio & Monitor
           "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle";
@@ -78,6 +87,7 @@ in {
       workspaceAutoBackAndForth = true;
       # disable the bar
       bars = []; 
+      window.titlebar = false;
       
     };
     systemd.enable = true;
