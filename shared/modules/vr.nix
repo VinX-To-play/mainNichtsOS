@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -7,6 +7,7 @@
       monado
       monado-vulkan-layers
       wlx-overlay-s
+      opencomposite
     ];
 
 
@@ -19,10 +20,10 @@
 
     systemd.user.services.monado.environment = {
 	XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT= "1";
-	STEAMVR_LH_ENABLE = "0";
+	STEAMVR_LH_ENABLE = "1";
 	XRT_COMPOSITOR_COMPUTE = "1";
-	WMR_HANDTRACKING = "0";
+	WMR_HANDTRACKING = "-1";
     };
   hardware.graphics.extraPackages = with pkgs; [monado-vulkan-layers];
-  
+
 }

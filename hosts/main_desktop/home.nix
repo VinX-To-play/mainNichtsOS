@@ -24,6 +24,7 @@
     ../../shared/hm-base.nix
     ../../shared/hm-modules/hyprland/hyprland.nix
     ../../shared/hm-modules/sway/sway.nix
+    ../../shared/hm-modules/vr.nix
   ];
 
 
