@@ -4,7 +4,7 @@ let
 in {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+    package = pkgs.swayfx-unwrapped;
     checkConfig = false;
     extraConfig = ''
     for_window [all] titlebar hide
