@@ -51,8 +51,24 @@ environment.systemPackages = with pkgs; [
 
     ];
 
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
+  };
+
     #install Steam
-    programs.steam.enable = true;
+    programs.steam = {
+      enable = true;
+      package = pkgs.steam.override {
+        extraEnv = {
+          OBS_VKCAPTURE = true;
+        };
+        extraLibraries = p: with p; [
+          usbutils
+        ];
+      };
+      gamescopeSession.enable = true;
+  };
 
 
 ########################################################
