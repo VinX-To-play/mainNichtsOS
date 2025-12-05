@@ -7,8 +7,7 @@ in {
     package = pkgs.swayfx;
     checkConfig = false;
     extraConfig = ''
-    exec sleep 5; systemctl --user start kanshi.service
-    for_window * titlebar hide
+    for_window [all] titlebar hide
     '';
     config = {
       modifier = mod;
