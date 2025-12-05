@@ -29,7 +29,7 @@ in {
         {
           
           "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
-          "${mod}+s" = "exec --no-startup-id wofi --show drun,run";
+          "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
 
           "${mod}+q" = "kill";
 
