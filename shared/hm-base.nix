@@ -32,6 +32,8 @@
         email = "v@lundborgs.de";
         name = "VinX-To-play";
       };
+      pull.rebase = false;
+      
     };
   };
 
