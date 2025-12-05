@@ -1,4 +1,22 @@
 {pkgs, ... }:
+let
+    swaySession = pkgs.stdenv.mkDerivation {
+      pname = "sway-session";
+      version = "1.0";
+      nativeBuildInputs = [ pkgs.coreutils ];
+      installPhase = ''
+        mkdir -p $out/share/wayland-sessions
+        install -m755 ${pkgs.swayfx}/bin/sway $out/bin/sway
+        cat > $out/share/wayland-sessions/my-wayland-session.desktop <<EOF
+        [Desktop Entry]
+        Name=My Sway Session
+        Exec=$out/bin/sway --unsupported-gpu
+        Type=Application
+        X-GDM-Session-Type=Wayland
+        EOF
+      '';
+    };
+in 
 {
   # kanshi systemd service
   systemd.user.services.kanshi = {
@@ -13,4 +31,6 @@
     };
   };
   
+
+  services.displayManager.sessionPackages = [ pkgs.swayfx ];
 }
