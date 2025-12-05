@@ -45,6 +45,17 @@ in {
           "--release Print" = "exec --no-startup-id ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
           "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
           "${mod}+Ctrl+q" = "exit";
+
+          # Audio & Monitor
+          "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle";
+          "XF86AudioMicMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle";
+          "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
+          "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+          "XF86AudioNext" = "exec --no-startup-id playerctl next";
+          "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
+          "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
+          "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set '1%+'";
+          "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set '1%-'";
         }
       ];
       focus.followMouse = true;
