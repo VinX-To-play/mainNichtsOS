@@ -24,26 +24,33 @@ in {
             j = "down";
             k = "up";
             l = "right";
+            Left = "left";
+            Down = "down";
+            Up = "up";
+            Right = "right";
           })
 
         {
-          
+          # Applications
           "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
           "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
+          "${mod}+b" = "exec --no-startup-id zen";
+          "${mod}+Shift+b" = "exec --no-startup-id Helium";
+          "${mod}+e" = "exec --no-startup-id nemo";
 
+          # Window managment
           "${mod}+q" = "kill";
 
-          "${mod}+a" = "focus parent";
-          "${mod}+e" = "layout toggle split";
-          "${mod}+f" = "fullscreen toggle";
-          "${mod}+g" = "split h";
-          "${mod}+shift+s" = "layout stacking";
-          "${mod}+v" = "split v";
-          "${mod}+w" = "layout tabbed";
+          
+          # "${mod}+a" = "focus parent";
+          # "${mod}+e" = "layout toggle split";
+          # "${mod}+f" = "fullscreen toggle";
+          # "${mod}+g" = "split h";
+          # "${mod}+shift+s" = "layout stacking";
+          # "${mod}+v" = "split v";
+          # "${mod}+w" = "layout tabbed";
 
           "${mod}+Shift+r" = "exec swaymsg reload";
-          "--release Print" = "exec --no-startup-id ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
-          "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
           "${mod}+Ctrl+q" = "exit";
 
           # Audio & Monitor
