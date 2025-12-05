@@ -9,7 +9,7 @@ in {
     extraConfig = ''
     for_window [all] titlebar hide
 
-    corner_radius 20;
+    corner_radius 20
 
     '';
     config = {
