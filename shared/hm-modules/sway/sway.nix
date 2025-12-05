@@ -37,7 +37,7 @@ in {
           "${mod}+e" = "layout toggle split";
           "${mod}+f" = "fullscreen toggle";
           "${mod}+g" = "split h";
-          "${mod}+Shift+s" = "layout stacking";
+          "${mod}+shift+s" = "layout stacking";
           "${mod}+v" = "split v";
           "${mod}+w" = "layout tabbed";
 
@@ -58,6 +58,8 @@ in {
 
       ];
       workspaceAutoBackAndForth = true;
+      # disable the bar
+      bars = []; 
       
     };
     systemd.enable = true;
