@@ -24,7 +24,7 @@ with lib;
 	];
         modules-center = [ 
 	  "hyprland/window"
-          "sway/mode"
+          "sway/window"
 	];
         modules-right = [
           "cpu"
@@ -95,8 +95,10 @@ with lib;
           };
 	};
 	
-        "sway/mode" = {
+        "sway/window" = {
+          format = "{title}";
           max-length = 10;
+          "all-outputs" = true;
           separate-outputs = false;
           rewrite = {
             "" = " No Window? ";

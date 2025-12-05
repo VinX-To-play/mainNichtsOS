@@ -6,6 +6,10 @@ in {
     enable = true;
     package = pkgs.swayfx;
     checkConfig = false;
+    extraConfig = ''
+    exec sleep 5; systemctl --user start kanshi.service
+    for_window * titlebar hide
+    '';
     config = {
       modifier = mod;
       keybindings = lib.attrsets.mergeAttrsList [
