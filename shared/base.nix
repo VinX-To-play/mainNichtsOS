@@ -108,17 +108,7 @@ boot.loader = {
   
   sops.secrets."services/tailscale/autkey" = {};
 
-  services.sheardHosts.enable = true;
-
   networking.hosts = {
-    "100.64.0.17" = [
-      "gitea.yggdrasil.com"
-      "qdrant.yggdrasil.com"
-      "firefly.yggdrasil.com"
-      "importer.yggdrasil.com"
-      "actual.yggdrasil.com"
-      "nextcloud.yggdrasil.com"
-    ];
   };
 
 ###################################################
