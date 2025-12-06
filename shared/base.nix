@@ -120,11 +120,6 @@ boot.loader = {
     };
   security.polkit.enable = true;
 
-
-  security.pki.certificates = [
-    (builtins.readFile ../secrets/ca/root_ca.crt)
-  ];
-
   # add sops globaly
   system.extraDependencies = [pkgs.sops pkgs.age];
   imports = [ inputs.sops-nix.nixosModules.sops ];

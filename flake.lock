@@ -761,11 +761,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1765045946,
-        "narHash": "sha256-C3mSOIYxwXXwxhltzq8lv+N6v8109itnHLmSwdHXy04=",
+        "lastModified": 1765048218,
+        "narHash": "sha256-FhBt6Wetoayx+yepZWYVl/HlkZoLN7G0Fcb6cs9qASI=",
         "ref": "main",
-        "rev": "05609ca975c65e583f3dc0d382a876ec9d0e1ad4",
-        "revCount": 14,
+        "rev": "a7edc44f2f12da53210dc34d4a62b80f23c2fc96",
+        "revCount": 16,
         "type": "git",
         "url": "ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git"
       },
