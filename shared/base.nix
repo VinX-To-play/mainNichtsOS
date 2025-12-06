@@ -108,6 +108,8 @@ boot.loader = {
   
   sops.secrets."services/tailscale/autkey" = {};
 
+  services.sheardHosts.enable = true;
+
   networking.hosts = {
     "100.64.0.17" = [
       "gitea.yggdrasil.com"
@@ -116,12 +118,6 @@ boot.loader = {
       "importer.yggdrasil.com"
       "actual.yggdrasil.com"
       "nextcloud.yggdrasil.com"
-    ];
-    "100.64.0.11" = [
-      "komga.slave.int"
-      "vaultwarden.slave.int"
-      "slave.int"
-      "ca.slave.int"
     ];
   };
 
