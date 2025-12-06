@@ -9,6 +9,7 @@
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    sheard-host.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +24,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, ... }:
     let
       system = "x86_64-linux";
       
@@ -44,6 +45,7 @@
             # add stable Ovalay 
             { nixpkgs.overlays = [ stableOverlay  ]; }
             ./hosts/main_desktop/configuration.nix
+            sheard-host.outputs.nixosModules.sheardHosts
             inputs.stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager {
@@ -64,6 +66,7 @@
             # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
+            sheard-host.nixosModules.sheardHosts
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
@@ -83,6 +86,7 @@
             # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/server/configuration.nix
+            sheard-host.nixosModules.sheardHosts
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
