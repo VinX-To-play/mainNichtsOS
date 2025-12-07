@@ -9,12 +9,8 @@ in {
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
-    swayfx {
       corner_radius 20;
       blur enable;
-      shadows enable;
-      shadow_opacity 0.5;
-    }
     '';
     config = {
       modifier = mod;
