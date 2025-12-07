@@ -11,7 +11,7 @@ let
         cat > $out/share/wayland-sessions/sway-nvidia.desktop <<'EOF'
         [Desktop Entry]
         Name=Sway (NVIDIA)
-        Exec=${pkgs.sway}/bin/sway --unsupported-gpu && sleep 5 ; systemctl --user start kanshi.service
+        Exec=${pkgs.sway}/bin/sway --unsupported-gpu 
         Type=Application
         X-GDM-Session-Type=Wayland
         EOF

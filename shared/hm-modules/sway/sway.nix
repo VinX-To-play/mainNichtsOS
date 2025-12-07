@@ -10,9 +10,7 @@ in {
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
     for_window [all] titlebar hide
-
-    corner_radius 20;
-
+    exec sleep 5 ; systemctl --user start kanshi.service
     '';
     config = {
       modifier = mod;
