@@ -9,8 +9,8 @@ in {
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
-      corner_radius 10;
-      blur enable;
+      corner_radius 10
+      blur enable
     '';
     config = {
       modifier = mod;
