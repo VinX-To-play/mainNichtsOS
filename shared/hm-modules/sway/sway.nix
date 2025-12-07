@@ -6,7 +6,7 @@ in {
     enable = true;
     package = pkgs.swayfx;
     checkConfig = false;
-    systemd.enable = false;
+    systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
     for_window [all] titlebar hide
