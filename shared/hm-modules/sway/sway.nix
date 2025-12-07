@@ -9,7 +9,7 @@ in {
     extraConfig = ''
     for_window [all] titlebar hide
 
-
+    include ~/.config/sway/outputs
     '';
     config = {
       modifier = mod;
