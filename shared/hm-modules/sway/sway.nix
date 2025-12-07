@@ -11,7 +11,10 @@ in {
     extraConfig = ''
     for_window [all] titlebar hide
     swayfx {
-      corner_radius 20
+      corner_radius 20;
+      blur enable;
+      shadows enable;
+      shadow_opacity 0.5;
     }
     '';
     config = {
