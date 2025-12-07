@@ -4,7 +4,7 @@ let
 in {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx-unwrapped;
+    package = pkgs.swayfx;
     checkConfig = false;
     extraConfig = ''
     for_window [all] titlebar hide
@@ -95,7 +95,6 @@ in {
       window.titlebar = false;
       
     };
-    systemd.enable = true;
-    wrapperFeatures = {gtk = true;};
+    systemd.enable = false;
   };
 }

@@ -11,7 +11,7 @@ let
         cat > $out/share/wayland-sessions/sway-nvidia.desktop <<'EOF'
         [Desktop Entry]
         Name=Sway (NVIDIA)
-        Exec=${pkgs.sway}/bin/sway --unsupported-gpu
+        Exec=${pkgs.sway}/bin/sway --unsupported-gpu && sleep 5 ; systemctl --user start kanshi.service
         Type=Application
         X-GDM-Session-Type=Wayland
         EOF
@@ -20,6 +20,10 @@ let
     };
 in 
 {
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
   # kanshi systemd service
   systemd.user.services.kanshi = {
     description = "kanshi daemon";
