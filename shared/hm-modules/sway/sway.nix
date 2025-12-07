@@ -6,10 +6,13 @@ in {
     enable = true;
     package = pkgs.swayfx;
     checkConfig = false;
+    systemd.enable = false;
+    wrapperFeatures = {gtk = true;};
     extraConfig = ''
     for_window [all] titlebar hide
 
-    include ~/.config/sway/outputs
+    corner_radius 20;
+
     '';
     config = {
       modifier = mod;
@@ -51,7 +54,7 @@ in {
           "${mod}+q" = "kill";
           "${mod}+Shift+a" = "focus parent";
           "${mod}+Shift+e" = "layout toggle split";
-          "${mod}+f" = "fullscreen toggle";
+          "${mod}+Shift+f" = "fullscreen toggle";
           "${mod}+Shift+g" = "split h";
           # "${mod}+Shift+s" = "layout stacking";
           "${mod}+Shift+v" = "split v";
@@ -93,8 +96,6 @@ in {
       # disable the bar
       bars = []; 
       window.titlebar = false;
-      
     };
-    systemd.enable = false;
   };
 }

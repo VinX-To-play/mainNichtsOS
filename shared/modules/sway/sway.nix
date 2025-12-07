@@ -20,10 +20,6 @@ let
     };
 in 
 {
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
   # kanshi systemd service
   systemd.user.services.kanshi = {
     description = "kanshi daemon";
