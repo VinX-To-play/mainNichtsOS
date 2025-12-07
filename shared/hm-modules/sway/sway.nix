@@ -9,7 +9,6 @@ in {
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
-    for_window [all] titlebar hide
     swayfx {
       corner_radius 20;
       blur enable;
