@@ -12,28 +12,35 @@ libxkbcommon,
 nspr,
 nss,
 libcupsfilters,
+pango,
 qt5,
 alsa-lib,
 atk,
 at-spi2-core,
 at-spi2-atk,
-pango
  }:
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.5.8.1";
+    version = "0.7.6.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-sORkRGYA6/Qu6v6MA+UWro+zd/bXiD3AoW4PgDUPWSM=";
+        sha256 = "sha256-RL0MMsYmcboZt7aq2R/6onLX1bTxlEbhlwB7yBb84os=";
     };
 
     nativeBuildInputs = [ 
         unzip
         autoPatchelfHook
     ];
+
+    autoPatchelfIgnoreMissingDeps = [
+        "libQt6Core.so.6"
+        "libQt6Gui.so.6"
+        "libQt6Widgets.so.6"
+    ];
     
+    runtimeDependencies = [  ];
     buildInputs = [
         unzip
         xorg.libxcb
@@ -50,6 +57,7 @@ stdenv.mkDerivation rec {
         libxkbcommon
         nspr
         nss
+        libcupsfilters
         alsa-lib
         atk
         at-spi2-core
@@ -57,14 +65,7 @@ stdenv.mkDerivation rec {
         qt5.qtbase
         qt5.qttools
         qt5.qtx11extras
-        libcupsfilters
         qt5.wrapQtAppsHook
-    ];
-
-    autoPatchelfIgnoreMissingDeps = [
-        "libQt6Core.so.6"
-        "libQt6Gui.so.6"
-        "libQt6Widgets.so.6"
     ];
 
     installPhase = ''

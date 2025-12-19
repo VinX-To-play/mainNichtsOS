@@ -8,6 +8,7 @@
       ../../shared/clients-base.nix
       ../../shared/modules/style.nix 
       ../../shared/modules/hyprland/hyprland.nix
+      ../../shared/modules/sway/sway.nix
       ../../shared/modules/obs.nix
     ];
 
@@ -35,6 +36,7 @@
     enable = true;
     allowedTCPPorts = [
       11434
+      3000
       # 22
       # 80
     ];

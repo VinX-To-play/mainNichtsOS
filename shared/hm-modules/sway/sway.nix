@@ -52,7 +52,7 @@ in {
           "${mod}+q" = "kill";
           "${mod}+Shift+a" = "focus parent";
           "${mod}+Shift+e" = "layout toggle split";
-          "${mod}+Shift+f" = "fullscreen toggle";
+          "${mod}+f" = "fullscreen toggle";
           "${mod}+Shift+g" = "split h";
           # "${mod}+Shift+s" = "layout stacking";
           "${mod}+Shift+v" = "split v";

@@ -11,7 +11,7 @@ environment.systemPackages = with pkgs; [
     #Media
     jellyfin-ffmpeg
     deluge
-    vlc
+    mpv
     psst
     spotify-player
 
@@ -27,7 +27,7 @@ environment.systemPackages = with pkgs; [
     thunderbird
  
     # Programing
-    stable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     vscode-fhs
     gradle
     dia

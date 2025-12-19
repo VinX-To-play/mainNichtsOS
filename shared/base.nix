@@ -108,8 +108,6 @@ boot.loader = {
   
   sops.secrets."services/tailscale/autkey" = {};
 
-  networking.hosts = {
-  };
 
 ###################################################
 #		      Secrets			  #
