@@ -11,6 +11,10 @@ in {
     extraConfig = ''
       corner_radius 20
       blur enable
+
+      input "type:touchpad" {
+        tap enable
+      }
     '';
     config = {
       modifier = mod;
