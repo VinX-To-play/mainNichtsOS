@@ -9,7 +9,7 @@
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
-    # sheard-host.url = "git+ssh://gitea@gitea.yggdrasil.com/vinx/Shared-Intranet-Host.git?ref=main";
+    sheard-host.url = "github:VinX-To-play/sheard-host-mirror";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host,  ... }:
     let
       system = "x86_64-linux";
       
@@ -47,6 +47,7 @@
             ./hosts/main_desktop/configuration.nix
             inputs.stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
+            sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
@@ -65,7 +66,7 @@
             # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
             ./hosts/ThinkPad/configuration.nix
-            # sheard-host.nixosModules.sheardHosts
+            sheard-host.nixosModules.sheardHosts
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
@@ -87,6 +88,7 @@
             ./hosts/server/configuration.nix
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
+            sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
