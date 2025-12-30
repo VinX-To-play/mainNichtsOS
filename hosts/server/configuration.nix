@@ -47,7 +47,7 @@
   users.users.vincentl = {
     isNormalUser = true;
     description = "Vincent Lundborg";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "smbUser"];
   };
 
   home-manager.users.vincentl = {pkgs, ... }: {
