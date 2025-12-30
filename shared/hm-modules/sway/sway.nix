@@ -51,6 +51,7 @@ in {
           "${mod}+b" = "exec --no-startup-id zen";
           "${mod}+Shift+b" = "exec --no-startup-id Helium";
           "${mod}+e" = "exec --no-startup-id nemo";
+          "${mod}+v" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
 
           # Window managment
           "${mod}+q" = "kill";
