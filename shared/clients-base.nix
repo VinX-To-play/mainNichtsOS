@@ -6,7 +6,6 @@ environment.systemPackages = with pkgs; [
     # Tools
     figlet
     bitwarden-desktop
-    koodo-reader
 
     #Media
     jellyfin-ffmpeg
@@ -25,6 +24,7 @@ environment.systemPackages = with pkgs; [
     libreoffice-qt
     obsidian
     thunderbird
+    koreader
  
     # Programing
     jetbrains.idea-ultimate
