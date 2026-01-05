@@ -2,6 +2,7 @@
 let
   mod = "Mod4";
 in {
+
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs.swayfx;

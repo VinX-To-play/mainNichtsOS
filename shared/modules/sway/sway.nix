@@ -20,6 +20,9 @@ let
     };
 in 
 {
+  
+  xdg.portal.wlr.enable = true;
+
   # kanshi systemd service
   systemd.user.services.kanshi = {
     description = "kanshi daemon";
