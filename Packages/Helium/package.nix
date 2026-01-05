@@ -22,7 +22,7 @@ at-spi2-atk,
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.7.6.1";
+    version = "0.7.9.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
