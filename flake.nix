@@ -5,7 +5,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";

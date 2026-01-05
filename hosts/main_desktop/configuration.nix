@@ -74,7 +74,7 @@
       "render" # for vr
     ];
     packages = with pkgs; [
-      stable.torzu
+      #stable.torzu
    ];
   };
  

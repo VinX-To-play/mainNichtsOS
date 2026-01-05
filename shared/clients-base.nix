@@ -17,8 +17,7 @@ environment.systemPackages = with pkgs; [
     #Web
     inputs.zen-browser.packages."${system}".specific
     psst
-    # vesktop
-    discord
+    stable.vesktop
 
     #Office
     libreoffice-qt
