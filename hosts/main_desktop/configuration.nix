@@ -123,7 +123,7 @@
 	  extraPackages = with pkgs; [
 	    cudaPackages.cudatoolkit
 	    nvidia-vaapi-driver
-	    vaapiVdpau
+	    libva-vdpau-driver
 	    libvdpau-va-gl
 	  ];
 	  };

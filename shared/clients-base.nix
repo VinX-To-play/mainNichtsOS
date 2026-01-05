@@ -17,7 +17,6 @@ environment.systemPackages = with pkgs; [
     #Web
     inputs.zen-browser.packages."${system}".specific
     psst
-    whatsapp-for-linux
     vesktop
 
     #Office
