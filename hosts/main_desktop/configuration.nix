@@ -86,7 +86,7 @@
   environment.systemPackages = with pkgs; [
     piper
     libratbag
-    ldmtool
+    stable.ldmtool
   ];
 
   services.openssh = {

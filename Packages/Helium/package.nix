@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-RL0MMsYmcboZt7aq2R/6onLX1bTxlEbhlwB7yBb84os=";
+        sha256 = "sha256-/NcL8aDA5S0zvulKcPwzcmoY+RHeyr78TZUVqv9VAjY=";
     };
 
     nativeBuildInputs = [ 
