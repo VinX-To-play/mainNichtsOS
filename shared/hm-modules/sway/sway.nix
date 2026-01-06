@@ -10,6 +10,10 @@ in {
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     extraConfig = ''
+
+      include ~/.config/sway/outputs
+      include ~/.config/sway/outputs
+
       corner_radius 20
       blur enable
 
