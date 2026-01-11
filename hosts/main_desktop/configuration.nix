@@ -72,6 +72,8 @@
       "dialout"
       "video" # for vr
       "render" # for vr
+      "plugdev" # for vr
+      "input" # for vr
     ];
     packages = with pkgs; [
       #stable.torzu
@@ -79,7 +81,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup7";
+  home-manager.backupFileExtension = "backup8";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
