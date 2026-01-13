@@ -81,7 +81,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup8";
+  home-manager.backupFileExtension = "backup9";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -110,52 +110,29 @@
       enable = true;
   };
   
-  nix.settings = {
-    substituters = [
-      "https://cuda-maintainers.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-    ];
-  };
 
  hardware.graphics = {
 	    enable = true;
 	    enable32Bit = true;
 	  extraPackages = with pkgs; [
-	    cudaPackages.cudatoolkit
-	    nvidia-vaapi-driver
-	    libva-vdpau-driver
-	    libvdpau-va-gl
 	  ];
 	  };
-	 services.xserver.videoDrivers = [ "nvidia" ];
-	 hardware.nvidia = {
-	      # Modesetting is required.
-	      modesetting.enable = true;
-	      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-	      powerManagement.enable = false;
-	      # Fine-grained power management. Turns off GPU when not in use.
-	      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-	      powerManagement.finegrained = false;
-	      # Use the NVidia open source kernel module (not to be confused with the
-	      # independent third-party "nouveau" open source driver).
-	      # Support is limited to the Turing and later architectures. Full list of
-	      # supported GPUs is at:
-	      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-	      # Only available from driver 515.43.04+
-	      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-	      open = true;
-	      # Enable the Nvidia settings menu,
-	      # accessible via `nvidia-settings`.
-	      nvidiaSettings = true;
-	      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-	      package = config.boot.kernelPackages.nvidiaPackages.stable;
-	    };
-  nixpkgs.config.nvidia.acceptLicense = true;
- #nixpkgs.config.cudaSupport = false;
- #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cuda_cccl" "cuda_cudart" "cuda_nvcc" "libcublas" "nvidia-settings" "nvidia-x11" ]; 
- #boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" ];
+  hardware.amdgpu.opencl.enable = true;
+  systemd.tmpfiles.rules = 
+  let
+    rocmEnv = pkgs.symlinkJoin {
+      name = "rocm-combined";
+      paths = with pkgs.rocmPackages; [
+        rocblas
+        hipblas
+        clr
+      ];
+    };
+  in [
+    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  ]; 
+
+
 
    # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
