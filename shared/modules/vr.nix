@@ -29,6 +29,10 @@
     highPriority = true;
   };
 
+  environment.sessionVariables = {
+    SURVIVE_GLOBALSCENESOLVER = "0";
+  };
+
   programs.steam = {
     package = lib.mkForce ( pkgs.steam.override {
       extraProfile = ''
