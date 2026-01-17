@@ -3,6 +3,14 @@
 {
   boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
+  services.udev.extraRules = ''
+    # Valve / HTC VR devices
+    SUBSYSTEM=="usb", ATTR{idVendor}=="28de", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0666"
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28de", MODE="0666"
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0bb4", MODE="0666"
+  '';
+
   environment.systemPackages = with pkgs; [
     # wivrn
     #  stable.alvr
