@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 
 {
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
   environment.systemPackages = with pkgs; [
     # wivrn
     #  stable.alvr
