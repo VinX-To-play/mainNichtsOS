@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   services.nginx = {
     enable = true;
+    recommendedTlsSettings = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
   };
 
   security.acme = {
