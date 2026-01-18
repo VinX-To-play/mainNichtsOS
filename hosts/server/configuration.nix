@@ -13,6 +13,7 @@
       ./step-ca.nix
       ./komga.nix
       ./samba.nix
+      ./navidrome.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
