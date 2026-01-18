@@ -5,7 +5,7 @@
     settings = {
       MusicFolder = "/srv/shared/music"; 
       Address = "127.0.0.1";
-      Port = "8224";
+      Port = 8224;
     };
   };
   
@@ -14,7 +14,7 @@
     forceSSL = true;
 
     locations."/" = {
-        proxyPass = "${toString config.services.navidrome.settings.Address}:${toString config.services.navidrome.settings.Port}";
+        proxyPass = "http://${toString config.services.navidrome.settings.Address}:${toString config.services.navidrome.settings.Port}";
         proxyWebsockets = true;
     };
   };
