@@ -6,6 +6,8 @@
       MusicFolder = "/srv/shared/music"; 
       Address = "127.0.0.1";
       Port = 8224;
+      TLSCert = "";
+      TLSKey = "";
     };
   };
   
