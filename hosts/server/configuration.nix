@@ -14,6 +14,7 @@
       ./komga.nix
       ./samba.nix
       ./navidrome.nix
+      ./arr.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
