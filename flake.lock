@@ -753,11 +753,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1768742669,
-        "narHash": "sha256-Ph3nJrBaH0G86md7yHCfjuAL0bERpJ/SwTlduECweik=",
+        "lastModified": 1769009829,
+        "narHash": "sha256-3RcLH2oARBHoK7Tn8qgstQksRW2sE8JlsvYlWYZRP6M=",
         "owner": "VinX-To-play",
         "repo": "sheard-host-mirror",
-        "rev": "9dcac3c5c88e1b185dfa5e18200b4e5207a4df72",
+        "rev": "3518868bb3156828f7e1f82a75ef8d838c1e825c",
         "type": "github"
       },
       "original": {
