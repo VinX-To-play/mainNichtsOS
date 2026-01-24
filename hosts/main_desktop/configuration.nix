@@ -15,6 +15,7 @@
       ../../shared/modules/art.nix
       ../../shared/modules/sunshine.nix
       ../../shared/modules/sway/sway.nix
+      ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/vr/default.nix
     ];
   
