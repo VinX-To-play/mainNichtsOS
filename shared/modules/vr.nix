@@ -36,6 +36,7 @@
     WMR_HANDTRACKING = "0";
     "IPC_EXIT_ON_DISCONNECT" = "1";
     "SURVIVE_GLOBALSCENESOLVER" = "0";
+    "LH_DRIVER" = "steamvr";
   };
 
 
