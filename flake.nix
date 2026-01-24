@@ -22,6 +22,11 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # for AMDGPU Kernal patch for steamvr
+    scrumpkgs = {
+      url = "github:Scrumplex/pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host,  ... }:

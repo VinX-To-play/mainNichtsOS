@@ -14,9 +14,8 @@
       ../../shared/modules/style.nix
       ../../shared/modules/art.nix
       ../../shared/modules/sunshine.nix
-      ../../shared/modules/vr.nix
-      ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/sway/sway.nix
+      ../../shared/modules/vr/default.nix
     ];
   
   ##########################################
@@ -70,10 +69,6 @@
       "networkmanager"
       "wheel"
       "dialout"
-      "video" # for vr
-      "render" # for vr
-      "plugdev" # for vr
-      "input" # for vr
     ];
     packages = with pkgs; [
       #stable.torzu
@@ -81,7 +76,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup2";
+  home-manager.backupFileExtension = "backup3";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -99,11 +94,8 @@
       PasswordAuthentication = false;
       X11Forwarding = false;
       PermitRootLogin = "no";
-
-    }
-    ;
-
     };
+  };
 
   #mouse configeration
   services.ratbagd = {
@@ -117,6 +109,7 @@
 	  extraPackages = with pkgs; [
 	  ];
 	  };
+  
   hardware.amdgpu.opencl.enable = true;
   systemd.tmpfiles.rules = 
   let
