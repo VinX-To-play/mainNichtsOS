@@ -23,6 +23,10 @@ in
   
   xdg.portal.wlr.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    rofi
+  ];
+
   # kanshi systemd service
   systemd.user.services.kanshi = {
     description = "kanshi daemon";
