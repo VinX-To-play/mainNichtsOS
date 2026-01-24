@@ -24,7 +24,7 @@
 
   services.monado = {
     enable = true;
-    defaultRuntime = true; # Register as default OpenXR runtime
+    defaultRuntime = false; # Register as default OpenXR runtime
     forceDefaultRuntime = true;
     highPriority = true;
   };
@@ -45,30 +45,30 @@
 	# Fixes timezones on VRChat
       	unset TZ
       	# Allows Monado to be used
-      	export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+	#export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
       '';
     });
   };
 
-  home-manager.sharedModules = [
-    ({pkgs, config, ...}: {
-      xdg.configFile."openvr/openvrpaths.vrpath".text = let
-	steam = "${config.xdg.dataHome}/Steam";
-      in builtins.toJSON {
-	version = 1;
-	jsonid = "vrpathreg";
+  # home-manager.sharedModules = [
+  #   ({pkgs, config, ...}: {
+  #     xdg.configFile."openvr/openvrpaths.vrpath".text = let
+  #       steam = "${config.xdg.dataHome}/Steam";
+  #     in builtins.toJSON {
+  #       version = 1;
+  #       jsonid = "vrpathreg";
 
-	external_drivers = null;
-	config = [ "${steam}/config" ];
-	
-	log = [ "${steam}/logs" ];
-	
-	runtime = [
-	  "${pkgs.xrizer}/lib/xrizer"
-	];
-      };
-    })
-  ];
+  #       external_drivers = null;
+  #       config = [ "${steam}/config" ];
+  #       
+  #       log = [ "${steam}/logs" ];
+  #       
+  #       runtime = [
+  #         "${pkgs.xrizer}/lib/xrizer"
+  #       ];
+  #     };
+  #   })
+  # ];
 
   hardware.graphics.extraPackages = with pkgs; [monado-vulkan-layers];
   
