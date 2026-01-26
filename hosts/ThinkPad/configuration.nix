@@ -78,14 +78,14 @@
   	  enable32Bit = true; # driSupport32Bit in 24.05
         extraPackages = with pkgs; [
             intel-media-driver
-            vaapiIntel
-            vaapiVdpau
+            intel-vaapi-driver
+            libva-vdpau-driver
             libvdpau-va-gl
             ];
         };
 
     nixpkgs.config.packageOverrides = pkgs: {
-        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+        vaapiIntel = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
     };
 
   hardware.enableAllFirmware = true;

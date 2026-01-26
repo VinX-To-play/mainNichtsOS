@@ -30,7 +30,7 @@ boot.loader = {
     grub.configurationLimit=10;
 };
 
-  boot.kernelPackages = pkgs.linuxPackages_zen; 
+  boot.kernelPackages = pkgs.linuxPackages;
 
 
 

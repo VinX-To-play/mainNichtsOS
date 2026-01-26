@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, config,  ... }: {
 ########################################################
 #                       Packages                       #
 ######################################################## 
@@ -68,6 +68,13 @@ environment.systemPackages = with pkgs; [
       };
       gamescopeSession.enable = true;
   };
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
+
+  users.users.vincentl.extraGroups = [ "wireshark" ];
 
 
 ########################################################
