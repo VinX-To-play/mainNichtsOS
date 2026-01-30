@@ -19,6 +19,9 @@ environment.systemPackages = with pkgs; [
     wget
     git
     tmux
+
+    # theaming
+    catppuccin-grub
   ];
 
 ########################################################
@@ -27,7 +30,11 @@ environment.systemPackages = with pkgs; [
 boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    grub.configurationLimit=10;
+    grub = {
+      
+      configurationLimit=10;
+      theme = pkgs.catppuccin-grub;
+    };
 };
 
   boot.kernelPackages = pkgs.linuxPackages;
