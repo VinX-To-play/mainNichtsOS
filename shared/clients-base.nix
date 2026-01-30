@@ -143,6 +143,8 @@ environment.systemPackages = with pkgs; [
     ly.enable = true;
   };
 
+  boot.loader.grub.theme = pkgs.catppuccin-grub;
+
   #force electron to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
