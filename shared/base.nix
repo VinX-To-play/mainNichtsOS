@@ -33,7 +33,7 @@ boot.loader = {
     grub = {
       
       configurationLimit=10;
-      theme = pkgs.catppuccin-grub;
+      theme = "${pkgs.catppuccin-grub}/";
     };
 };
 
