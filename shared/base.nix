@@ -20,8 +20,6 @@ environment.systemPackages = with pkgs; [
     git
     tmux
 
-    # theaming
-    catppuccin-grub
   ];
 
 ########################################################
@@ -31,9 +29,8 @@ boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
     grub = {
-      
       configurationLimit=10;
-      theme = "${pkgs.catppuccin-grub}/";
+      theme = "${pkgs.kdePackages.breeze-grub}/grub/themes/breeze";
     };
 };
 
