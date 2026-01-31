@@ -28,10 +28,6 @@ environment.systemPackages = with pkgs; [
 boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    grub = {
-      configurationLimit=10;
-      theme = "${pkgs.kdePackages.breeze-grub}/grub/themes/breeze";
-    };
 };
 
   boot.kernelPackages = pkgs.linuxPackages;
