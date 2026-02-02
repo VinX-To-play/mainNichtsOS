@@ -10,8 +10,8 @@ let
         mkdir -p $out/share/wayland-sessions
         cat > $out/share/wayland-sessions/sway-nvidia.desktop <<'EOF'
         [Desktop Entry]
-        Name=Sway (intel fix)
-        Exec=WLR_DRM_NO_ATOMIC=1 ${pkgs.swayfx}/bin/sway 
+        Name=Sway
+        Exec=${pkgs.swayfx}/bin/sway 
         Type=Application
         X-GDM-Session-Type=Wayland
         EOF
