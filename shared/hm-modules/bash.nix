@@ -2,6 +2,8 @@
   programs.bash = {
   enable = true;
   initExtra = ''
+    PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\t | ''${PS1_CMD1} | \w\nλ'
+      
     # Run fastfetch only in interactive shells
     if [[ $- == *i* ]]; then
       # fastfetch
