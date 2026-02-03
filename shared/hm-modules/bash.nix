@@ -2,8 +2,27 @@
   programs.bash = {
   enable = true;
   initExtra = ''
-    PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\t | ''${PS1_CMD1} | \w\nλ'
-      
+      # Function to get git branch with an icon
+      get_git_info() {
+        local branch
+        branch=$(git branch --show-current 2>/dev/null)
+        if [ -n "$branch" ]; then
+          # Format:  branch_name
+          echo -e " \001\e[35m\002\uf126 $branch\001\e[0m\002 |"
+        fi
+      }
+
+      PROMPT_COMMAND='PS1_CMD1=$(get_git_info)'
+
+      # Color Definitions
+      # \001 and \002 are equivalents to \[ and \] for non-printing characters
+      BLUE="\[\e[1;34m\]"
+      CYAN="\[\e[1;36m\]"
+      GREEN="\[\e[1;32m\]"
+      RESET="\[\e[0m\]"
+
+      PS1="\n''${BLUE} \t ''${RESET}|''${PS1_CMD1} ''${GREEN} \w ''${RESET}\nλ "
+
     # Run fastfetch only in interactive shells
     if [[ $- == *i* ]]; then
       # fastfetch
