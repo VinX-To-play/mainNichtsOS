@@ -22,11 +22,11 @@ at-spi2-atk,
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.7.9.1";
+    version = "0.8.4.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-/NcL8aDA5S0zvulKcPwzcmoY+RHeyr78TZUVqv9VAjY=";
+        sha256 = "sha256-M/1wGewl500vJsoYfhbgXHQ4vlI6d0PRGGGGsRol6sc=";
     };
 
     nativeBuildInputs = [ 
@@ -72,7 +72,7 @@ stdenv.mkDerivation rec {
         runHook preInstall
         mkdir -p $out/bin
         mv * $out/bin/
-        mv $out/bin/chrome $out/bin/${name}
+        mv $out/bin/helium $out/bin/${name}
         mkdir -p $out/share/applications
         
         cat <<INI> $out/share/applications/${name}.desktop
