@@ -8,7 +8,7 @@
         branch=$(git branch --show-current 2>/dev/null)
         if [ -n "$branch" ]; then
           # \001 and \002 tell Bash these are non-printing characters
-          git=$"\001\e[1;35m\002  $branch \001\e[0m\002 |"
+          git=$"\001\e[1;35m\002  $branch \001\e[0m\002 |"
         fi
 
       # Use $'\e...' so Bash interprets the escape codes
