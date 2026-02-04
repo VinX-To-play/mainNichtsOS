@@ -25,7 +25,7 @@
 
       }
 
-      PROMPT_COMMAND="$(get_git_info)"
+      PROMPT_COMMAND="get_git_info"
 
 
 
