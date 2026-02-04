@@ -11,7 +11,7 @@
         fi
       }
 
-      PROMPT_COMMAND=PS1_CMD1='$(get_git_info)'
+      PROMPT_COMMAND=PS1_CMD1="$(get_git_info)"
 
       # Use $'\e...' so Bash interprets the escape codes
       BLUE=$'\e[1;34m'
@@ -22,7 +22,7 @@
       # 1. We use " " so the color variables (BLUE, etc.) expand now.
       # 2. We use \$ so the PS1_CMD1 variable expands LATER (every prompt).
       # 3. In Nix, we write ''$ to get a literal $ in the output file.
-      PS1="\n\[$BLUE\] \t \[$RESET\]| {$PS1_CMD1}[$GREEN\]  \w \[$RESET\]\n\[$YELLOW\]λ \[$RESET\]"
+      PS1="\n\[$BLUE\] \t \[$RESET\]| $PS1_CMD1 [$GREEN\]  \w \[$RESET\]\n\[$YELLOW\]λ \[$RESET\]"
 
 
     # Run fastfetch only in interactive shells
