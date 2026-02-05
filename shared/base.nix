@@ -22,6 +22,7 @@ environment.systemPackages = with pkgs; [
 
   ];
 
+  virtualisation.docker.enable = true;
 ########################################################
 #                   boot setings                       #
 ########################################################
