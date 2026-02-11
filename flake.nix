@@ -27,9 +27,11 @@
       url = "github:Scrumplex/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # for more up to date vr packages
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host,  ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, ... }:
     let
       system = "x86_64-linux";
       
@@ -48,7 +50,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             # add stable Ovalay 
-            { nixpkgs.overlays = [ stableOverlay  ]; }
+            { nixpkgs.overlays = [ stableOverlay nixpkgs-xr.overlays.default ]; }
             ./hosts/main_desktop/configuration.nix
             inputs.stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
