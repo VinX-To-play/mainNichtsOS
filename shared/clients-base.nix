@@ -43,12 +43,13 @@ environment.systemPackages = with pkgs; [
     # Wayland & Display:
     wlroots_0_17
     egl-wayland
-    xwayland
 
     # Own aplications
     (callPackage ./../Packages/Helium/package.nix {} )
 
     ];
+
+    programs.xwayland.enable = true;
 
     programs.gamescope = {
       enable = true;
