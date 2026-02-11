@@ -12,5 +12,6 @@
           inputs.scrumpkgs.kernelPatches.cap_sys_nice_begone.patch
         ];
       })
+    builtins.trace "making modules" null
     ];
 }
