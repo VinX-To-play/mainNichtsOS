@@ -9,7 +9,7 @@
 	# Fixes timezones on VRChat
       	unset TZ
       	# Allows Monado to be used
-	export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+	# export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
       '';
     });
   };
