@@ -18,7 +18,6 @@
         ],
         "runtime" :
         [
-          "${pkgs.opencomposite}/lib/opencomposite",
           "${config.xdg.dataHome}/Steam/steamapps/common/SteamVR"
         ],
         "version" : 1
@@ -26,5 +25,5 @@
     '';
 
   # should be in monado but this is in the homemanager context
-   xdg.configFile."openxr/1/active_runtime.json".source = osConfig.environment.etc."xdg/openxr/1/active_runtime.json".source;
+  #xdg.configFile."openxr/1/active_runtime.json".source = osConfig.environment.etc."xdg/openxr/1/active_runtime.json".source;
 }
