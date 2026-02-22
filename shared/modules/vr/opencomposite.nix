@@ -4,26 +4,22 @@
     osConfig,
     ...
   }: {
-    xdg.configFile."openvr/openvrpaths.vrpath".text = ''
-      {
-        "config" :
-        [
-          "${config.xdg.dataHome}/Steam/config"
-        ],
-        "external_drivers" : null,
-        "jsonid" : "vrpathreg",
-        "log" :
-        [
-          "${config.xdg.dataHome}/Steam/logs"
-        ],
-        "runtime" :
-        [
-          "${config.xdg.dataHome}/Steam/steamapps/common/SteamVR"
-        ],
-        "version" : 1
-      }
-    '';
-
-  # should be in monado but this is in the homemanager context
-  #xdg.configFile."openxr/1/active_runtime.json".source = osConfig.environment.etc."xdg/openxr/1/active_runtime.json".source;
+  xdg.configFile."openvr/openvrpaths.vrpath".text = let
+    steam = "${config.xdg.dataHome}/Steam";
+  in builtins.toJSON {
+    version = 1;
+    jsonid = "vrpathreg";
+  
+    external_drivers = null;
+    config = [ "${steam}/config" ];
+  
+    log = [ "${steam}/logs" ];
+  
+    runtime = [
+      #"${pkgs.xrizer}/lib/xrizer"
+      # OR
+      "${pkgs.opencomposite}/lib/opencomposite"
+    ];
+  };
+  
 }
