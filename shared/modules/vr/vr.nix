@@ -10,11 +10,11 @@
       	unset TZ
       	# Allows Monado to be used
 	export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
-	export XR_RUNTIME_JSON=$HOME/.config/openxr/1/active_runtime.json
 	export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
 	export PRESSURE_VESSEL_IMPORT_VULKAN_ICD=1
   	export PRESSURE_VESSEL_IMPORT_VULKAN_LAYERS=1
       '';
+      
     });
   };
 
