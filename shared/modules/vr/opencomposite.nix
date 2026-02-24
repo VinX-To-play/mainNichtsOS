@@ -25,7 +25,7 @@
   xdg.configFile."openxr/1/active_runtime.json".source =
     "${pkgs.monado}/share/openxr/1/openxr_monado.json";
 
-  home.sessionVariables = {
-    XR_RUNTIME_JSON = "${config.home.homeDirectory}/.config/openxr/1/active_runtime.json";
-  };
+  # home.sessionVariables = {
+  #   XR_RUNTIME_JSON = "${config.home.homeDirectory}/.config/openxr/1/active_runtime.json";
+  # };
 }

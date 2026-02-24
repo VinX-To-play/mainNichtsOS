@@ -16,6 +16,8 @@
 
   users.users.vincentl.extraGroups = ["video" "input"];
 
+  environment.sessionVariables.XR_RUNTIME_JSON =
+    "/etc/xdg/openxr/1/active_runtime.json";
 
   # AI udev rouls for Vive
   services.udev.extraRules = ''
