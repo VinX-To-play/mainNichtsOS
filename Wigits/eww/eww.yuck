@@ -10,7 +10,7 @@
 
 (defwindow powerwindow 
 	:monitor 0
-	:geometry (geometry :width "40%"
+	:geometry (geometry :width "50%"
 			    :height "20%"
 			    :anchor "center")
 	:stacking "overlay"
