@@ -28,6 +28,10 @@
 			    :imagewidth "128"
 			    :fill-svg "#f6c177")
 		(iconButten :onclick "./powerwidgit.sh true & hyprlock" 
+			    :imagepath "/home/vincentl/.config/eww/images/lock.svg"
+			    :imagewidth "128"
+			    :fill-svg "#9cc28d")
+		(iconButten :onclick "swaymsg exit" 
 			    :imagepath "/home/vincentl/.config/eww/images/logout.svg"
 			    :imagewidth "128"
 			    :fill-svg "#9cc28d")
