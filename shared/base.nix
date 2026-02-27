@@ -126,4 +126,9 @@ boot.loader = {
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/vincentl/.config/sops/age/keys.txt";
 
+
+###################################################
+#		      home			  #
+###################################################
+
 }
