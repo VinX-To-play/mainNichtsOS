@@ -6,6 +6,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -31,7 +32,7 @@
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware,  ... }:
     let
       system = "x86_64-linux";
       
@@ -80,6 +81,27 @@
               home-manager.useGlobalPkgs = false;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
+              home-manager.sharedModules = [
+                inputs.nixvim.homeModules.nixvim
+              ];
+            }
+          ];
+        };
+        nichtsos-thinkpad-T14 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            # pkgs.stable overlay
+            { nixpkgs.overlays = [ stableOverlay ]; }
+            ./hosts/T14/configuration.nix
+            sheard-host.nixosModules.sheardHosts
+            sops-nix.nixosModules.sops
+            inputs.stylix.nixosModules.stylix
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = false;
+              home-manager.useUserPackages = true;
+              home-manager.users.vincentl = import ./hosts/T14/home.nix;
               home-manager.sharedModules = [
                 inputs.nixvim.homeModules.nixvim
               ];
