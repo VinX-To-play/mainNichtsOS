@@ -10,9 +10,9 @@
     STEAMVR_LH_ENABLE = "1";
     XRT_COMPOSITOR_COMPUTE = "1";
     XRT_DRIVER = "steamvr";
-    # "IPC_EXIT_ON_DISCONNECT" = "1";
     U_PACING_COMP_TIME_FRACTION_PERCENT = "90";
-    XRT_DEBUG_GUI = "1";
+    "IPC_EXIT_ON_DISCONNECT" = "1";
+    # XRT_DEBUG_GUI = "1";
   };
 
 
