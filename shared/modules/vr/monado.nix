@@ -11,7 +11,8 @@
     XRT_COMPOSITOR_COMPUTE = "1";
     XRT_DRIVER = "steamvr";
     U_PACING_COMP_TIME_FRACTION_PERCENT = "90";
-    "IPC_EXIT_ON_DISCONNECT" = "1";
+    
+    # "IPC_EXIT_ON_DISCONNECT" = "1"; brakes stuff
     # XRT_DEBUG_GUI = "1";
   };
 
