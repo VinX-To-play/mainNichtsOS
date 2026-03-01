@@ -20,13 +20,13 @@ environment.systemPackages = with pkgs; [
     stable.vesktop
 
     #Office
-    libreoffice-qt
+    # libreoffice-qt brocken
     obsidian
     thunderbird
     koreader
  
     # Programing
-    jetbrains.idea-ultimate
+    jetbrains.idea
     vscode-fhs
     gradle
     dia
