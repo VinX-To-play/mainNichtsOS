@@ -17,5 +17,30 @@
     });
   };
 
+  # reverse left & right audio on the HTC VIVE
+  services.pipewire = {
+    extraConfig.pipewire."99-vive-reverse" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-loopback";
+          args = {
+            "node.description" = "HTC Vive (Reverse Stereo)";
+            "capture.props" = {
+              "node.name" = "vive_reverse_input";
+              "media.class" = "Audio/Sink";
+              "audio.position" = [ "FL" "FR" ];
+            };
+            "playback.props" = {
+              "node.name" = "vive_reverse_output";
+              "audio.position" = [ "FR" "FL" ];
+              # TARGET THE VIVE SPECIFICALLY HERE:
+              "target.object" = "alsa_output.usb-Alpha_Imaging_Tech_HTC_Vive-02.analog-stereo";
+              "node.passive" = true;
+            };
+          };
+        }
+      ];
+    };
+  };
   
 }

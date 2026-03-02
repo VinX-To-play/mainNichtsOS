@@ -247,18 +247,18 @@
       right: "/user/hand/right/input/trackpad/x"
     },
     toggle_dashboard: {
-      double_click: true,
-      left: "/user/hand/left/input/menu/click",
+      left: "/user/hand/left/input/system/click",
     },
     show_hide: {
-      left: "/user/hand/left/input/menu/click",
+      double_click: true,
+      right: "/user/hand/right/input/system/click",
     },
     space_drag: {
-      right: "/user/hand/right/input/menu/click",
+      right: "/user/hand/right/input/system/click",
     },
     space_reset: {
       double_click: true,
-      right: "/user/hand/right/input/menu/click",
+      left: "/user/hand/left/input/system/click",
     },
     haptic: {
       left: "/user/hand/left/output/haptic",
