@@ -109,6 +109,12 @@ boot.loader = {
   
   sops.secrets."services/tailscale/autkey" = {};
 
+  networking.hosts = {
+    "100.64.0.11" = [
+      "obsidian-livesync.slave.int"
+    ];
+  };
+
 
 ###################################################
 #		      Secrets			  #

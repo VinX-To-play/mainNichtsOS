@@ -15,6 +15,7 @@
       ./samba.nix
       ./navidrome.nix
       ./arr.nix
+      ./obsidian-livesync.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
     ];
