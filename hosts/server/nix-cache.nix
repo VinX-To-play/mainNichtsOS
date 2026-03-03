@@ -18,6 +18,7 @@
       User = "root";
       WorkingDirectory = "/home/vincentl/mainNichtsOS/";
     };
+    path = with pkgs; [ nix git nixos-rebuild bash ];
     script = ''
       #!/usr/bin/env bash
       set -e # Exit immediately if any command fails
