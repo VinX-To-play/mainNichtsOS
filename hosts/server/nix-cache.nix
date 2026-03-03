@@ -6,7 +6,9 @@
   };
 
   services.nginx.virtualHosts."nix.slave.int" = {
-      locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+    enableACME = true;
+    forceSSL = true;
+    locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
   };
 
   systemd.services.nixos-auto-update = {
