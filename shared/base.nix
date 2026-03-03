@@ -148,6 +148,18 @@ boot.loader = {
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/vincentl/.config/sops/age/keys.txt";
 
+  security.sudo.extraRules = [
+  {
+    users = [ "vincentl" ];
+    commands = [
+      {
+        command = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";
+        options = [ "NOPASSWD" ];
+      }
+    ];
+  }
+];
+
 
 ###################################################
 #		      home			  #

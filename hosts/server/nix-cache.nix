@@ -15,7 +15,7 @@
     description = "update flake, build for all systems";
     serviceConfig = {
       Type = "oneshot";
-      User = "root";
+      User = "vincentl";
       WorkingDirectory = "/home/vincentl/mainNichtsOS/";
     };
     path = with pkgs; [ nix git nixos-rebuild bash ];
@@ -42,7 +42,7 @@
                 --accept-flake-config
       
       echo "=== Builds successful. Switching local system ==="
-      nixos-rebuild switch --flake ".#$SERVER_HOSTNAME"
+      sudo nixos-rebuild switch --flake ".#$SERVER_HOSTNAME"
       
       echo "=== Push to git ==="
       git add flake.lock
