@@ -39,7 +39,7 @@
                 ".#nixosConfigurations.nichtsos.config.system.build.toplevel" \
                 ".#nixosConfigurations.nichtsos-thinkpad-T14.config.system.build.toplevel" \
                 ".#nixosConfigurations.nichtsos-thinkpad.config.system.build.toplevel" \
-                --accept-flake-config
+                --accept-flake-config --max-jobs 3 --cores 1
       
       echo "=== Builds successful. Switching local system ==="
       sudo nixos-rebuild switch --flake ".#$SERVER_HOSTNAME"
