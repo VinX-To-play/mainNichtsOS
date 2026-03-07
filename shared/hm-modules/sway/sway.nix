@@ -77,6 +77,7 @@ in {
           "Print" = "exec --no-startup-id hyprshot -m output";
           "${mod}+Shift+Print" = "exec --no-startup-id hyprshot -m region";
           "${mod}+Shift+t" = "exec --no-startup-id sh -c 'hyprshot -m region --raw | tesseract - - | wl-copy'";
+          "Ctrl + v" = "exec wl-paste";
 
           # Audio & Monitor
           "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle";
