@@ -113,6 +113,12 @@
       # Don't show the mode, since it's already in the statusline
       showmode = false;
 
+      # Set default tab behavour
+      tabstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+      autoindent = true;
+
       #  See `:help 'clipboard'`
       clipboard = {
         providers = {
