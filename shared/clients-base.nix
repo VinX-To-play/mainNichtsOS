@@ -104,7 +104,12 @@ environment.systemPackages = with pkgs; [
 ########################################################
 #                   Audio setings                      #
 ########################################################
-  #sound.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      ControllerMode = "bredr";
+    };
+  };
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
