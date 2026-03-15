@@ -17,6 +17,7 @@
       ../../shared/modules/sway/sway.nix
       ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/vr/default.nix
+      ../../shared/modules/gns3.nix
     ];
   
   ##########################################
@@ -77,7 +78,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup102";
+  home-manager.backupFileExtension = "backup103";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
