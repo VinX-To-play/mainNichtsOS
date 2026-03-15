@@ -14,6 +14,7 @@ environment.systemPackages = with pkgs; [
     tree
     stable.p7zip-rar
     sops
+    busybox
 
     # Programing
     wget
