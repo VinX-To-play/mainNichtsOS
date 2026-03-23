@@ -10,6 +10,7 @@
       ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/sway/sway.nix
       ../../shared/modules/obs.nix
+      ../../shared/modules/gns3.nix
     ];
 
   boot.initrd.availableKernelModules = [
