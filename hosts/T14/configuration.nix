@@ -11,6 +11,7 @@
       ../../shared/modules/sway/sway.nix
       ../../shared/modules/obs.nix
       ../../shared/modules/gns3.nix
+      ../../shared/modules/hardware/keybord-remap.nix
     ];
 
   boot.initrd.availableKernelModules = [
@@ -52,7 +53,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup7";
+  home-manager.backupFileExtension = "backup8";
 
   virtualisation.docker.enable = true;
 
@@ -65,12 +66,15 @@
   };
 
   environment.systemPackages = with pkgs; [
-    maliit-keyboard
-    maliit-framework
     jellyfin
     jellyfin-ffmpeg
 
   ];
+
+  vinlabs.keyboard = {
+    enable = true;
+    device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+  };
 
 
   hardware.enableAllFirmware = true;
