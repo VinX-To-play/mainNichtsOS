@@ -53,7 +53,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup8";
+  home-manager.backupFileExtension = "backup9";
 
   virtualisation.docker.enable = true;
 
@@ -72,7 +72,7 @@
   ];
 
   vinlabs.keyboard = {
-    enable = true;
+    enable = false;
     device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
   };
 

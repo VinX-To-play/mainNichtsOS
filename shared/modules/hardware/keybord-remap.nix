@@ -32,7 +32,7 @@ in {
 
           ;; The source keys we want to intercept
           (defsrc
-            caps wkup
+            caps 143
             h    j    k    l
             left right
           )
