@@ -95,6 +95,11 @@
       };
     };
 
+    plugins.jupytext = {
+      enable = true;
+      
+    };
+
     plugins.lsp = {
       enable = true;
 
