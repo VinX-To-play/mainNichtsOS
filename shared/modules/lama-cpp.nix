@@ -3,6 +3,7 @@
     services.llama-swap = {
       enable = true;
       port = 11343;
+      openFirewall = true;
       settings = 
       let
         llama-cpp = pkgs.llama-cpp.override { rocmSupport = true; };
