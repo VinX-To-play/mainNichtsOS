@@ -17,6 +17,8 @@
       ../../shared/modules/sway/sway.nix
       ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/vr/default.nix
+      ../../shared/modules/gns3.nix
+      ../../shared/modules/lama-cpp.nix
     ];
   
   ##########################################
@@ -24,31 +26,33 @@
   ##########################################
   #boot.loader.grub.devices =  ["dev/nvme0n1p1"];
 
-  networking.hostName = "nichtsos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.nameservers = [
-    "192.168.1.201"
-    "1.1.1.1"
-  ];
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      22
-      8000
+  networking = {
+    hostName = "nichtsos"; # Define your hostname.
+    networkmanager.enable = true;
+    nameservers = [
+      "192.168.1.201"
+      "1.1.1.1"
     ];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        22
+        8000
+      ];
+    };
+    defaultGateway = "192.168.1.1";
+    interfaces.enp7s0 = {
+      wakeOnLan = {
+        enable = true;
+        policy = [ "magic" ];
+      };
+      
+      ipv4.addresses = [{
+	address = "192.168.1.2";
+	prefixLength = 24;
+      }];
+    };
   };
-  networking.interfaces.enp3s0.wakeOnLan = {
-    enable = true;
-    policy = [ "magic" ];
-  };
-  # networking.interfaces.enp3s0.macAddress = "d6:22:c7:46:18:b4";  
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -77,7 +81,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup101";
+  home-manager.backupFileExtension = "backup104";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -97,6 +101,7 @@
       PermitRootLogin = "no";
     };
   };
+
 
   #mouse configeration
   services.ratbagd = {

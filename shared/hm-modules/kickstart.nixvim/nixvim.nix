@@ -42,6 +42,7 @@
     defaultEditor = true;
     nixpkgs.useGlobalPackages = false;
     vimAlias = true;
+    
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
     # Don't forget to disable the colorschemes you arent using
@@ -112,6 +113,12 @@
 
       # Don't show the mode, since it's already in the statusline
       showmode = false;
+
+      # Set default tab behavour
+      tabstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+      autoindent = true;
 
       #  See `:help 'clipboard'`
       clipboard = {

@@ -4,7 +4,13 @@ unzip,
 autoPatchelfHook,
 stdenv,
 fetchurl,
-xorg,
+libxcb,
+libX11,
+libXcomposite,
+libXdamage,
+libXext,
+libXfixes,
+libXrandr,
 libgbm,
 cairo,
 libudev-zero,
@@ -22,11 +28,11 @@ at-spi2-atk,
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.8.4.1";
+    version = "0.9.4.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-M/1wGewl500vJsoYfhbgXHQ4vlI6d0PRGGGGsRol6sc=";
+        sha256 = "sha256-qXuDUtank46O87jASxczmVMk0iD4JaZi2j9LSBe9VCM=";
     };
 
     nativeBuildInputs = [ 
@@ -43,13 +49,13 @@ stdenv.mkDerivation rec {
     runtimeDependencies = [  ];
     buildInputs = [
         unzip
-        xorg.libxcb
-        xorg.libX11
-        xorg.libXcomposite
-        xorg.libXdamage
-        xorg.libXext
-        xorg.libXfixes
-        xorg.libXrandr
+        libxcb
+        libX11
+        libXcomposite
+        libXdamage
+        libXext
+        libXfixes
+        libXrandr
         libgbm
         cairo
         pango
@@ -73,6 +79,15 @@ stdenv.mkDerivation rec {
         mkdir -p $out/bin
         mv * $out/bin/
         mv $out/bin/helium $out/bin/${name}
+
+        # -----  fix broken symlinks  -----
+        # 1. delete every symlink that is now dangling
+        find $out/bin -xtype l -delete
+
+        # ln -sfn $out/bin/libfoo.so.2 $out/bin/libfoo.so)
+
+        # -----
+
         mkdir -p $out/share/applications
         
         cat <<INI> $out/share/applications/${name}.desktop

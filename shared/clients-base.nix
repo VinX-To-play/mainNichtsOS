@@ -6,6 +6,7 @@ environment.systemPackages = with pkgs; [
     # Tools
     figlet
     bitwarden-desktop
+    ripgrep
 
     #Media
     jellyfin-ffmpeg
@@ -41,7 +42,7 @@ environment.systemPackages = with pkgs; [
     heroic
 
     # Wayland & Display:
-    wlroots_0_17
+    stable.wlroots_0_17
     egl-wayland
 
     # Own aplications
@@ -70,13 +71,6 @@ environment.systemPackages = with pkgs; [
       gamescopeSession.enable = true;
   };
 
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
-  };
-
-  users.users.vincentl.extraGroups = [ "wireshark" ];
-
 
 ########################################################
 #		     Imports			       #
@@ -104,7 +98,12 @@ environment.systemPackages = with pkgs; [
 ########################################################
 #                   Audio setings                      #
 ########################################################
-  #sound.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      ControllerMode = "bredr";
+    };
+  };
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

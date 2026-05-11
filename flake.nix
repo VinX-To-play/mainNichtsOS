@@ -17,7 +17,6 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/";
@@ -30,6 +29,8 @@
     };
     # for more up to date vr packages
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    
+
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware,  ... }:
@@ -57,7 +58,7 @@
             sops-nix.nixosModules.sops
             sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = false;
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
               home-manager.sharedModules = [
