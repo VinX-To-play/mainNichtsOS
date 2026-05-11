@@ -18,6 +18,7 @@
       ../../shared/modules/hyprland/hyprland.nix
       ../../shared/modules/vr/default.nix
       ../../shared/modules/gns3.nix
+      ../../shared/modules/lama-cpp.nix
     ];
   
   ##########################################
@@ -78,7 +79,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup103";
+  home-manager.backupFileExtension = "backup104";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -98,6 +99,7 @@
       PermitRootLogin = "no";
     };
   };
+
 
   #mouse configeration
   services.ratbagd = {

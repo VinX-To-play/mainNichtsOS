@@ -1,4 +1,4 @@
-{pkgs, lib, ...}:{ 
+{pkgs, lib, config, ...}:{ 
   gtk = {
     enable = true;
     iconTheme = {
@@ -6,5 +6,6 @@
       name = "adwaita-icon-theme";
     };
   };
+  gtk.gtk4.theme = config.gtk.theme;
 
 }

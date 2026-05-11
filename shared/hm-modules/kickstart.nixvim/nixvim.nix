@@ -42,6 +42,7 @@
     defaultEditor = true;
     nixpkgs.useGlobalPackages = false;
     vimAlias = true;
+    
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
     # Don't forget to disable the colorschemes you arent using

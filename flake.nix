@@ -17,7 +17,6 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/";
@@ -57,7 +56,7 @@
             sops-nix.nixosModules.sops
             sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = false;
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
               home-manager.sharedModules = [
