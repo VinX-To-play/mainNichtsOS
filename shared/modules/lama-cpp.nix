@@ -7,6 +7,7 @@
       let
         llama-cpp = pkgs.llama-cpp.override { rocmSupport = true; };
         llama-server = lib.getExe' llama-cpp "llama-server";
+        stand-arg = " --no-webui --main-gpu --port \${PORT}";
         
         gemma-4-E4B = builtins.fetchurl {
           url = "https://huggingface.co/mradermacher/gemma-4-E4B-GGUF/resolve/main/gemma-4-E4B.Q8_0.gguf?download=true";
@@ -23,11 +24,11 @@
         healthCheckTimeout = 60;
         models = {
           "gemma-4-E4B" = {
-            cmd = "${llama-server} --port \${PORT} -m ${gemma-4-E4B} -ngl 0 --no-webui";
+            cmd = "${llama-server} -ngl 0 -m ${gemma-4-E4B} ${stand-arg}";
             name = "gemma 4";
           };
           "GPTOSS-20B" = {
-            cmd = "${llama-server} --port \${PORT} -m ${gptoss-20b} -ngl 0 --no-webui";
+            cmd = "${llama-server} -m ${gptoss-20b} ${stand-arg}";
             name = "gpt-oss 20B";
           };
         };
