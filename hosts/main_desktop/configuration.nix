@@ -40,6 +40,7 @@
         8000
       ];
     };
+    defaultGateway = "192.168.1.1";
     interfaces.enp7s0 = {
       wakeOnLan = {
         enable = true;
