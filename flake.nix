@@ -29,6 +29,8 @@
     };
     # for more up to date vr packages
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    
+
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware,  ... }:
