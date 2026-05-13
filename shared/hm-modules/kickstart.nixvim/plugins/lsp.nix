@@ -95,6 +95,12 @@
       };
     };
 
+    plugins.flutter-tools.enable = true;
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+     "jupytext.nvim"
+    ];
+    plugins.jupytext.enable = true;
+
     plugins.lsp = {
       enable = true;
 

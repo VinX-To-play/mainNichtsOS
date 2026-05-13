@@ -79,7 +79,7 @@
             sops-nix.nixosModules.sops
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = false;
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
               home-manager.sharedModules = [
@@ -100,7 +100,7 @@
             inputs.stylix.nixosModules.stylix
             nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = false;
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/T14/home.nix;
               home-manager.sharedModules = [
