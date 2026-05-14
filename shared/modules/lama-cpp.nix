@@ -19,9 +19,9 @@
           url = "https://huggingface.co/unsloth/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-Q4_K_M.gguf?download=true";
           sha256 = "sha256:0kzbi9bc1k7qka8padg9nn6qzf881bc831y6bn3340211rj3cxf2";
         };
-      LFM25-VL-450M-4bit = builtins.fetchurl {
-        url = "https://huggingface.co/LiquidAI/LFM2.5-350M-GGUF/resolve/main/LFM2.5-350M-Q4_K_M.gguf?download=true";
-        sha256 = "sha256:1m5flsawvpf3siwg87bdqz7g45kr9n6671k64ml9mz5a7ij74vvy";
+      test-modle = builtins.fetchurl {
+        url = "https://huggingface.co/MaziyarPanahi/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it.Q4_K_M.gguf?download=true";
+        sha256 = "sha256:1hnyz2ksrs5rpwac4z4r3q3npy0g0hf8bhfsalbn562id20l4c74";
       };
       in
       {
@@ -36,8 +36,8 @@
             cmd = "${llama-server} -m ${gptoss-20b} ${stand-arg}";
             name = "gpt-oss 20B";
           };
-          "LFM2.5-VL-450M" = {
-            cmd = "${llama-server} -m ${LFM25-VL-450M-4bit} ${stand-arg}";
+          "test-model" = {
+            cmd = "${llama-server} -m ${test-modle} ${stand-arg}";
           };
         };
       };
