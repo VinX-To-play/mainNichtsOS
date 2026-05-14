@@ -19,6 +19,10 @@
           url = "https://huggingface.co/unsloth/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-Q4_K_M.gguf?download=true";
           sha256 = "sha256:0kzbi9bc1k7qka8padg9nn6qzf881bc831y6bn3340211rj3cxf2";
         };
+      LFM25-VL-450M-4bit = builtins.fetchurl {
+        url = "https://huggingface.co/LiquidAI/LFM2.5-VL-450M-GGUF/resolve/main/LFM2.5-VL-450M-Q4_0.gguf?download=true";
+        sha256 = "sha256:1gyc458v1v4c7ya95vw5ps4i1px0nfspniwhvjksx60b1zfmf9vd";
+      };
       in
       {
         globalTTL = 300;
@@ -31,6 +35,9 @@
           "GPTOSS-20B" = {
             cmd = "${llama-server} -m ${gptoss-20b} ${stand-arg}";
             name = "gpt-oss 20B";
+          };
+          "LFM2.5-VL-450M" = {
+            cmd = "${llama-server} -m ${LFM25-VL-450M-4bit} ${stand-arg}";
           };
         };
       };
