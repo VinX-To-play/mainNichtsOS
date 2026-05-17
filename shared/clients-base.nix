@@ -130,6 +130,8 @@ environment.systemPackages = with pkgs; [
     useRoutingFeatures = "client";
   };
 
+  networking.firewall.allowedTCPPortRanges = [ { from = 6881; to = 6889;} ];
+
 ########################################################
 #                  Display setings                     #
 ########################################################
