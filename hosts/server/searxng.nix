@@ -68,9 +68,9 @@
         base_url = "https://search.slave.int";
         port = 8888;
         bind_address = "127.0.0.1";
-        #secret_key = config.sops.secrets.searx.path;
+        secret_key = config.sops.secrets."services/searx/key".path;
         limiter = true;
-        #public_instance = true;
+        public_instance = true;
         image_proxy = true;
         method = "GET";
       };
@@ -190,4 +190,7 @@
       };
     };
   }; 
+
+  sops.secrets."services/searx/key" = {};
+
 }
