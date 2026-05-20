@@ -20,6 +20,7 @@
       ../../shared/base.nix
       ../../shared/modules/style.nix
       ./open-webui.nix
+      ./searxng.nix
     ];
 
   # Use the GRUB 2 boot loader.
