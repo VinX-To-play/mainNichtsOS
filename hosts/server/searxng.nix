@@ -1,7 +1,7 @@
 {lib,config, ...}:
 { 
   services.searx = {
-    enable = false;
+    enable = true;
     redisCreateLocally = true;
   
     # Rate limiting
@@ -177,7 +177,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
-      "search.example.com" = {
+      "search.slave.int" = {
         forceSSL = true;
         
         locations = {
