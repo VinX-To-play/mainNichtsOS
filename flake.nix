@@ -120,7 +120,7 @@
             inputs.stylix.nixosModules.stylix
             sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = false;
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.vincentl = import ./hosts/server/home.nix;
               home-manager.sharedModules = [
