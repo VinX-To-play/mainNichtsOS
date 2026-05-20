@@ -19,6 +19,7 @@
       ./nix-cache.nix
       ../../shared/base.nix
       ../../shared/modules/style.nix
+      ./open-webui.nix
     ];
 
   # Use the GRUB 2 boot loader.
