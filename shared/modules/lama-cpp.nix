@@ -9,7 +9,7 @@
       let
         llama-cpp = pkgs.llama-cpp.override { rocmSupport = true; };
         llama-server = lib.getExe' llama-cpp "llama-server";
-        stand-arg = " --no-webui --main-gpu 0 --port \${PORT} --stream";
+        stand-arg = " --no-webui --main-gpu 0 --port \${PORT}";
         
         gemma-4-E4B = builtins.fetchurl {
           url = "https://huggingface.co/mradermacher/gemma-4-E4B-GGUF/resolve/main/gemma-4-E4B.Q8_0.gguf?download=true";
