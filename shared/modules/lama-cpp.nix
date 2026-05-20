@@ -3,6 +3,7 @@
     services.llama-swap = {
       enable = true;
       port = 11343;
+      openFirewall = true;
       settings = 
       let
         llama-cpp = pkgs.llama-cpp.override { rocmSupport = true; };
@@ -18,6 +19,10 @@
           url = "https://huggingface.co/unsloth/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-Q4_K_M.gguf?download=true";
           sha256 = "sha256:0kzbi9bc1k7qka8padg9nn6qzf881bc831y6bn3340211rj3cxf2";
         };
+      test-modle = builtins.fetchurl {
+        url = "https://huggingface.co/MaziyarPanahi/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it.Q4_K_M.gguf?download=true";
+        sha256 = "sha256:1hnyz2ksrs5rpwac4z4r3q3npy0g0hf8bhfsalbn562id20l4c74";
+      };
       in
       {
         globalTTL = 300;
@@ -30,6 +35,9 @@
           "GPTOSS-20B" = {
             cmd = "${llama-server} -m ${gptoss-20b} ${stand-arg}";
             name = "gpt-oss 20B";
+          };
+          "test-model" = {
+            cmd = "${llama-server} -m ${test-modle} ${stand-arg}";
           };
         };
       };

@@ -53,7 +53,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup10";
+  home-manager.backupFileExtension = "backup11";
 
   virtualisation.docker.enable = true;
 
