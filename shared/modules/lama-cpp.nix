@@ -1,8 +1,9 @@
-{self, inputs, lib, pkgs, ... }: {
+{self, inputs, lib, pkgs, config, ... }: {
 
     services.llama-swap = {
       enable = true;
       port = 11343;
+      listenAddress = "${(builtins.head config.networking.interfaces.enp7s0.ipv4.addresses).address}";
       openFirewall = true;
       settings = 
       let
