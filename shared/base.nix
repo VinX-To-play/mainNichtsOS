@@ -131,6 +131,7 @@ boot.loader = {
     "100.64.0.11" = [
       "obsidian-livesync.slave.int"
       "chat.slave.int"
+      "search.slave.int"
     ];
     "192.168.1.2" = [
       "main.int"
