@@ -20,9 +20,13 @@
           url = "https://huggingface.co/unsloth/gpt-oss-20b-GGUF/resolve/main/gpt-oss-20b-Q4_K_M.gguf?download=true";
           sha256 = "sha256:0kzbi9bc1k7qka8padg9nn6qzf881bc831y6bn3340211rj3cxf2";
         };
-      test-modle = builtins.fetchurl {
-        url = "https://huggingface.co/MaziyarPanahi/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it.Q4_K_M.gguf?download=true";
-        sha256 = "sha256:1hnyz2ksrs5rpwac4z4r3q3npy0g0hf8bhfsalbn562id20l4c74";
+        qwen36-35B-A3B = builtins.fetchurl {
+          url = "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-IQ2_M.gguf?download=true";
+          sha256 = "sha256:0hrx82chg9i3rr75nrsdnvfxaavckb7h54c2sc88pbz1swgfzrrb";
+        };
+        test-modle = builtins.fetchurl {
+          url = "https://huggingface.co/MaziyarPanahi/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it.Q4_K_M.gguf?download=true";
+          sha256 = "sha256:1hnyz2ksrs5rpwac4z4r3q3npy0g0hf8bhfsalbn562id20l4c74";
       };
       in
       {
@@ -30,12 +34,15 @@
         healthCheckTimeout = 60;
         models = {
           "gemma-4-E4B" = {
-            cmd = "${llama-server} -ngl 0 -m ${gemma-4-E4B} ${stand-arg}";
+            cmd = "${llama-server} -m ${gemma-4-E4B} ${stand-arg} --ctx-size 32768 --jinja";
             name = "gemma 4";
           };
           "GPTOSS-20B" = {
             cmd = "${llama-server} -m ${gptoss-20b} ${stand-arg}";
             name = "gpt-oss 20B";
+          };
+          "Qwen3.6-35B-A3B" = {
+            cmd = "${llama-server} -m ${qwen36-35B-A3B} ${stand-arg} --ctx-size 65536 --jinja";
           };
           "test-model" = {
             cmd = "${llama-server} -m ${test-modle} ${stand-arg}";
