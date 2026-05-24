@@ -11,6 +11,8 @@
     locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
   };
 
+  /*
+  
   systemd.services.nixos-auto-update = {
     description = "update flake, build for all systems";
     serviceConfig = {
@@ -62,4 +64,5 @@
       Unit = "nixos-auto-update.service";
     };
   };
+  */
 }

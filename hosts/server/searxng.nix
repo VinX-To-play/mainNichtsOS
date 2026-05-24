@@ -34,7 +34,7 @@
       # Instance settings
       general = {
         debug = false;
-        instance_name = "SearXNG Instance";
+        instance_name = "VinLabs search";
         donation_url = false;
         contact_url = false;
         privacypolicy_url = false;
@@ -56,11 +56,12 @@
   
       # Search engine settings
       search = {
-        safe_search = 2;
+        safe_search = 0;
         autocomplete_min = 2;
         autocomplete = "duckduckgo";
         ban_time_on_fail = 5;
         max_ban_time_on_fail = 120;
+        formats = [ "html" "json" ];
       };
   
       # Server configuration
