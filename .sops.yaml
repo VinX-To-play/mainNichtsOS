@@ -2,8 +2,6 @@
 # Defines who can decrypt which files
 
 keys:
-  - &desktop_key age1z2a8lzz33apczwm2rpn5md8kpmcp7m2lwcjhxyvd828famguwvyq63vg7h
-  - &Thinkpad_key age10n5fefpwhh3luj6vuf32rxtzcnw6slmkhl6lmtl05fmsmjyyvgksn7jsjf
   - &new_key age1wlxnstlgxscd35jm9w09w7ys2k4n5ua0e4fgswef0nplfg09rsvsf86nux
 
 creation_rules:
@@ -15,14 +13,10 @@ creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
-        - *desktop_key
-        - *Thinkpad_key
         - *new_key
 
   - path_regex: secrets/nginx/nginx-selfsigned.key$
     key_groups:
       - age:
-        - *desktop_key
-        - *Thinkpad_key
         - *new_key
 
