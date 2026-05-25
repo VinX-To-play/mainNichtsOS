@@ -11,6 +11,7 @@
       WEBUI_AUTH = "False";
       CORIS_ALLOW_ORIGIN = "https://chat.slave.int";
       WEBHOOK_URL = "chat.slave.int";
+      REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
     };
   };
 
