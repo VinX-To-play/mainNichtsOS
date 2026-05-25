@@ -40,6 +40,8 @@
         privacypolicy_url = false;
         enable_metrics = false;
       };
+
+      api_key = false;
   
       # User interface
       ui = {
@@ -50,7 +52,7 @@
         center_alignment = true;
         default_theme = "simple";
         theme_args.simple_style = "auto";
-        search_on_category_select = false;
+        search_on_category_select = true;
         hotkeys = "vim";
       };
   
@@ -70,7 +72,7 @@
         port = 8888;
         bind_address = "127.0.0.1";
         secret_key = config.sops.secrets."services/searx/key".path;
-        limiter = true;
+        limiter = false;
         public_instance = true;
         image_proxy = true;
         method = "GET";
