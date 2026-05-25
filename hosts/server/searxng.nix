@@ -14,8 +14,8 @@
   
       botdetection = {
         ip_limit = {
-          filter_link_local = true;
-          link_token = true;
+          filter_link_local = false;
+          link_token = false;
         };
       };
     };
@@ -59,8 +59,8 @@
         safe_search = 0;
         autocomplete_min = 2;
         autocomplete = "duckduckgo";
-        ban_time_on_fail = 5;
-        max_ban_time_on_fail = 120;
+        # ban_time_on_fail = 5;
+        # max_ban_time_on_fail = 120;
         formats = [ "html" "json" ];
       };
   
