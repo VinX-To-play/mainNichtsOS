@@ -12,8 +12,10 @@
       CORS_ALLOW_ORIGIN = "https://chat.slave.int";
       WEBHOOK_URL = "chat.slave.int";
       REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
+
       ENABLE_WEB_SEARCH = "True";
-      SEARXNG_URL = "https://search.slave.int/search?q=%s";
+      WEB_SEARCH_ENGINE = "searxng";
+      SEARXNG_QUERY_URL = "https://search.slave.int/search?q=<query>";
       SEARXNG_API_KEY = "";
     };
   };
