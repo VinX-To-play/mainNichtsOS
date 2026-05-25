@@ -2,7 +2,7 @@
 {
   services.searx = {
     enable = true;
-    redisCreateLocally = true;
+    redisCreateLocally = false;
   
     # UWSGI configuration
     runInUwsgi = true;
@@ -128,8 +128,8 @@
   
       # Outgoing requests
       outgoing = {
-        request_timeout = 5.0;
-        max_request_timeout = 15.0;
+        request_timeout = 30.0;
+        max_request_timeout = 60.0;
         pool_connections = 100;
         pool_maxsize = 15;
         enable_http2 = true;
