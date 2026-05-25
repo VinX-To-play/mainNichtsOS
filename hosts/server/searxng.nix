@@ -4,22 +4,6 @@
     enable = true;
     redisCreateLocally = true;
   
-    # Rate limiting
-    limiterSettings = {
-      real_ip = {
-        x_for = 1;
-        ipv4_prefix = 32;
-        ipv6_prefix = 56;
-      };
-  
-      botdetection = {
-        ip_limit = {
-          filter_link_local = false;
-          link_token = false;
-        };
-      };
-    };
-  
     # UWSGI configuration
     runInUwsgi = true;
   
@@ -61,8 +45,6 @@
         safe_search = 0;
         autocomplete_min = 2;
         autocomplete = "duckduckgo";
-        # ban_time_on_fail = 5;
-        # max_ban_time_on_fail = 120;
         formats = [ "html" "json" ];
       };
   
