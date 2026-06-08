@@ -22,6 +22,12 @@
   boot.extraModprobeConfig = ''
     '';
 
+  services.transmission = {
+    enable = true;
+    package = pkgs.transmission_4;
+    openFirewall = true;
+  };
+
 
   networking.hostName = "nichtsos-thinkpad-T14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -53,7 +59,7 @@
   };
 
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup11";
+  home-manager.backupFileExtension = "backup12";
 
   virtualisation.docker.enable = true;
 
