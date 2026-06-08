@@ -47,6 +47,9 @@
       # 22
       # 80
     ];
+    allowedUDPPorts = [
+      3000
+    ];
   };
 
   home-manager.users.vincentl = { pkgs, ... }: {
