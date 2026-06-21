@@ -13,8 +13,28 @@
         globalTTL = 300;
         healthCheckTimeout = 60;
         models = {
+          "deepseek-v4-flash" = {
+            proxy = "https://api.deepseek.com/v1/";
+            apiKey = '' ''${env.DEEPSEEK_APIKEY}'';
+            filters = {
+              setParamsByID = {
+                "\${MODEL_ID}" = {
+                  thinking = {
+                    type = "disabled";
+                  };
+                };
+
+                "\${MODEL_ID}:thinking" = {
+                  thinking = {
+                    type = "enabled";
+                  };
+                };
+              };
+            };
+          };
         };
 
+        /*
         peers = {
           deepseek = {
             proxy = "https://api.deepseek.com";
@@ -25,6 +45,7 @@
             ];
           };
         };
+        */
       };
     };
 
