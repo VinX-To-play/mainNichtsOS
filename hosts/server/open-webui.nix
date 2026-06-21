@@ -7,7 +7,7 @@
     environment = {
       ENABLE_PERSISTENT_CONFIG = "False";
       ENABLE_OPENAI_API = "True";
-      OPENAI_API_BASE_URL = "http://main.int:11343/v1";
+      OPENAI_API_BASE_URL = "http://0.0.0.0:11343/v1";
       WEBUI_AUTH = "False";
       CORS_ALLOW_ORIGIN = "https://chat.slave.int";
       WEBHOOK_URL = "chat.slave.int";

@@ -2,7 +2,7 @@
 {
   services.searx = {
     enable = true;
-    redisCreateLocally = false;
+    redisCreateLocally = true;
   
     # UWSGI configuration
     runInUwsgi = true;
