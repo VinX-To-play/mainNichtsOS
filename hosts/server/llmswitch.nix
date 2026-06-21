@@ -16,6 +16,7 @@
           "deepseek-v4-flash" = {
             proxy = "https://api.deepseek.com/chat/completions";
             apiKey = '' ''${env.DEEPSEEK_APIKEY}'';
+            TTL = 0;
             filters = {
               setParamsByID = {
                 "\${MODEL_ID}" = {
