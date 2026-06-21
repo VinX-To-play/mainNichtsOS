@@ -13,7 +13,8 @@
         globalTTL = 300;
         healthCheckTimeout = 60;
         models = {
-          };
+        };
+
         peers = {
           deepseek = {
             proxy = "https://api.deepseek.com";

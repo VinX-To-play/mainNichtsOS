@@ -24,10 +24,6 @@
           url = "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-IQ2_M.gguf?download=true";
           sha256 = "sha256:0hrx82chg9i3rr75nrsdnvfxaavckb7h54c2sc88pbz1swgfzrrb";
         };
-        test-modle = builtins.fetchurl {
-          url = "https://huggingface.co/MaziyarPanahi/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it.Q4_K_M.gguf?download=true";
-          sha256 = "sha256:1hnyz2ksrs5rpwac4z4r3q3npy0g0hf8bhfsalbn562id20l4c74";
-      };
       in
       {
         globalTTL = 300;
@@ -43,9 +39,6 @@
           };
           "Qwen3.6-35B-A3B" = {
             cmd = "${llama-server} -m ${qwen36-35B-A3B} ${stand-arg} --ctx-size 65536 --jinja";
-          };
-          "test-model" = {
-            cmd = "${llama-server} -m ${test-modle} ${stand-arg}";
           };
         };
       };
