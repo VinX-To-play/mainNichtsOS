@@ -14,7 +14,7 @@
         healthCheckTimeout = 60;
         models = {
           "deepseek-v4-flash" = {
-            proxy = "https://api.deepseek.com/v1/";
+            proxy = "https://api.deepseek.com/chat/completions";
             apiKey = '' ''${env.DEEPSEEK_APIKEY}'';
             filters = {
               setParamsByID = {
