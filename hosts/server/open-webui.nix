@@ -7,10 +7,16 @@
     environment = {
       ENABLE_PERSISTENT_CONFIG = "False";
       ENABLE_OPENAI_API = "True";
-      OPENAI_API_BASE_URL = "http://main.int:11343/v1";
+      OPENAI_API_BASE_URL = "http://0.0.0.0:11343/v1";
       WEBUI_AUTH = "False";
-      CORIS_ALLOW_ORIGIN = "https://chat.slave.int";
+      CORS_ALLOW_ORIGIN = "https://chat.slave.int";
       WEBHOOK_URL = "chat.slave.int";
+      REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
+
+      ENABLE_WEB_SEARCH = "True";
+      WEB_SEARCH_ENGINE = "searxng";
+      SEARXNG_QUERY_URL = "https://search.slave.int/search?q=<query>";
+      SEARXNG_API_KEY = "";
     };
   };
 

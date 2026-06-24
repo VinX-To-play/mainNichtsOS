@@ -21,6 +21,7 @@
       ../../shared/modules/style.nix
       ./open-webui.nix
       ./searxng.nix
+      ./llmswitch.nix
     ];
 
   # Use the GRUB 2 boot loader.

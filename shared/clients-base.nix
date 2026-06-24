@@ -7,6 +7,7 @@ environment.systemPackages = with pkgs; [
     figlet
     bitwarden-desktop
     ripgrep
+    tldr
 
     #Media
     jellyfin-ffmpeg
@@ -19,6 +20,7 @@ environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".specific
     psst
     stable.vesktop
+    discord
 
     #Office
     # libreoffice-qt brocken
