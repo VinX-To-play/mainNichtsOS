@@ -20,18 +20,34 @@
       ../../shared/modules/gns3.nix
       ../../shared/modules/lama-cpp.nix
     ];
+
+  ##########################################
+  #            headless                    #
+  ##########################################
+  services.displayManager = {
+    ly.enable = lib.mkForce false;
+    autoLogin = {
+      enable = true;
+      user = "vincentl";
+    };
+  };
+
+  boot.kernelParams = [
+    "drm.edid_firmware=DP-1:edid/my-edid.bin"
+    "video=DP-1:3440x1440@120e"
+  ];
+
+  hardware.firmware = [
+    (pkgs.runCommandNoCC "edid-my-edid" { } ''
+      mkdir -p $out/lib/firmware/edid
+      cp ${./my-edid.bin} $out/lib/firmware/edid/my-edid.bin
+    '')
+  ];
   
   ##########################################
   #            Boot                        #
   ##########################################
   #boot.loader.grub.devices =  ["dev/nvme0n1p1"];
-
-  services.displayManager.ly = {
-    settings = {
-      auto_login_session = "Sway";
-      auto_login_user = "vincentl";
-    };
-  };
 
   networking = {
     hostName = "nichtsos"; # Define your hostname.
