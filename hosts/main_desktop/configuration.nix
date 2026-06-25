@@ -20,6 +20,30 @@
       ../../shared/modules/gns3.nix
       ../../shared/modules/lama-cpp.nix
     ];
+
+  ##########################################
+  #            headless                    #
+  ##########################################
+  services.displayManager = {
+    ly.enable = lib.mkForce false;
+    autoLogin = {
+      enable = true;
+      user = "vincentl";
+    };
+  };
+
+
+  boot.kernelParams = [
+    "drm.edid_firmware=DP-1:edid/my-edid.bin"
+    "video=DP-1:2560x1440@144e"
+  ];
+
+  hardware.firmware = [
+    (pkgs.runCommandNoCC "edid-my-edid" { } ''
+      mkdir -p $out/lib/firmware/edid
+      cp ${./my-edid.bin} $out/lib/firmware/edid/my-edid.bin
+    '')
+  ];
   
   ##########################################
   #            Boot                        #
@@ -81,7 +105,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup108";
+  home-manager.backupFileExtension = "backup109";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -96,7 +120,7 @@
     ports = [ 22 ];
     settings = {
       UseDns = true;
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
     };
