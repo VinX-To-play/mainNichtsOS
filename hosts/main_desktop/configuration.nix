@@ -26,6 +26,13 @@
   ##########################################
   #boot.loader.grub.devices =  ["dev/nvme0n1p1"];
 
+  services.displayManager.ly = {
+    settings = {
+      auto_login_session = "Sway";
+      auto_login_user = "vincentl";
+    };
+  };
+
   networking = {
     hostName = "nichtsos"; # Define your hostname.
     networkmanager.enable = true;
@@ -81,7 +88,7 @@
   };
  
   # set .config backup extansion for home manager
-  home-manager.backupFileExtension = "backup108";
+  home-manager.backupFileExtension = "backup109";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

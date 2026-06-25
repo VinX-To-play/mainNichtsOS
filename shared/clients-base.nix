@@ -146,6 +146,7 @@ environment.systemPackages = with pkgs; [
     sddm.enable = false;
     sddm.wayland.enable = false;
     ly.enable = true;
+
   };
 
   boot.loader.grub.theme = pkgs.catppuccin-grub;
