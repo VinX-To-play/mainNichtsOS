@@ -32,9 +32,10 @@
     };
   };
 
+
   boot.kernelParams = [
     "drm.edid_firmware=DP-1:edid/my-edid.bin"
-    "video=DP-1:3440x1440@120e"
+    "video=DP-1:2560x1440@144e"
   ];
 
   hardware.firmware = [
@@ -119,7 +120,7 @@
     ports = [ 22 ];
     settings = {
       UseDns = true;
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
     };
