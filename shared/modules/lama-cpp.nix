@@ -46,7 +46,7 @@
           };
 
           "gemma-4-12B" = {
-            cmd = "${llama-server} ${stand-arg} -m ${gemma-4-12B-model}  -ngl 99 --ctx-size 8192 --jinja -fa on";
+            cmd = "${llama-server} ${stand-arg} -m ${gemma-4-12B-model}  -mmproj ${gemma-4-12B-mmproj} -ngl 99 --ctx-size 8192 --jinja -fa on";
 
             filter = {
               stripParams = "temperature, top_p, min_p, top_k, repeat_penalty";
