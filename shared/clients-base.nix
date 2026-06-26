@@ -5,7 +5,6 @@
 environment.systemPackages = with pkgs; [
     # Tools
     figlet
-    bitwarden-desktop
     ripgrep
     tldr
 
@@ -19,7 +18,7 @@ environment.systemPackages = with pkgs; [
     #Web
     inputs.zen-browser.packages."${system}".specific
     psst
-    stable.vesktop
+    vesktop
     discord
 
     #Office
@@ -44,7 +43,7 @@ environment.systemPackages = with pkgs; [
     heroic
 
     # Wayland & Display:
-    stable.wlroots_0_17
+    wlroots_0_20
     egl-wayland
 
     # Own aplications

@@ -24,20 +24,18 @@
           url = "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-IQ2_M.gguf?download=true";
           sha256 = "sha256:0hrx82chg9i3rr75nrsdnvfxaavckb7h54c2sc88pbz1swgfzrrb";
         };
-        gemma-4-12B = {
-          model = builtins.fetchurl {
+        gemma-4-12B-model = builtins.fetchurl {
             url = "https://huggingface.co/HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced/resolve/main/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced-Q4_K_M.gguf?download=true";
             sha256 = "sha256:0d2ibdwcp4dsrjzlfvgc29zxjv71l97bc84ygslnqdynjis6srar";
             };
-          decoder = builtins.fetchurl {
+          gemma-4-12B-decoder = builtins.fetchurl {
             url = "https://huggingface.co/HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced/resolve/main/mtp-gemma-4-12B-it.gguf?download=true";
             sha256 = "sha256:1d0h4dfz13vv1b1lh1x0387fwnwcijxhr4z8n8aki404bz1r2365";
             };
-          mmproj = builtins.fetchurl {
+          gemma-4-12B-mmproj = builtins.fetchurl {
             url = "https://huggingface.co/HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced/resolve/main/mmproj-Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced-BF16.gguf?download=true";
             sha256 = "sha256:13mbfs96yq4c2hh33inb5c4ni8q4q626g7njbdkg1rdpg5a837mm";
             };
-        };
       in
       {
         globalTTL = 300;
@@ -48,15 +46,8 @@
           };
 
           "gemma-4-12B" = {
-            cmd = "${llama-server} ${stand-arg}
-                    -m ${gemma-4-12B.model}
-                    -md ${gemma-4-12B.decoder}
-                    -mmproj ${gemma-4-12B.mmproj}
-                    -spec-type draft-mtp
-                    -ngl 99
-                    -fa on
-                    --ctx-size 262144
-                    --jinja";
+            cmd = "${llama-server} ${stand-arg} -m ${gemma-4-12B-model} -md ${gemma-4-12B-decoder} -mmproj ${gemma-4-12B-mmproj} -spec-type draft-mtp -ngl 99 --ctx-size 262144 --jinja -fa on";
+
             filter = {
               stripParams = "temperature, top_p, min_p, top_k, repeat_penalty";
               setParams = {

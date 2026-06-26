@@ -123,6 +123,7 @@
       PasswordAuthentication = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
+      AllowAgentForwarding = "yes";
     };
   };
 
