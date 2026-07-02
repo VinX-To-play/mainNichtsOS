@@ -22,48 +22,42 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # for AMDGPU Kernal patch for steamvr
     scrumpkgs = {
       url = "github:Scrumplex/pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # for more up to date vr packages
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    
-
+    import-tree.url = "github:denful/import-tree";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware,  ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
-      
-      # Ovalay helperfunction for pkgs.stable
+
       stableOverlay = final: prev: {
         stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
       };
-    in
-    {
+
+      treeModules = inputs.import-tree.matchNot ".*/llama-cpp\\.nix" ./modules;
+    in {
       nixosConfigurations = {
         nichtsos = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            # add stable Ovalay 
             { nixpkgs.overlays = [ stableOverlay nixpkgs-xr.overlays.default ]; }
-            ./hosts/main_desktop/configuration.nix
-            inputs.stylix.nixosModules.stylix
-            sops-nix.nixosModules.sops
+            treeModules
+            ./modules/extensions/_llama-cpp.nix
+            ./nixosConfigurations/nichtsos/nixos.nix
             sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
+              home-manager.users.vincentl = {};
+              home-manager.sharedModules = [ inputs.nixvim.homeModules.nixvim ];
             }
           ];
         };
@@ -72,60 +66,50 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/ThinkPad/configuration.nix
+            treeModules
+            ./nixosConfigurations/nichtsos-thinkpad/nixos.nix
             sheard-host.nixosModules.sheardHosts
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
+              home-manager.users.vincentl = {};
+              home-manager.sharedModules = [ inputs.nixvim.homeModules.nixvim ];
             }
           ];
         };
+
         nichtsos-thinkpad-T14 = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/T14/configuration.nix
+            treeModules
+            ./nixosConfigurations/nichtsos-thinkpad-T14/nixos.nix
             sheard-host.nixosModules.sheardHosts
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
             nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/T14/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
+              home-manager.users.vincentl = {};
+              home-manager.sharedModules = [ inputs.nixvim.homeModules.nixvim ];
             }
           ];
         };
+
         nix-server = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            # pkgs.stable overlay
             { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/server/configuration.nix
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
+            treeModules
+            ./nixosConfigurations/nix-server/nixos.nix
             sheard-host.nixosModules.sheardHosts
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/server/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
+              home-manager.users.vincentl = {};
+              home-manager.sharedModules = [ inputs.nixvim.homeModules.nixvim ];
             }
           ];
         };
