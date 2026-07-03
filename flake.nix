@@ -8,6 +8,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    import-tree.url = "github:denful/import-tree";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -39,6 +41,10 @@
       imports = [
         ./nixosConfigurations/nichtsos-T14/configuration.nix
         (inputs.import-tree ./modules )
+      ];
+
+      systems = [
+        "x86_64-linux"
       ];
     };
 }

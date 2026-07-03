@@ -1,9 +1,15 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
-  flake.modules.nixos.nixosConfigurations.nichtsos-T14 = {
-    imports = with config.flake.modules.nixos; [
+  flake.nixosConfigurations.nichtsos-thinkpad-T14 = inputs.nixpkgs.lib.nixosSystem {
+
+    modules = (with config.flake.modules.nixos; [
       pc
+    ]) ++ [
+      ./_hardware-configuration.nix
+    ({...}: {
+      system.stateVersion = "23.11";
+      })
     ];
-    system.stateVersion = "23.11";
+
   };
 }

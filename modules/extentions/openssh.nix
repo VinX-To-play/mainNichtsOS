@@ -1,5 +1,5 @@
 {...}:{
-  flake.modules.openssh = {...}:{
+  flake.modules.nixos.openssh = {...}:{
     # TODO add openssh
   };
 }
