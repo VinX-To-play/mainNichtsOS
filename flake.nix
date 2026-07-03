@@ -1,7 +1,8 @@
 {
   description = "NixOS configuration";
 
-  nixConfig.extra-experimental-features = ["nix-command" "flakes"];
+  # TODO remove
+  # nixConfig.extra-experimental-features = ["nix-command" "flakes"];
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -33,102 +34,11 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, sops-nix, sheard-host, nixpkgs-xr, nixos-hardware,  ... }:
-    let
-      system = "x86_64-linux";
-      
-      # Ovalay helperfunction for pkgs.stable
-      stableOverlay = final: prev: {
-        stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      };
-    in
-    {
-      nixosConfigurations = {
-        nichtsos = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            # add stable Ovalay 
-            { nixpkgs.overlays = [ stableOverlay nixpkgs-xr.overlays.default ]; }
-            ./hosts/main_desktop/configuration.nix
-            inputs.stylix.nixosModules.stylix
-            sops-nix.nixosModules.sops
-            sheard-host.nixosModules.sheardHosts
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/main_desktop/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
-            }
-          ];
-        };
-
-        nichtsos-thinkpad = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            # pkgs.stable overlay
-            { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/ThinkPad/configuration.nix
-            sheard-host.nixosModules.sheardHosts
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/ThinkPad/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
-            }
-          ];
-        };
-        nichtsos-thinkpad-T14 = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            # pkgs.stable overlay
-            { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/T14/configuration.nix
-            sheard-host.nixosModules.sheardHosts
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
-            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/T14/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
-            }
-          ];
-        };
-        nix-server = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            # pkgs.stable overlay
-            { nixpkgs.overlays = [ stableOverlay ]; }
-            ./hosts/server/configuration.nix
-            sops-nix.nixosModules.sops
-            inputs.stylix.nixosModules.stylix
-            sheard-host.nixosModules.sheardHosts
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.vincentl = import ./hosts/server/home.nix;
-              home-manager.sharedModules = [
-                inputs.nixvim.homeModules.nixvim
-              ];
-            }
-          ];
-        };
-      };
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./nixosConfigurations/nichtsos-T14/configuration.nix
+        (inputs.import-tree ./modules )
+      ];
     };
 }
