@@ -1,15 +1,20 @@
-{ config, inputs, ... }:
+{ self, inputs, ... }:
 {
   flake.nixosConfigurations.nichtsos-thinkpad-T14 = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    specialArgs = { inherit inputs; };
+    modules = [
+      self.nixosModules.base
+      self.nixosModules.thinkpad-T14
 
-    modules = (with config.flake.modules.nixos; [
-      pc
-    ]) ++ [
       ./_hardware-configuration.nix
-    ({...}: {
-      system.stateVersion = "23.11";
-      })
     ];
 
+  };
+
+  flake.nixosModules.thinkpad-T14 = 
+  { ... }:
+  {
+    system.stateVersion = "23.11";
   };
 }

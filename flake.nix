@@ -37,14 +37,18 @@
   };
 
   outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake {inherit inputs;} ({ ... }: {
       imports = [
+        inputs.flake-parts.flakeModules.modules
         ./nixosConfigurations/nichtsos-T14/configuration.nix
+        # ./modules/base/boot.nix
+        # ./modules/base/security.nix
         (inputs.import-tree ./modules )
       ];
 
       systems = [
         "x86_64-linux"
       ];
-    };
+    }
+    );
 }

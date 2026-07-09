@@ -1,12 +1,12 @@
-{
-flake.modules.nixos.base.shell = { ...}:{
+{ ...}: {
+flake.nixosModules.base = {
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
   programs.git = {
     enable = true;
-    settings = {
+    config = {
       user = {
         email = "v@lundborgs.de";
         name = "VinX-To-play";
@@ -19,7 +19,7 @@ flake.modules.nixos.base.shell = { ...}:{
   };
   programs.bash = {
     enable = true;
-    initExtra = ''
+    interactiveShellInit = ''
       get_git_info() {
         local branch
         local git
@@ -68,6 +68,8 @@ flake.modules.nixos.base.shell = { ...}:{
     '';
   };
 
+  # Commented out: programs.kitty not available in current nixpkgs
+  /*
   programs.kitty = {
     enable = true;
     settings = {
@@ -75,5 +77,6 @@ flake.modules.nixos.base.shell = { ...}:{
       confirm_os_window_close = 0;
     };
   };
+  */
 };
 }

@@ -1,5 +1,5 @@
-{
-flake.modules.nixos.base.sudo = { pkgs, ... }: {
+{  ... }: {
+flake.nixosModules.base = { pkgs, ... }: {
   security.sudo.extraRules = [
     {
       users = [ "vincentl" ];

@@ -1,5 +1,5 @@
-{
-flake.modules.nixos.base.packages = {pkgs, ...}: {
+{...}: {
+flake.nixosModules.base = {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     auto-cpufreq
     ethtool
@@ -7,7 +7,7 @@ flake.modules.nixos.base.packages = {pkgs, ...}: {
     fastfetch
     btop
     tree
-    stable.p7zip-rar
+      # stable.p7zip-rar
     sops
     busybox
     wget
@@ -18,7 +18,7 @@ flake.modules.nixos.base.packages = {pkgs, ...}: {
   ];
 
   # TODO maybe a power module
-  services.auto-cpufreq = true;
-  services.power-profiles-daemon.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.power-profiles-daemon.enable = false;
 };
 }

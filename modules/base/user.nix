@@ -1,5 +1,5 @@
 {
-flake.modules.nixos.base.user = {
+flake.nixosModules.base = {
   users.users.vincentl = {
     isNormalUser = true;
     description = "Vincent Lundborg";

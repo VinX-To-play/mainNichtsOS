@@ -1,5 +1,8 @@
-{
-flake.modules.nixos.base.security = {pkgs, ...}:{
+{ ...}: {
+flake.nixosModules.security = {inputs, pkgs, ...}: {
+
+  imports = [ inputs.sops-nix.nixosModules.sops ];
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -10,7 +13,7 @@ flake.modules.nixos.base.security = {pkgs, ...}:{
 
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml;
-    defaultSops.Format = "yaml";
+    defaultSopsFormat = "yaml";
     age.keyFile = "/home/vincentl/.config/sops/age/keys.txt";
   };
 };

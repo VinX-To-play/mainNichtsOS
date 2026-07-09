@@ -1,5 +1,7 @@
-{
-flake.modules.nixos.base.tailscale = { config, lib, ... }: {
+{ self, ... }: {
+flake.nixosModules.base = {config, lib, ...}: {
+  imports = [ self.nixosModules.security ];
+
   services.tailscale = {
     enable = true;
     extraSetFlags = [ "--accept-dns=false" ];

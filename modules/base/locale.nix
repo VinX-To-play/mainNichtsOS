@@ -1,6 +1,6 @@
-{
-flake.modules.nixos.base.locale =
-  {...}: {
+{...}: {
+flake.nixosModules.base =
+    {...}: {
     time.timeZone = "Europe/Stockholm";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
@@ -11,11 +11,13 @@ flake.modules.nixos.base.locale =
       LC_NAME = "sv_SE.UTF-8";
       LC_NUMERIC = "sv_SE.UTF-8";
       LC_PAPER = "sv_SE.UTF-8";
-      LC_TELEPHONE = "sv_se.UTF-8";
+      LC_TELEPHONE = "sv_SE.UTF-8";
       LC_TIME = "sv_SE.UTF-8";
     };
-    services.xserver.xkb.layout = "us";
-    services.xserver.xkb.variant = "";
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
     console.keyMap = "us";
   };
 }

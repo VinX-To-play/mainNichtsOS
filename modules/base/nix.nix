@@ -1,5 +1,5 @@
-{
-flake.modules.nixos.base.nix = {...}:{
+{...}: {
+flake.nixosModules.base = {
   nix.settings = {
     show-trace = true;
     experimental-features = [ "nix-command" "flakes" ];
@@ -12,6 +12,7 @@ flake.modules.nixos.base.nix = {...}:{
       "vincent-cache-1:9r9bePSUWsLD4yHr7VA0WOEda71CQNbLngUYBkBgcsM="
       "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" 
     ];
+    # TODO add optimise.automatic = true;
   };
   nix.gc = {
     automatic = true;

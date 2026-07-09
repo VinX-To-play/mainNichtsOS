@@ -1,6 +1,8 @@
-{
-flake.modules.nixos.base.stylix = {pkgs, inputs, ...}: {
+{ ...}: {
+flake.nixosModules.base = 
+  {pkgs, inputs, ...}: {
   imports = [ inputs.stylix.nixosModules.stylix ];
+  
   stylix = {
     enable = true;
     image = ../../recorces/miryoku.png;
