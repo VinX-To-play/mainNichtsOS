@@ -6,6 +6,7 @@
     modules = [
       self.nixosModules.base
       self.nixosModules.thinkpad-T14
+      self.nixosModules.Desktop
 
       ./_hardware-configuration.nix
     ];
@@ -15,6 +16,12 @@
   flake.nixosModules.thinkpad-T14 = 
   { ... }:
   {
+    home-manager.sharedModules = [ self.homeModules.thinkpad-T14 ];
+
     system.stateVersion = "23.11";
+  };
+
+  flake.homeModules.thinkpad-T14 = {...}: {
+    home.stateVersion = "23.11";
   };
 }

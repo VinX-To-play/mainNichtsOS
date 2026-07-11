@@ -7,7 +7,7 @@ flake.nixosModules.base = {pkgs, ...}: {
     fastfetch
     btop
     tree
-      # stable.p7zip-rar
+    stable.p7zip-rar
     sops
     busybox
     wget

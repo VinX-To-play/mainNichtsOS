@@ -37,13 +37,11 @@
   };
 
   outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} ({ ... }: {
+    flake-parts.lib.mkFlake {inherit inputs;} ({ lib, ... }: {
       imports = [
         inputs.flake-parts.flakeModules.modules
         ./nixosConfigurations/nichtsos-T14/configuration.nix
-        # ./modules/base/boot.nix
-        # ./modules/base/security.nix
-        (inputs.import-tree ./modules )
+        (inputs.import-tree.filter (lib.hasSuffix ".nix") ./modules )
       ];
 
       systems = [

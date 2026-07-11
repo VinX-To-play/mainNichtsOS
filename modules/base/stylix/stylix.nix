@@ -5,7 +5,7 @@ flake.nixosModules.base =
   
   stylix = {
     enable = true;
-    image = ../../recorces/miryoku.png;
+    image = ./miryoku.png;
     base16Scheme = {
       base00 = "232136";
       base01 = "2a273f";
