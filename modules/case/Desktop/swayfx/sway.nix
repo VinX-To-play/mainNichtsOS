@@ -45,6 +45,9 @@
     
     services.displayManager.sessionPackages = [ swaySession ];
 
+    services.xserver.enable = true;
+    programs.xwayland.enable = true;
+
     # TODO move to spesific place
     environment.systemPackages = with pkgs; [
       brightnessctl
