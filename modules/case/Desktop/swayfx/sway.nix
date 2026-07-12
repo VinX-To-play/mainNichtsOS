@@ -1,5 +1,5 @@
 {config, ... }: {
-  flake.nixosModule.swayfx = {pkgs, ...}:
+  flake.nixosModules.swayfx = {pkgs, ...}:
   let 
       swaySession = pkgs.stdenv.mkDerivation rec {
       pname = "sway-session";
@@ -20,12 +20,14 @@
       passthru.providedSessions = [ "sway-nvidia" ];
     };
     in  {
-    home.sheardModules = [ config.flake.homeModules.swayfx ];
-    import = with config.flake.homeModules; [ waybar hypridle mako rofi ];
+    
+    home-manager.sharedModules = [ config.flake.homeModules.swayfx ];
+    
+    imports = with config.flake.nixosModules; [ waybar hypridle mako rofi ];
 
     xdg = {
       portal.wlr.enable = true;
-      icons = true;
+        # icons = true;
     };
 
     # kanshi systemd service
@@ -78,7 +80,7 @@
 
       wayland.windowManager.sway = {
         enable = true;
-        package = pkgs.swayfx;
+    package = pkgs.swayfx;
         checkConfig = false;
         systemd.enable = true;
         wrapperFeatures = {gtk = true;};

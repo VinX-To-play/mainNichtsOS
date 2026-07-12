@@ -1,5 +1,9 @@
-{...}: {
-flake.nixosModules.waybar = {pkgs, lib, ... }:
+{config, ...}: {
+flake.nixosModules.waybar = {...}: {
+    home-manager.sharedModules = [ config.flake.homeModules.waybar ];
+  };
+
+flake.homeModules.waybar = {pkgs, lib, ... }:
   with lib;
   {
     # Configure & Theme Waybar

@@ -1,5 +1,10 @@
-{ ... }: {
-flake.nixosModules.hypridle = {pkgs, ...}:
+{config, ... }: {
+
+flake.nixosModules.hypridle = {...}: {
+  home-manager.sharedModules = [ config.flake.homeModules.hypridle ];
+};
+
+flake.homeModules.hypridle = {pkgs, ...}:
   {
     services.hypridle = {
       enable = true;

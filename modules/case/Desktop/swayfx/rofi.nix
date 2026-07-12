@@ -1,15 +1,16 @@
 {config, ...}: {
 
-  flake.nixosModules.rofi = {
-    home.sheardModules = [ config.flake.homeModules.rofi ];
+  flake.nixosModules.rofi = {...}: {
+    home-manager.sharedModules = [ config.flake.homeModules.rofi ];
   };
 
-  flake.homeModules.rofi = {pkgs, ... }: {
+  flake.homeModules.rofi = {pkgs, lib, ... }: {
+
     programs.rofi = {
       enable = true;
       package = pkgs.rofi;
       cycle = true;
-      theme = "DarkBlue";
+      theme = lib.mkForce "DarkBlue";
     };
   };
 }

@@ -29,7 +29,7 @@ in {
       users.${user} = {... }: {
         home = {
           username = user;
-          homeDirectory = "/home/${user}";
+          # homeDirectory = "/home/${user}";
         };
       };
     };
