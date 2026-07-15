@@ -9,6 +9,8 @@ flake.nixosModules.security = {inputs, pkgs, ...}: {
   };
   security.polkit.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   system.extraDependencies = [pkgs.sops pkgs.age];
 
   sops = {

@@ -25,7 +25,6 @@
 
     system.stateVersion = "23.11";
 	
-     services.desktopManager.plasma6.enable = true;
   };
 
   flake.homeModules.thinkpad-T14 = {...}: {

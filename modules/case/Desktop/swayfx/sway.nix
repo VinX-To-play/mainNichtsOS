@@ -12,7 +12,7 @@
         cat > $out/share/wayland-sessions/sway-nvidia.desktop <<'EOF'
         [Desktop Entry]
         Name=Sway
-        Exec=${pkgs.swayfx}/bin/sway 
+        Exec=${pkgs.sway}/bin/sway 
         Type=Application
         X-GDM-Session-Type=Wayland
         EOF
@@ -25,9 +25,11 @@
     
     imports = with config.flake.nixosModules; [ waybar hypridle mako rofi ];
 
-    xdg = {
-      portal.wlr.enable = true;
-        # icons = true;
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+          pkgs.xdg-desktop-portal-wlr
+      ];
     };
 
     # kanshi systemd service
@@ -43,7 +45,7 @@
       };
     };
     
-    services.displayManager.sessionPackages = [ swaySession ];
+      # services.displayManager.sessionPackages = [ swaySession ];
 
     services.xserver.enable = true;
     programs.xwayland.enable = true;
@@ -69,7 +71,17 @@
       qimgv
       imagemagick
       tesseract
+        # helium
     ];
+
+    services.gnome.gnome-keyring.enable = true;
+    security.polkit.enable = true;
+
+    programs.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      package = pkgs.swayfx;
+    };
   };
 
   flake.homeModules.swayfx = {lib, pkgs, ...}: 
@@ -83,108 +95,107 @@
 
       wayland.windowManager.sway = {
         enable = true;
-    package = pkgs.swayfx;
+        package = null;
         checkConfig = false;
         systemd.enable = true;
-        wrapperFeatures = {gtk = true;};
-        extraConfig = ''
+        wrapperFeatures = {gtk = false;};
+         extraConfig = ''
     
-          include ~/.config/sway/outputs
-          include ~/.config/sway/outputs
+           include ~/.config/sway/outputs
     
-          corner_radius 20
-          blur enable
+           corner_radius 20
+           blur enable
     
-          input "type:touchpad" {
-            tap enable
-          }
-        '';
-        config = {
-          modifier = mod;
-          keybindings = lib.attrsets.mergeAttrsList [
-            (lib.attrsets.mergeAttrsList (map (num: let
-              ws = toString num;
-            in {
-              "${mod}+${ws}" = "workspace ${ws}";
-              "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
-            }) [1 2 3 4 5 6 7 8 9]))
+           input "type:touchpad" {
+             tap enable
+           }
+         '';
+         config = {
+           modifier = mod;
+           keybindings = lib.attrsets.mergeAttrsList [
+             (lib.attrsets.mergeAttrsList (map (num: let
+               ws = toString num;
+             in {
+               "${mod}+${ws}" = "workspace ${ws}";
+               "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
+             }) [1 2 3 4 5 6 7 8 9]))
     
-            (lib.attrsets.concatMapAttrs (key: direction: {
-                "${mod}+${key}" = "focus ${direction}";
-                "${mod}+Shift+${key}" = "move ${direction}";
-              }) {
-                h = "left";
-                j = "down";
-                k = "up";
-                l = "right";
-                Left = "left";
-                Down = "down";
-                Up = "up";
-                Right = "right";
-              })
+             (lib.attrsets.concatMapAttrs (key: direction: {
+                 "${mod}+${key}" = "focus ${direction}";
+                 "${mod}+Shift+${key}" = "move ${direction}";
+               }) {
+                 h = "left";
+                 j = "down";
+                 k = "up";
+                 l = "right";
+                 Left = "left";
+                 Down = "down";
+                 Up = "up";
+                 Right = "right";
+               })
     
-            {
-              # Workspace 10
-              "${mod}+0" = "workspace 10";
-              "${mod}+Shift+0" = "move container to workspace 10";
+             {
+               # Workspace 10
+               "${mod}+0" = "workspace 10";
+               "${mod}+Shift+0" = "move container to workspace 10";
     
-              # Applications
-              "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
-                # rofi defind by own hm module
-              "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
-              "${mod}+b" = "exec --no-startup-id zen";
-              "${mod}+Shift+b" = "exec --no-startup-id Helium";
-              "${mod}+e" = "exec --no-startup-id nemo";
-              "${mod}+v" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+               # Applications
+               "${mod}+t" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
+                 # rofi defind by own hm module
+               "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
+               "${mod}+b" = "exec --no-startup-id zen";
+               "${mod}+Shift+b" = "exec --no-startup-id Helium";
+               "${mod}+e" = "exec --no-startup-id nemo";
+               "${mod}+v" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
     
-              # Window managment
-              "${mod}+q" = "kill";
-              "${mod}+Shift+a" = "focus parent";
-              "${mod}+Shift+e" = "layout toggle split";
-              "${mod}+f" = "fullscreen toggle";
-              "${mod}+Shift+g" = "split h";
-              # "${mod}+Shift+s" = "layout stacking";
-              "${mod}+Shift+v" = "split v";
-              "${mod}+Shift+w" = "layout tabbed";
+               # Window managment
+               "${mod}+q" = "kill";
+               "${mod}+Shift+a" = "focus parent";
+               "${mod}+Shift+e" = "layout toggle split";
+               "${mod}+f" = "fullscreen toggle";
+               "${mod}+Shift+g" = "split h";
+               # "${mod}+Shift+s" = "layout stacking";
+               "${mod}+Shift+v" = "split v";
+               "${mod}+Shift+w" = "layout tabbed";
     
-              "${mod}+Shift+r" = "exec swaymsg reload";
-              "${mod}+Ctrl+q" = "exit";
+               "${mod}+Shift+r" = "exec swaymsg reload";
+               "${mod}+Ctrl+q" = "exit";
     
-              #Screenshot
-              "${mod}+Shift+s" = "exec --no-startup-id hyprshot -m region --clipbord-only";
-              "${mod}+Print" = "exec --no-startup-id hyprshot -m window";
-              "Print" = "exec --no-startup-id hyprshot -m output";
-              "${mod}+Shift+Print" = "exec --no-startup-id hyprshot -m region";
-              "${mod}+Shift+t" = "exec --no-startup-id sh -c 'hyprshot -m region --raw | tesseract - - | wl-copy'";
-              "Ctrl + v" = "exec wl-paste";
+               #Screenshot
+               "${mod}+Shift+s" = "exec --no-startup-id hyprshot -m region --clipbord-only";
+               "${mod}+Print" = "exec --no-startup-id hyprshot -m window";
+               "Print" = "exec --no-startup-id hyprshot -m output";
+               "${mod}+Shift+Print" = "exec --no-startup-id hyprshot -m region";
+               "${mod}+Shift+t" = "exec --no-startup-id sh -c 'hyprshot -m region --raw | tesseract - - | wl-copy'";
+               "Ctrl + v" = "exec wl-paste";
     
-              # Audio & Monitor
-              "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle";
-              "XF86AudioMicMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle";
-              "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
-              "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-              "XF86AudioNext" = "exec --no-startup-id playerctl next";
-              "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
-              "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
-              "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set '1%+'";
-              "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set '1%-'";
-            }
-          ];
-          focus.followMouse = true;
-          startup = [
-            {command = "zen";}
-            {command = "waybar";}
-            {command = "mako";}
-            {command = "blueman-applet";}
-            {command = "wl-paste --watch cliphist store";}
-            {command = "eww daemon";}
+               # Audio & Monitor
+               "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle";
+               "XF86AudioMicMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle";
+               "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
+               "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+               "XF86AudioNext" = "exec --no-startup-id playerctl next";
+               "XF86AudioPrev" = "exec --no-startup-id playerctl previous";
+               "XF86AudioPlay" = "exec --no-startup-id playerctl play-pause";
+               "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set '1%+'";
+               "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set '1%-'";
+             }
+           ];
+           focus.followMouse = true;
+           startup = [
+             #{command = "zen";}
+             {command = "waybar";}
+             {command = "mako";}
+             #{command = "blueman-applet";}
+             {command = "wl-paste --watch cliphist store";}
+             #{command = "eww daemon";}
     
-          ];
-          workspaceAutoBackAndForth = true;
-          # disable the bar
-          bars = []; 
-          window.titlebar = false;
-        };
+           ];
+           workspaceAutoBackAndForth = true;
+           # disable the bar
+           bars = []; 
+           window.titlebar = false;
+         };
       };
   };
 }

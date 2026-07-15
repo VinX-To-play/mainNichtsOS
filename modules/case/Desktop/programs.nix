@@ -26,7 +26,6 @@
     koreader
  
     # Programing
-    kitty
     jetbrains.idea
     vscode-fhs
     gradle
