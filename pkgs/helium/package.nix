@@ -28,11 +28,11 @@ at-spi2-atk,
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.9.4.1";
+    version = "0.14.7.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-qXuDUtank46O87jASxczmVMk0iD4JaZi2j9LSBe9VCM=";
+        sha256 = "sha256-W7p+DEx85p56si+hNAKFVM4q8rh5aZLS+BNmUTFroiE=";
     };
 
     nativeBuildInputs = [ 

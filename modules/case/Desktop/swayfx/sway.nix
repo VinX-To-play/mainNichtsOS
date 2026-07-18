@@ -186,7 +186,7 @@
              #{command = "zen";}
              {command = "waybar";}
              {command = "mako";}
-             #{command = "blueman-applet";}
+             {command = "blueman-applet";}
              {command = "wl-paste --watch cliphist store";}
              #{command = "eww daemon";}
     

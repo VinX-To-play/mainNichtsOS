@@ -4,7 +4,7 @@
       helium = pkgs.callPackage ./helium/package.nix {};
     };
   };
-  flake.overlays.legacy = final: _: {
+  flake.overlays.additions = final: _prev: {
     helium = final.callPackage ./helium/package.nix {};
   };
 }

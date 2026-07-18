@@ -1,7 +1,6 @@
 { self, inputs, ... }: {
   # Custom packages overlay
-  flake.overlays.additions = final: _prev:
-    import ../../pkgs { pkgs = final; };
+  imports = [ ../../pkgs/default.nix ];
 
   # Placeholder for package modifications
   flake.overlays.modifications = _final: _prev: { };
@@ -13,6 +12,7 @@
       config.allowUnfree = true;
     };
   };
+
 
   # NixOS module that applies all overlays
   flake.nixosModules.base = { ... }: {

@@ -42,7 +42,8 @@
     wlroots_0_20
     egl-wayland
     
-    # TODO add Helium
+    helium
+    #(pkgs.callPackage ../../../pkgs/helium/package.nix {})
     ];
   };
 }
