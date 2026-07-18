@@ -9,6 +9,7 @@
       thinkpad-T14
       Desktop
       amd
+      gaming
    ] ++ [
       ./_hardware-configuration.nix
     ];
@@ -20,6 +21,8 @@
   {
 	# TODO move to nixvim
     home-manager.sharedModules = [ self.homeModules.thinkpad-T14 ];
+
+    imports = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1 ];
 
     networking.hostName = "nichtsos-thinkpad-T14";
 
