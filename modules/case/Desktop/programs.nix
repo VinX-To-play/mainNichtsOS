@@ -43,7 +43,9 @@
     egl-wayland
     
     helium
-    #(pkgs.callPackage ../../../pkgs/helium/package.nix {})
+
+    #nrealDriver # TODO remove move to integrated lib
+    nrealAirLinuxDriver
     ];
   };
 }
