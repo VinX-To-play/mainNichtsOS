@@ -10,6 +10,7 @@
       Desktop
       amd
       gaming
+      cpp
    ] ++ [
       ./_hardware-configuration.nix
     ];
@@ -17,7 +18,7 @@
   };
 
   flake.nixosModules.thinkpad-T14 = 
-  { ... }:
+  {pkgs, ... }:
   {
 	# TODO move to nixvim
     home-manager.sharedModules = [ self.homeModules.thinkpad-T14 ];
@@ -27,6 +28,14 @@
     networking.hostName = "nichtsos-thinkpad-T14";
 
     system.stateVersion = "23.11";
+
+
+    environment.systemPackages = with pkgs; [
+      #nrealDriver # TODO remove move to integrated lib
+      nrealAirLinuxDriver
+    ];
+
+    services.udev.packages = [pkgs.nrealAirLinuxDriver];
 	
   };
 

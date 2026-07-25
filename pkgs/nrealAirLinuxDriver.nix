@@ -11,7 +11,7 @@
  ...
 }:
 stdenv.mkDerivation {
-  name = "nrealAirLinuxDriver";
+  name = "xrealAirLinuxDriver";
   version = "unstable";
 
   src = fetchFromGitLab {
@@ -35,21 +35,30 @@ stdenv.mkDerivation {
     systemd
   ];
 
+  postPatch = ''
+    substituteInPlace udev/nreal_air.rules \
+      --replace '0424|0428|0432|0426' '04*'
+  '';
+
   installPhase = ''
     runHook preInstall
 
+    sed -i 's/GROUP="plugdev"/GROUP="wheel"/g' ../udev/nreal_air.rules
+
     mkdir -p $out/bin
-    cp xrealAirLinuxDriver $out/xrealAirLinuxDriver
+    install -m755 xrealAirLinuxDriver $out/bin/xrealAirLinuxDriver
 
     mkdir -p $out/lib
     find interface_lib -name "*.so*" -exec install -m755 {} $out/lib/ \;
 
-    mkdir -p $out/etc/udev/rules.d
-    cp ../udev/nreal_air.rules $out/etc/udev/rules.d/
+    mkdir -p $out/lib/udev/rules.d
+    cp ../udev/nreal_air.rules $out/lib/udev/rules.d/99-nreal_air.rules
 
     rm -rf ../build/
 
     runHook postInstall
   '';
+
+
 }
 
