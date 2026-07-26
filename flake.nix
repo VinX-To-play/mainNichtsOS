@@ -41,6 +41,7 @@
       imports = [
         inputs.flake-parts.flakeModules.modules
         ./nixosConfigurations/nichtsos-T14/configuration.nix
+        ./nixosConfigurations/nix-server-one/configuration.nix
         (inputs.import-tree.filter (lib.hasSuffix ".nix") ./modules )
       ];
 

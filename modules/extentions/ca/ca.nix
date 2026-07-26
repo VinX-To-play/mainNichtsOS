@@ -1,5 +1,5 @@
 {config,...}:{
-  flake.nixosModules.ca = {...}:{
+  flake.nixosModules.ca = {config, ...}:{
     services.step-ca = {
       enable = true;
       settings = builtins.fromJSON( builtins.readFile ./ca.json );
