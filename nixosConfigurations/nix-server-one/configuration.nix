@@ -13,7 +13,9 @@
       vaultwarden
       ca
       komga
+      static-webpage
 
+      openssh
       nix-server-one
    ] ++ [
       ./_hardware-configuration.nix
