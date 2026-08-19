@@ -4,19 +4,7 @@ flake.nixosModules.base = {
     enable = true;
     nix-direnv.enable = true;
   };
-  programs.git = {
-    enable = true;
-    config = {
-      user = {
-        email = "v@lundborgs.de";
-        name = "VinX-To-play";
-      };
-      pull = {
-        rebase = false;
-        autoSetupRemote = true;
-      };
-    };
-  };
+
   programs.bash = {
     enable = true;
     interactiveShellInit = ''

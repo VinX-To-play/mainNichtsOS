@@ -20,3 +20,8 @@ creation_rules:
       - age:
         - *new_key
 
+  - path_regex: secrets/cloudflare/*
+    key_groups:
+      - age:
+        - *new_key
+

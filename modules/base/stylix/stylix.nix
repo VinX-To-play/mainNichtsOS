@@ -53,7 +53,7 @@ flake.nixosModules.base =
   };
 };
 
-flake.homeModules.base.stylix = { pkgs, ... }: {
+flake.homeModules.base = { pkgs, ... }: {
   gtk = {
     enable = true;
     iconTheme = {
