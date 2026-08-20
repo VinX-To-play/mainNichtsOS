@@ -14,6 +14,7 @@
       ca
       komga
       static-webpage
+      tandoor
 
       openssh
       nix-server-one

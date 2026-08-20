@@ -2,10 +2,13 @@
   flake.nixosModules.server = {...}:{
     services.nginx = {
       enable = true;
+      defaultListenAddresses = [ "0.0.0.0"  ];
       recommendedTlsSettings = true;
       recommendedGzipSettings = true;
       recommendedProxySettings = true;
     };
+
+    networking.firewall.allowedTCPPorts = [ 443 80 ];
 
     security.acme = {
       acceptTerms = true;

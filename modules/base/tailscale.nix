@@ -16,10 +16,8 @@ flake.nixosModules.base = {config, lib, ...}: {
       "obsidian-livesync.slave.int"
       "chat.slave.int"
       "search.slave.int"
+      "cookbook.slave.int"
     ];
-
-    # TODO move to networking stuff
-    "192.168.1.2" = [ "main.int" ];
   };
 };
 }
