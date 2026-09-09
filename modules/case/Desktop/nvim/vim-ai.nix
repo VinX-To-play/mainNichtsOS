@@ -27,7 +27,7 @@
         \   'model': 'deepseek-v4-flash',
         \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
         \   'auth_type': 'api-key',
-        \   'token_file_path': '/run/secrets/llm-apiKey/deepseek',
+        \   'api_key: $DEEPSEEK_API_KEY,
         \   },
         \ }
         
