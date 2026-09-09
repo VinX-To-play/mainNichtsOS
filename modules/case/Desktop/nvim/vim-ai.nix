@@ -22,12 +22,12 @@
         " let g:vim_ai_token_file_path = '/var/lib/llm/deepseek'
 
         let g:vim_ai_chat = {
+        \ 'provider": "openai",
         \ 'engine': 'chat',
         \ 'options': {
         \   'model': 'deepseek-v4-flash',
         \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
-        \   'auth_type': 'api-key',
-        \   'api_key': $DEEPSEEK_API_KEY,
+        \   "token_load_fn": "cat /var/lib/llm/deepseek",
         \   },
         \ }
         
