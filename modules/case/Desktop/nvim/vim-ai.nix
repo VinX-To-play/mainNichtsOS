@@ -19,7 +19,7 @@
       })];
 
       extraConfigVim = ''
-        let g:vim_ai_token_file_path = '/var/lib/llm/deepseek'
+        " let g:vim_ai_token_file_path = '/var/lib/llm/deepseek'
 
         let g:vim_ai_chat = {
         \ 'engine': 'chat',
@@ -27,6 +27,7 @@
         \   'model': 'deepseek-v4-flash',
         \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
         \   'auth_type': 'api-key',
+        \   'token_file_path': '/var/lib/llm/deepseek',
         \   },
         \ }
         
