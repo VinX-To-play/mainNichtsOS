@@ -11,6 +11,7 @@
       amd
       gaming
       cpp
+      ts-js
    ] ++ [
       ./_hardware-configuration.nix
     ];
