@@ -22,28 +22,16 @@
         let g:vim_ai_token_file_path = '/var/lib/llm/deepseek'
 
         let g:vim_ai_chat = {
+        \ 'engine': 'chat',
         \ 'options': {
         \   'model': 'deepseek-v4-flash',
         \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
         \   'auth_type': 'api-key',
         \   },
         \ }
-
-        let g:vim_ai_complete = {
-        \ 'options': {
-        \   'model': 'deepseek-v4-flash',
-        \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
-        \   'auth_type': 'api-key',
-        \   },
-        \ }
-
-        let g:vim_ai_edit = {
-        \ 'options': {
-        \   'model': 'deepseek-v4-flash',
-        \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
-        \   'auth_type': 'api-key',
-        \   },
-        \ }
+        
+        let g:vim_ai_edit = g:vim_ai_chat
+        let g:vim_ai_complete = g:vim_ai_chat
       '';
     };
   };

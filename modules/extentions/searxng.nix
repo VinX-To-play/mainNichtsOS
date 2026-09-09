@@ -1,2 +1,6 @@
 {...}:
-{}
+{
+  flake.nixosModules.searxng = {pkgs, ...}: {
+
+  };
+}
