@@ -27,7 +27,7 @@
         \   'model': 'deepseek-v4-flash',
         \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
         \   'auth_type': 'api-key',
-        \   'api_key: $DEEPSEEK_API_KEY,
+        \   'api_key': $DEEPSEEK_API_KEY,
         \   },
         \ }
         
