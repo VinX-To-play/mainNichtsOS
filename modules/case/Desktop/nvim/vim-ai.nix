@@ -28,11 +28,28 @@
         \   'token_file_path': '/run/secrets/llm-apiKey/deepseek',
         \   'max_tokens': 0,
         \   'request_timeout': 60,
+        \   'resoning': "enabled",
+        \   'resoning_effort': "low",
         \   },
         \ }
         
-        let g:vim_ai_edit = g:vim_ai_chat
-        let g:vim_ai_complete = g:vim_ai_chat
+        let g:vim_ai_edit = {
+        \ 'engine': 'chat',
+        \ 'provider': 'openai',
+        \ 'options': {
+        \   'model': 'deepseek-v4-pro',
+        \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
+        \   'enable_auth': 1,
+        \   'stream': 1,
+        \   'resoning': "enabled",
+        \   'resoning_effort': "high",
+        \   'token_file_path': '/run/secrets/llm-apiKey/deepseek',
+        \   'max_tokens': 0,
+        \   'request_timeout': 60,
+        \   },
+        \ }
+
+        let g:vim_ai_complete = g:vim_ai_edit
       '';
     };
   };
