@@ -2,7 +2,6 @@
   flake.nixosModules.Desktop = {...}: {
     sops.secrets."llm-apiKey/deepseek" = {
       owner = "vincentl";
-      path = "/var/lib/llm/deepseek";
     };
   };
 
@@ -19,16 +18,16 @@
       })];
 
       extraConfigVim = ''
-        " let g:vim_ai_token_file_path = '/var/lib/llm/deepseek'
-
         let g:vim_ai_chat = {
         \ 'engine': 'chat',
-        \ 'provider': "openai",
+        \ 'provider': 'openai',
         \ 'options': {
         \   'model': 'deepseek-v4-flash',
-        \   'endpoint_url': 'https://api.deepseek.com/chat/completions',
-        \   'auth_type': 'api-key',
+        \   'endpoint_url': 'https://api.deepseek.com/v1/chat/completions',
+        \   'enable_auth': 1,
         \   'token_file_path': '/run/secrets/llm-apiKey/deepseek',
+        \   'max_tokens': 0,
+        \   'request_timeout': 60,
         \   },
         \ }
         
