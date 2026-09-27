@@ -30,8 +30,9 @@
 
     # NGINX CONFIG STUFF
     users.groups.tandoor_recipes.members = [ "nginx" ];
-    services.nginx.virtualHosts."cookbook.slave.int" = {
+    services.nginx.virtualHosts."cookbook.elin.love" = {
       enableACME = true;
+      useACMEHost = "elin.love";
       forceSSL = true;
 
       locations = {
