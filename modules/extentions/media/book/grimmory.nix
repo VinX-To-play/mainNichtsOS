@@ -30,7 +30,8 @@
 
       # Containers
       virtualisation.oci-containers.containers."grimmory" = {
-        image = "grimmory/grimmory:latest";
+        image = "docker.io/grimmory/grimmory:latest";
+        environmentFiles = [ config.sops.secrets.grimmory.path ];
         environment = {
           "DATABASE_URL"      = "jdbc:mariadb://mariadb:3306/grimmory";
           "DATABASE_USERNAME" = "grimmory";
@@ -91,6 +92,8 @@
 
       virtualisation.oci-containers.containers."grimmory-mariadb" = {
         image = "lscr.io/linuxserver/mariadb:11.4.5";
+          environmentFiles = [ config.sops.secrets.grimmory.path ];
+
         environment = {
           "MYSQL_DATABASE" = "grimmory";
           "MYSQL_USER"     = "grimmory";
@@ -99,11 +102,11 @@
           "TZ"             = "Etc/UTC";
         };
         volumes = [
-          "/home/vincentl/mainNichtsOS/modules/extentions/media/book/mariadb/config:/config:rw"
+          "/var/lib/grimmory/mariadb/config:/config:rw"
         ];
         log-driver = "journald";
         extraOptions = [
-          "--health-cmd=[\"mariadb-admin\", \"ping\", \"-h\", \"localhost\"]"
+          "--health-cmd=mariadb-admin ping -h localhost"
           "--health-interval=5s"
           "--health-retries=10"
           "--health-timeout=5s"
