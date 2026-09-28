@@ -39,7 +39,8 @@
           "SERVER_PORT"       = "${port}";
           "TZ"                = "Etc/UTC";
           "USER_ID"           = "5001";
-          "SERVER_FORWARD_HEADERS_STRATEGY" = "framework";
+          "SERVER_FORWARD_HEADERS_STRATEGY" = "FRAMEWORK";
+          "ALLOWED_ORIGINS" = "grimmary.${baseurl}";
         };
 
         volumes = [
@@ -174,13 +175,14 @@
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
+            proxy_set_header X-Forwarded-Host $host;
             proxy_set_header X-Forwarded-Proto $scheme;
-
-            proxy_set_header X-Forwarded-Host  $host;
-            proxy_set_header X-Forwarded-Port  $server_port;
-
-            proxy_set_header X-Forwarded-Prefix /;
+            proxy_set_header X-Forwarded-Port $server_port;
+            
+            proxy_buffer_size 128k;
+            proxy_buffers 4 256k;
+            proxy_busy_buffers_size 256k;
+            large_client_header_buffers 8 32k;
           '';
         };
       };
