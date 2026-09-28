@@ -15,6 +15,7 @@
       komga
       static-webpage
       tandoor
+      books
 
       openssh
       nix-server-one
