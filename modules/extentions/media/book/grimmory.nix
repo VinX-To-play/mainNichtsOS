@@ -39,7 +39,6 @@
           "SERVER_PORT"       = "${port}";
           "TZ"                = "Etc/UTC";
           "USER_ID"           = "5001";
-          "SERVER_FORWARD_HEADERS_STRATEGY" = "framework";
         };
 
         volumes = [
