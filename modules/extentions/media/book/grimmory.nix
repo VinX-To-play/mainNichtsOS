@@ -40,7 +40,7 @@
           "TZ"                = "Etc/UTC";
           "USER_ID"           = "5001";
           "SERVER_FORWARD_HEADERS_STRATEGY" = "FRAMEWORK";
-          "ALLOWED_ORIGINS" = "grimmary.${baseurl}";
+          "ALLOWED_ORIGINS" = "books.${baseurl}";
         };
 
         volumes = [
@@ -163,7 +163,7 @@
         wantedBy = [ "multi-user.target" ];
       };
 
-      services.nginx.virtualHosts."grimmory.${baseurl}" = {
+      services.nginx.virtualHosts."books.${baseurl}" = {
         forceSSL = true;
         useACMEHost = "${baseurl}";
         locations."/" = {
