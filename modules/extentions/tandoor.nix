@@ -8,7 +8,7 @@
       database.createLocally = true;
       extraConfig = {
         ENABLE_SIGNUP = "1";
-        ALLOWED_HOSTS = "cookbook.slave.int";
+        ALLOWED_HOSTS = "cookbook.elin.love";
         MEDIA_ROOT = "/var/lib/tandoor-recipes/mediafiles";
       };
     };
@@ -31,7 +31,6 @@
     # NGINX CONFIG STUFF
     users.groups.tandoor_recipes.members = [ "nginx" ];
     services.nginx.virtualHosts."cookbook.elin.love" = {
-      enableACME = true;
       useACMEHost = "elin.love";
       forceSSL = true;
 

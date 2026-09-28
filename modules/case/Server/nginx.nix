@@ -10,7 +10,7 @@
 
     networking.firewall.allowedTCPPorts = [ 443 80 ];
     
-    sops.secrets."services/cloudflare-key/key" = {
+    sops.secrets."services/cloudflare-acme/key" = {
       owner = "acme";
       group = "acme";
       mode = "0400";
@@ -24,13 +24,14 @@
       };
 
       certs."elin.love" = {
-        server = "https://acme-v2.api.letsencrypt.org/directory";
-        domain = ".elin.love";
+        group = "nginx";
+        server = "https://acme-v02.api.letsencrypt.org/directory";  
+        domain = "*.elin.love";
 
         dnsProvider = "cloudflare";
 
         credentialFiles = {
-          "CLOUDFLARE_DNS_API_TOKEN_FILE" = config.sops.placeholder."services/cloudflare-key/key".path;
+          "CLOUDFLARE_DNS_API_TOKEN_FILE" = config.sops.secrets."services/cloudflare-acme/key".path;
         };
       };
     };

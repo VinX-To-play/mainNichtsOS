@@ -1,11 +1,14 @@
 {config, ...}: {
-  flake.nixosModules.vaultwarden = {config, ...}:{
+  flake.nixosModules.vaultwarden =
+    let
+      baseurl = config.flake.meta.baseurl;
+    in {config, ...}:{
     services.vaultwarden = {
       enable = true;  
       backupDir = "/var/backup/vaultwarden";
       environmentFile = config.sops.templates."vaultwarden.env".path;
       config = {
-        DOMAIN = "https://vaultwarden.slave.int";
+        DOMAIN = "https://vaultwarden.${baseurl}";
         SIGNUPS_ALLOWED = false;
 
         ROCKET_ADDRESS = "127.0.0.1";
@@ -46,9 +49,9 @@
       sops.secrets."services/vaultwarden/envFile/smtpPassword" = {
       };
 
-      services.nginx.virtualHosts."vaultwarden.slave.int" = {
-        enableACME = true;
+      services.nginx.virtualHosts."vaultwarden.${baseurl}" = {
         forceSSL = true;
+        useACMEHost = "${baseurl}";
 
         locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
