@@ -39,11 +39,14 @@
           "TZ"                = "Etc/UTC";
           "USER_ID"           = "5001";
         };
+
         volumes = [
-          "/home/vincentl/mainNichtsOS/modules/extentions/media/book/bookdrop:/bookdrop:rw"
-          "/home/vincentl/mainNichtsOS/modules/extentions/media/book/books:/books:rw"
-          "/home/vincentl/mainNichtsOS/modules/extentions/media/book/data:/app/data:rw"
+          "/var/lib/grimmory/bookdrop:/bookdrop:rw"
+          "/var/lib/grimmory/books:/books:rw"
+          "/var/lib/grimmory/data:/app/data:rw"
+          "/var/lib/grimmory/mariadb/config:/config:rw"
         ];
+
         ports = [
           "${port}:${port}/tcp"
         ];
@@ -56,6 +59,13 @@
           "--network=grimmory_default"
         ];
       };
+
+      systemd.tmpfiles.rules = [
+        "d /var/lib/grimmory/mariadb/config 0755 5001 5001 -"
+        "d /var/lib/grimmory/bookdrop        0755 5001 5001 -"
+        "d /var/lib/grimmory/books           0755 5001 5001 -"
+        "d /var/lib/grimmory/data            0755 5001 5001 -"
+      ];
 
       systemd.services."podman-grimmory" = {
         serviceConfig = {
