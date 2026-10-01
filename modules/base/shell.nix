@@ -53,6 +53,21 @@ flake.nixosModules.base = {
       }
 
       alias nix-rebuild="rebuild_with_commit"
+
+      # Run independent
+      run() {
+        if [ $# -eq 0 ]; then
+            echo "usage: detach <command> [args...]" >&2
+            return 1
+        fi
+        setsid "$@" < /dev/null > /dev/null 2>&1 &
+      }
+
+      # open nemo here
+      OF() {
+       local dir="''${1:-$PWD}"
+        setsid nemo "$dir" < /dev/null > /dev/null 2>&1 &
+      }
     '';
   };
 
