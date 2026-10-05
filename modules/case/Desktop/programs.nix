@@ -11,7 +11,7 @@
     deluge
     mpv
     psst
-    spotify
+    inputs.spotifast.packages."${system}".default
 
     #Web
     inputs.zen-browser.packages."${system}".specific

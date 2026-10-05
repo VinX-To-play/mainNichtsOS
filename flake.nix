@@ -14,6 +14,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     sheard-host.url = "github:VinX-To-play/sheard-host-mirror";
+    spotifast.url = "github:crmne/spotifast";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +43,7 @@
         inputs.flake-parts.flakeModules.modules
         ./nixosConfigurations/nichtsos-T14/configuration.nix
         ./nixosConfigurations/nix-server-one/configuration.nix
+        ./nixosConfigurations/nichtsos/configuration.nix
         (inputs.import-tree.filter (lib.hasSuffix ".nix") ./modules )
       ];
 

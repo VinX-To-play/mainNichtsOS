@@ -28,11 +28,11 @@ at-spi2-atk,
 
 stdenv.mkDerivation rec {
     name = "Helium";
-    version = "0.14.7.1";
+    version = "0.18.3.1";
 
     src = fetchurl {
 	url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz";
-        sha256 = "sha256-W7p+DEx85p56si+hNAKFVM4q8rh5aZLS+BNmUTFroiE=";
+        sha256 = "sha256-ib2WLKXlFZkWpMS++lqaCPVA0tjNeU8vlV6NXUpGO/I=";
     };
 
     nativeBuildInputs = [ 
@@ -78,7 +78,7 @@ stdenv.mkDerivation rec {
         runHook preInstall
         mkdir -p $out/bin
         mv * $out/bin/
-        mv $out/bin/helium $out/bin/${name}
+        # mv $out/bin/helium $out/bin/helium
 
         # -----  fix broken symlinks  -----
         # 1. delete every symlink that is now dangling
@@ -96,7 +96,7 @@ Name=${name}
 GenericName=Web Browser
 Terminal=false
 Icon=$out/bin/product_logo_256.png
-Exec=$out/bin/${name}
+Exec=$out/bin/helium
 Type=Application
 Categories=Network;WebBrowser;
 INI
