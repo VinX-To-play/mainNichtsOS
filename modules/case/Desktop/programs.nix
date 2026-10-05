@@ -12,6 +12,7 @@
     mpv
     psst
     inputs.spotifast.packages."${system}".default
+    inputs.zapfast.packages."${system}".default
 
     #Web
     inputs.zen-browser.packages."${system}".specific

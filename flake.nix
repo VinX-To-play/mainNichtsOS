@@ -15,6 +15,7 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     sheard-host.url = "github:VinX-To-play/sheard-host-mirror";
     spotifast.url = "github:crmne/spotifast";
+    zapfast.url = "github:crmne/zapfast";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
