@@ -1,6 +1,9 @@
 {...}: {
-flake.nixosModules.vr = { pkgs, lib, config, ... }:
+flake.nixosModules.vr = { pkgs, lib, config, inputs, ... }:
   {
+
+    imports = [ inputs.nixpkgs-xr.nixosModules.nixpkgs-xr ];
+
     boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
     programs.steam = {

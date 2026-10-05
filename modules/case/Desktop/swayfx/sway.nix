@@ -144,7 +144,7 @@
                  # rofi defind by own hm module
                "${mod}+s" = "exec --no-startup-id rofi -show drun run window";
                "${mod}+b" = "exec --no-startup-id zen";
-               "${mod}+Shift+b" = "exec --no-startup-id Helium";
+               "${mod}+Shift+b" = "exec --no-startup-id helium";
                "${mod}+e" = "exec --no-startup-id nemo";
                "${mod}+v" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
     
