@@ -11,7 +11,7 @@
     deluge
     mpv
     psst
-    spotify-player
+    spotify
 
     #Web
     inputs.zen-browser.packages."${system}".specific
