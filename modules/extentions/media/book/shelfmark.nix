@@ -15,8 +15,20 @@
             FLASK_PORT = "6667";
             LOG_LEVEL = "DEBUG";
             SEARCH_MODE = "universal";
+            BOOKLORE_HOST = "books.${baseurl}";
+            BOOKLORE_USER = "shelfmark";
           };
         };
+
+        systemd.services.shelfmark.serviceConfig = {
+          EnviromentFile  = config.sops.templates."shelfmark-env.conf".path;
+        };
+
+        sops.secrets."services.shelfmark.bookpas" = {};
+
+        sops.templates."shelfmark-env.conf".content = ''
+          BOOKLORE_PASSWORD = ${config.sops.placeholder."services.shelfmark.bookpas"}
+        '';
 
         services.nginx.virtualHosts."bookadd.${baseurl}" = {
           useACMEHost = "${baseurl}";
