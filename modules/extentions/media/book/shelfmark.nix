@@ -12,7 +12,7 @@
           enable = true;
           environment = {
             FLASK_HOST = "127.0.0.1";
-            FLASK_PORT = "6667";
+            FLASK_PORT = 6667;
             LOG_LEVEL = "DEBUG";
             SEARCH_MODE = "universal";
             BOOKLORE_HOST = "books.${baseurl}";
@@ -24,17 +24,17 @@
           EnviromentFile  = config.sops.templates."shelfmark-env.conf".path;
         };
 
-        sops.secrets."services.shelfmark.bookpas" = {};
+        sops.secrets."services.shelfmark.bookshelfPas" = {};
 
         sops.templates."shelfmark-env.conf".content = ''
-          BOOKLORE_PASSWORD = ${config.sops.placeholder."services.shelfmark.bookpas"}
+          BOOKLORE_PASSWORD = ${config.sops.placeholder."services.shelfmark.bookshelfPas"}
         '';
 
         services.nginx.virtualHosts."bookadd.${baseurl}" = {
+          forceSSL = true;
           useACMEHost = "${baseurl}";
-          forchSSL = true;
           locations."/" = {
-            proxyPass = "http://${cfg.enviroment.FLASK_HOST}:${cfg.enviroment.FLASK_PORT}";
+            proxyPass = "http://${cfg.environment.FLASK_HOST}:${toString cfg.environment.FLASK_PORT}";
           };
         };
     };
