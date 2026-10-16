@@ -1,6 +1,7 @@
 {...}: {
 flake.nixosModules.base = {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    kitty.terminfo
     auto-cpufreq
     ethtool
     powertop

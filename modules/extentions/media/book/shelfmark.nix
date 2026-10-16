@@ -3,13 +3,18 @@
     let
       baseurl = config.flake.meta.baseurl;
 
-    in {config, ...}:
+    in {config, pkgs, ...}:
     let
       cfg = config.services.shelfmark;
     in {
 
         services.shelfmark = {
           enable = true;
+          package = pkgs.shelfmark.overrideAttrs (oldAttrs: {
+            propagatedBuildInputs = (oldAttrs.propagatedBuildInputs or []) ++ [
+              pkgs.python3Packages.httpx
+            ];
+          });
           environment = {
             FLASK_HOST = "127.0.0.1";
             FLASK_PORT = 6667;
@@ -21,13 +26,15 @@
         };
 
         systemd.services.shelfmark.serviceConfig = {
-          EnviromentFile  = config.sops.templates."shelfmark-env.conf".path;
+          EnvironmentFile  = config.sops.templates."shelfmark-env.conf".path;
+          RuntimeDirectory = "shelfmark";
+          WorkingDirectory = "/run/shelfmark";
         };
 
-        sops.secrets."services.shelfmark.bookshelfPas" = {};
+        sops.secrets."services/shelfmark/bookshelfPas" = {};
 
         sops.templates."shelfmark-env.conf".content = ''
-          BOOKLORE_PASSWORD = ${config.sops.placeholder."services.shelfmark.bookshelfPas"}
+          BOOKLORE_PASSWORD = ${config.sops.placeholder."services/shelfmark/bookshelfPas"}
         '';
 
         services.nginx.virtualHosts."bookadd.${baseurl}" = {
