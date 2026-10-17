@@ -1,4 +1,7 @@
 { self, inputs, ... }:
+let
+  hostname = "nix-server-one";
+in
 {
 
   flake.nixosConfigurations.nix-server-one = inputs.nixpkgs.lib.nixosSystem {
@@ -25,6 +28,10 @@
     ];
 
   };
+    
+  vinlabs.prometheus-exporters = [ 
+      "${hostname}:${9999}"
+    ];
 
   flake.nixosModules.nix-server-one = 
   {pkgs,lib, ... }:

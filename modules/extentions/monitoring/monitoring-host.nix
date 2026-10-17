@@ -1,6 +1,7 @@
 {config, ...}:
 let
     baseurl = config.flake.meta.baseurl;
+    serverTagets = config.vinlabs.prometheus-exporters;
 in {
   flake.nixosModules.monitoringHost = {pkgs, config, ...}:
     {
@@ -12,7 +13,7 @@ in {
           {
             job_name = "node-exporters";
             static_configs = [{
-              targets = config.vinlabs.promethus-exporters;
+              targets = serverTagets;
             }
             ];
           }

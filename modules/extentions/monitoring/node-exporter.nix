@@ -1,24 +1,13 @@
 {...}:{
-
-  flake.nixosModules.server = {lib, config, ...}: {
-    options.vinlabs.promethus-exporters = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [];
-      description = "List of exportes automaticly added to the promethus";
-    };
-
-    services.promethus = {
+  flake.nixosModules.server = {config, ...}: {
+    services.prometheus = {
       exporters = {
         node = {
           enable = true;
           enableCollectors = [ "systemd" ];
-          port = 9999;
+          port = 9999; # dont change this is will brack server add in or change in servers configuration.nix file
         };
       };
     };
-
-    vinlabs.promethus-exportes = [ 
-      "${config.networking.hostName}:${toString config.services.promethus.exporters.node.port}"
-    ];
   };
 }
