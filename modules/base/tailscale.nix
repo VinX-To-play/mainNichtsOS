@@ -13,10 +13,13 @@ flake.nixosModules.base = {config, lib, ...}: {
 
   networking.hosts = {
     "100.64.0.11" = [
-      "obsidian-livesync.slave.int"
-      "chat.slave.int"
-      "search.slave.int"
-      "cookbook.slave.int"
+        "nix-server-one"
+    ];
+    "100.64.0.19" = [
+        "nichtsos-thinkpad-14"
+    ];
+    "100.64.0.12" = [
+        "nichtsos-main"
     ];
   };
 };

@@ -10,6 +10,7 @@
 
       server
 
+      monitoringHost
       vaultwarden
       ca
       komga
@@ -29,7 +30,6 @@
   {pkgs,lib, ... }:
   {
     home-manager.sharedModules = [ self.homeModules.nix-server-one ];
-
 
     networking = {
       hostName = "nix-server-one";
@@ -52,9 +52,7 @@
       };
     };
 
-
     system.stateVersion = "25.05";
-
 
     environment.systemPackages = with pkgs; [
     ];
