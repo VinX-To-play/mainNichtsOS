@@ -32,6 +32,9 @@ in {
           enable_gzip = true;
           domain = "grafana.${baseurl}";
         };
+        security = {
+          secret_key = "$_file{${config.sops.secrets."services/grafana/secretKey".path}}";
+        };
       };
 
       # Plugins
@@ -45,9 +48,13 @@ in {
       analytics.reporting.enable = false;
     };
 
+    sops.secretes."services/grafana/secretKey" = {
+      owner = "grafana";
+      group = "grafana";
+    };
+
     services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
         forceSSL = true;
-        addSSL = true;
         useACMEHost = "${baseurl}";
         locations."/" = {
           proxyPass = "${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
