@@ -1,23 +1,28 @@
 {config, ...}:
 let
     baseurl = config.flake.meta.baseurl;
-    serverTagets = config.vinlabs.prometheus-exporters;
+    serverTagets = [
+      config.vinlabs.prometheus-exporters
+      "192.168.1.1:"
+    ];
 in {
   flake.nixosModules.monitoringHost = {pkgs, config, ...}:
-    {
+    let 
+      grafanaDomain = "grafana.${baseurl}";
+    in  {
     services.prometheus = {
       enable = true;
       port = 5005;
 
       scrapeConfigs = [
-          {
+        {
             job_name = "node-exporters";
             static_configs = [{
               targets = serverTagets;
-            }
-            ];
           }
-        ];
+          ];
+        }
+      ];
     };
 
 
@@ -28,13 +33,16 @@ in {
         server = {
           http_addr = "127.0.0.1";
           http_port = 5004;
-          enforce_domain = true;
+          enforce_domain = false;
           enable_gzip = true;
-          domain = "grafana.${baseurl}";
+          domain = "${grafanaDomain}";
+          root_url = "https://${grafanaDomain}/";
+          protocol = "http";
         };
         security = {
-          secret_key = "$_file{${config.sops.secrets."services/grafana/secretKey".path}}";
+          secret_key = "$__file{${config.sops.secrets."services/grafana/secretsKey".path}}";
         };
+        analytics.reporting_enabled = false;
       };
 
       # Plugins
@@ -43,25 +51,30 @@ in {
       provision = {
         enable = true;
 
-      };
+        datasources.settings.datasources = [{
+          name = "Prometheus";
+          type = "prometheus";
+          url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
+          isDefault = true;
+          editable = false;
+        }];
 
-      analytics.reporting.enable = false;
+
+      };
     };
 
-    sops.secretes."services/grafana/secretKey" = {
+    sops.secrets."services/grafana/secretsKey" = {
       owner = "grafana";
       group = "grafana";
     };
 
-    services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
+    services.nginx.virtualHosts."${grafanaDomain}" = {
         forceSSL = true;
         useACMEHost = "${baseurl}";
         locations."/" = {
-          proxyPass = "${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
+          proxyPass = "http://${config.services.grafana.settings.server.http_addr}:${toString config.services.grafana.settings.server.http_port}";
           proxyWebsockets = true;
-          extraConfig = ''
-            proxy_set_header Host ${config.services.grafana.settings.server.domain};
-          '';
+          recommendedProxySettings = true;
         };
      };
   };

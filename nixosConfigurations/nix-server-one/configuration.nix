@@ -30,7 +30,7 @@ in
   };
     
   vinlabs.prometheus-exporters = [ 
-      "${hostname}:${9999}"
+      "${hostname}:9999"
     ];
 
   flake.nixosModules.nix-server-one = 
