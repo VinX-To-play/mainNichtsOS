@@ -1,10 +1,7 @@
 {config, ...}:
 let
     baseurl = config.flake.meta.baseurl;
-    serverTagets = [
-      config.vinlabs.prometheus-exporters
-      "192.168.1.1:"
-    ];
+    serverTagets = config.vinlabs.prometheus-exporters;
 in {
   flake.nixosModules.monitoringHost = {pkgs, config, ...}:
     let 
