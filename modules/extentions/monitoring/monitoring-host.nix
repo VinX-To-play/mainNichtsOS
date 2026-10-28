@@ -51,6 +51,7 @@ in {
         datasources.settings.datasources = [{
           name = "Prometheus";
           type = "prometheus";
+          uid = "PBFA97CFB590B2093";
           url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
           isDefault = true;
           editable = false;
