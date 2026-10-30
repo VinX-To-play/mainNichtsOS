@@ -56,13 +56,13 @@
     environment.systemPackages = with pkgs; [
       #nrealDriver # TODO remove move to integrated lib
       nrealAirLinuxDriver
-      stable.dolphin-emu
+      dolphin-emu
     ];
 
     services.udev.packages = [pkgs.nrealAirLinuxDriver];
       
     services.udev.extraRules = ''
-  SUBSYSTEM=="usb", ATTRS{idVendor}=="0bb4", ATTRS{idProduct}=="0306", TAG+="uaccess"
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="0a12", ATTRS{idProduct}=="0001", TAG+="uaccess"
 '';
 	
   };
