@@ -47,15 +47,25 @@ in {
 
       provision = {
         enable = true;
+        
+        datasources.settings = {
+          prune = true;
+        };
 
-        datasources.settings.datasources = [{
-          name = "Prometheus";
-          type = "prometheus";
-          url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
-          isDefault = true;
-          editable = false;
-        }];
+        # datasources.settings.datasources = [{
+        #   name = "Prometheus";
+        #   type = "prometheus";
+        #   uid = "prometheus";
+        #   orgId = 1;
+        #   url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
+        #   isDefault = true;
+        #   editable = false;
+        # }];
 
+        datasources.settings.deleteDatasources = [
+          # { name = "Prometheus"; orgId = 1;}
+
+          ];
 
       };
     };

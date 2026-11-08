@@ -20,6 +20,7 @@ in
       static-webpage
       tandoor
       books
+      audiobooks
 
       openssh
       nix-server-one
