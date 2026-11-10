@@ -12,6 +12,7 @@
       gaming
       cpp
       ts-js
+      docker
    ] ++ [
       ./_hardware-configuration.nix
     ];

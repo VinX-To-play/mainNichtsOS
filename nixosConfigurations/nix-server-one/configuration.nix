@@ -21,6 +21,7 @@ in
       tandoor
       books
       audiobooks
+      planing-service
 
       openssh
       nix-server-one
