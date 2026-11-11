@@ -1,7 +1,8 @@
 {...}:{
   flake.homeModules.Desktop = {...}:{
+    programs.neovim.sideloadInitLua = true;
+
     programs.nixvim = {
-      wrapRc = false;
       extraConfigLua = ''
         vim.o.exrc = true
         vim.o.secure = true 
