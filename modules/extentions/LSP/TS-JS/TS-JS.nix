@@ -3,7 +3,7 @@
     programs.nixvim = {
       plugins.typescript-tools.enable = true;
 
-      extraConfigLua = ''
+      extraConfigLuaPost = ''
         require("typescript-tools").setup {
           handlers = {
             ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
