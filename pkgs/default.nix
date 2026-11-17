@@ -10,5 +10,6 @@
   flake.overlays.additions = final: _prev: {
     helium = final.callPackage ./helium/package.nix {};
     nrealAirLinuxDriver = final.callPackage ./nrealAirLinuxDriver.nix {};
+    satchel = final.callPackage ./satchel.nix {};
   };
 }

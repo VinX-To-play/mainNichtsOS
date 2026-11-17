@@ -36,7 +36,6 @@
       #nrealDriver # TODO remove move to integrated lib
       nrealAirLinuxDriver
 
-
       satchel
       ollama-cpu
       codex
