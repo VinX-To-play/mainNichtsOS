@@ -4,6 +4,7 @@
       helium = pkgs.callPackage ./helium/package.nix {};
       nrealAirLinuxDriver = pkgs.callPackage ./nrealAirLinuxDriver.nix {};
       Fusion = pkgs.callPackage ./Fusion.nix {};
+      satchel = pkgs.callPackage ./satchel.nix {};
     };
   };
   flake.overlays.additions = final: _prev: {

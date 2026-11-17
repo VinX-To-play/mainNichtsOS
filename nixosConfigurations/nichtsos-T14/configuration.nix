@@ -36,9 +36,16 @@
       #nrealDriver # TODO remove move to integrated lib
       nrealAirLinuxDriver
 
+
+      satchel
       ollama-cpu
       codex
     ];
+
+    services.ollama = {
+      enable = true;
+      package = pkgs.ollama-cpu;
+    };
 
     services.udev.packages = [pkgs.nrealAirLinuxDriver];
 	
