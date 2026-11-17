@@ -35,6 +35,9 @@
     environment.systemPackages = with pkgs; [
       #nrealDriver # TODO remove move to integrated lib
       nrealAirLinuxDriver
+
+      ollama-cpu
+      codex
     ];
 
     services.udev.packages = [pkgs.nrealAirLinuxDriver];
