@@ -20,7 +20,10 @@
         proxyPass = "http://${abs.host}:${toString abs.port}";
         proxyWebsockets = true;
         extraConfig = ''
+          client_max_body_size 2G;
+
           proxy_redirect http:// $scheme://;
+
         '';
       };
     };
