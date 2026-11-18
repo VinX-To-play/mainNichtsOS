@@ -16,6 +16,7 @@ flake.nixosModules.base = {pkgs, ...}: {
     tmux
     atool # TODO maybe remove
     httpie # TODO maybe remove
+    bubblewrap
   ];
 
   # TODO maybe a power module
