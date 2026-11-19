@@ -27,9 +27,9 @@
     koreader
  
     # Programing
-    jetbrains.idea
     vscode-fhs
     gradle
+    codex
 
     # Programing lange
     # rust dependency installd throu nixvim
