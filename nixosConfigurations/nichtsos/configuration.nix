@@ -14,6 +14,7 @@
       ts-js
       vr
       logitech-mouse
+      openssh
    ] ++ [
       ./_hardware-configuration.nix
     ];
