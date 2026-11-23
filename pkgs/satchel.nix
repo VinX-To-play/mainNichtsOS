@@ -22,7 +22,6 @@
 , nss
 , pango
 , systemd
-, xorg
 }:
 
 stdenv.mkDerivation rec {
@@ -45,8 +44,6 @@ stdenv.mkDerivation rec {
     libGL libxkbcommon wayland libgbm libdrm
     alsa-lib cups dbus expat fontconfig freetype glib
     gtk3 nspr nss pango systemd
-    xorg.libX11 xorg.libXcursor xorg.libXdamage xorg.libXext
-    xorg.libXfixes xorg.libXi xorg.libXrandr xorg.libXrender xorg.libXtst
   ];
 
   sourceRoot = ".";
